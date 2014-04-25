@@ -60,3 +60,5 @@ c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumb
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.NationalTeamLogoNames.resources
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.Settings.resources
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.csproj.GenerateResource.Cache
+c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\log4net.dll
+c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\log4net.xml

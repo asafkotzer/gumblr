@@ -49,3 +49,5 @@ C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrIntegrationTest
 C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\log4net.dll
+C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\log4net.xml

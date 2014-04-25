@@ -10,14 +10,15 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Gumblr.Models;
 using Gumblr.Account;
+using Gumblr.DataAccess;
 
 namespace Gumblr.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController()
-            : this(new LocalUserManager(new UserStore<ApplicationUser>()))
+        public AccountController(ILoginRepository aLoginRepository, IUserRepository aUserRepository)
+            : this(new LocalUserManager(new UserStore<ApplicationUser>(), aLoginRepository, aUserRepository))
         {
         }
 
