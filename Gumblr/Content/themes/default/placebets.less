@@ -1,0 +1,70 @@
+﻿body {
+    @BackgroundColor: #dedede;
+
+    .MatchFrame {
+        font-family: Calibri;
+        margin-right: auto;
+        margin-left: auto;
+        width: 450px;
+        height: 250px;
+        border-radius: 10px;
+        background-color: @BackgroundColor;
+        padding: 10px 25px;
+        position: relative;
+
+        .MatchTitle {
+            text-align: center;
+            color: #3b3b3b;
+
+            .TeamName {
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+
+        .MatchSubtitle {
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+            color: #3b3b3b;
+        }
+
+        .LogoContainer {
+            display: inline-block;
+
+            .SelectionMarker {
+                width: 27px;
+                height: 27px;
+                margin: 5px 50px;
+                visibility: hidden;
+            }
+
+            .Visible {
+                visibility:visible;
+            }
+
+            .Logo {
+                display: block;
+                width: 57px;
+                height: 50px;
+                margin: 5px 35px;
+
+                &:hover {
+                    border-color: rgba(255, 106, 0, 0.60);
+                }
+            }
+
+            .Draw {
+                border: none;
+            }
+        }
+
+        .StatusLine {
+            bottom: 0;
+
+            .StatusText {
+                text-align: center;
+            }
+        }
+    }
+}
