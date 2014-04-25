@@ -11,10 +11,15 @@
             type: "post",
             data: JSON.stringify(model),
             contentType: 'application/json',
-        }).done(function () {
-            console.log("success");
-        }).fail(function () {
-            console.log("failure");
+        }).done(function (result) {
+            if (result && result.redirectUrl) {
+                window.location = result.redirectUrl;
+            }
+            else {
+                console.log("Upload bets redirect failed: " + JSON.stringify(result));
+            }
+        }).fail(function (result) {
+            console.log("failed to upload bets: " + JSON.stringify(result));
         });
     }
 

@@ -21,5 +21,10 @@ namespace Gumblr.DataAccess
         {
             await mStorageProvider.CreateOrUpdate("Bets", aUserId, aBets);
         }
+
+        public async Task<IEnumerable<MatchBet>> GetUserBets(string aUserId)
+        {
+            return await mStorageProvider.Read<IEnumerable<MatchBet>>("Bets", aUserId);
+        }
     }
 }

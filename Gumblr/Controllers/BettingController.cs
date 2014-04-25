@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Gumblr.Controllers
 {
@@ -36,8 +37,16 @@ namespace Gumblr.Controllers
         [HttpPost]
         public async Task<ActionResult> PlaceBets(BettingModel aModel)
         {
-            //TODO: user id should be based on logged-in user
-            await mMatchBetRepository.SetUserBet("UserId", aModel.Matches);
+            var userId = User.Identity.GetUserId();
+            await mMatchBetRepository.SetUserBet(userId, aModel.Matches);
+
+            // returning a JSON for the client side to redirect (jQuery ajax requirement)
+            return Json(new { redirectUrl = Url.Action("BetSummary") });
+        }
+
+        public async Task<ActionResult> BetSummary()
+        {
+            var userBets = await mMatchBetRepository.GetUserBets(User.Identity.GetUserId());
             return View();
         }
     }
