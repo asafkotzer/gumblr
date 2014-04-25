@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Gumblr.Models;
+using Gumblr.Account;
 
 namespace Gumblr.Controllers
 {
@@ -16,16 +17,16 @@ namespace Gumblr.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new LocalUserManager(new UserStore<ApplicationUser>()))
         {
         }
 
-        public AccountController(UserManager<ApplicationUser> userManager)
+        public AccountController(LocalUserManager userManager)
         {
             UserManager = userManager;
         }
 
-        public UserManager<ApplicationUser> UserManager { get; private set; }
+        public LocalUserManager UserManager { get; private set; }
 
         //
         // GET: /Account/Login

@@ -1,0 +1,55 @@
+﻿@model Gumblr.Models.BettingModel
+
+@{
+    ViewBag.Title = "GUMBLR | Place your bets";
+}
+
+@section ViewHeader {
+@Scripts.Render("~/Scripts/GameBet/PlaceBetsViewModel.js")
+    @Scripts.Render("~/Scripts/GameBet/PlaceBets.js")
+    @Scripts.Render("~/Scripts/moment.js")
+    @Styles.Render("~/Content/themes/default/placebets.css")
+
+    <script>
+        $(document).ready(function () {
+            var model = @Html.Raw(Json.Encode(Model));
+            var placeBets = new PlaceBets(model);
+            placeBets.init();
+        });
+    </script>
+}
+
+
+<div class="MatchFrame">
+    <p class="MatchTitle">
+        <span class="TeamName" data-bind="text: currentGame().Host"></span>
+        vs.
+        <span class="TeamName" data-bind="text: currentGame().Visitor"></span>
+    </p>
+    <p class="MatchSubtitle">
+        <span data-bind="text: currentGame().Venue"></span>
+    </p>
+    <p class="MatchSubtitle">
+        <span data-bind="text: moment(currentGame().StartTime).format('MMMM Do YYYY, h:mm:ss a')"></span>
+    </p>
+    <div>
+        <div class="LogoContainer">
+            <input class="Logo Host" type="image" data-bind="attr:{src: currentGame().HostLogoUrl}, click: selected" />
+            <img src="/Images/UpArrow.png" class="SelectionMarker" />
+        </div>
+        <div class="LogoContainer">
+            <input class="Logo Draw" type="image" data-bind="click: selected" src="/Images/Draw.png" />
+            <img src="/Images/UpArrow.png" class="SelectionMarker" />
+        </div>
+        <div class="LogoContainer">
+            <input class="Logo Visitor" type="image" data-bind="attr:{src: currentGame().VisitorLogoUrl}, click: selected" />
+            <img src="/Images/UpArrow.png" class="SelectionMarker" />
+        </div>
+    </div>
+    <div class="StatusLine">
+        <p class="StatusText">
+            <span data-bind="text: statusLine"></span>
+        </p>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+﻿using Gumblr.Models;
+using Gumblr.Storage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+
+namespace Gumblr.DataAccess
+{
+    public class MatchBetRepository : IMatchBetRepository
+    {
+        IStorageProvider mStorageProvider;
+
+        public MatchBetRepository(IStorageProvider aStorageProvider)
+        {
+            mStorageProvider = aStorageProvider;
+        }
+
+        public async Task SetUserBet(string aUserId, IEnumerable<MatchBet> aBets)
+        {
+            await mStorageProvider.CreateOrUpdate("Bets", aUserId, aBets);
+        }
+    }
+}
