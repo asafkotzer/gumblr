@@ -1,16 +1,20 @@
 ﻿body {
     @BackgroundColor: #dedede;
 
-    .MatchFrame {
-        font-family: Calibri;
-        margin-right: auto;
-        margin-left: auto;
-        width: 450px;
-        height: 250px;
-        border-radius: 10px;
-        background-color: @BackgroundColor;
-        padding: 10px 25px;
-        position: relative;
+    .BetList {
+        list-style: none;
+
+        .MatchFrame {
+            font-family: Calibri;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 20px;
+            width: 450px;
+            height: 250px;
+            border-radius: 10px;
+            background-color: @BackgroundColor;
+            padding: 10px 25px;
+            position: relative;
 
         .MatchTitle {
             text-align: center;
@@ -43,6 +47,12 @@
                 visibility:visible;
             }
 
+            .Selected {
+                border: solid;
+                border-color: red;
+                border-radius: 10px;
+            }
+
             .Logo {
                 display: block;
                 width: 57px;
@@ -66,5 +76,6 @@
                 text-align: center;
             }
         }
+    }
     }
 }

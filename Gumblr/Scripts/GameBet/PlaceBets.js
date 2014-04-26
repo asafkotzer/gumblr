@@ -5,7 +5,7 @@
     this.init = function()
     {
         // apply KO bindings
-        ko.applyBindings(new ViewModel(this.model));
+        ko.applyBindings(new PlaceBetsViewModel(this.model));
 
         // make the arrow visible on hover
         // TODO: consider using this instead http://jsfiddle.net/tw16/JfK6N/

@@ -13,13 +13,15 @@ namespace Gumblr.Controllers
     [Authorize]
     public class BettingController : Controller
     {
-        IMatchRepository mRepository;
+        IMatchRepository mMatchRepository;
         IMatchBetRepository mMatchBetRepository;
+        IUserRepository mUserRepository;
 
-        public BettingController(IMatchRepository aMatchRepository, IMatchBetRepository aMatchBetRepository)
+        public BettingController(IMatchRepository aMatchRepository, IMatchBetRepository aMatchBetRepository, IUserRepository aUserRepository)
         {
-            mRepository = aMatchRepository;
+            mMatchRepository = aMatchRepository;
             mMatchBetRepository = aMatchBetRepository;
+            mUserRepository = aUserRepository;
         }
 
         public ActionResult Index()
@@ -29,7 +31,7 @@ namespace Gumblr.Controllers
 
         public ActionResult PlaceBets()
         {
-            var matches = mRepository.GetMatches().Take(4);
+            var matches = mMatchRepository.GetMatches().Take(4);
             var model = new BettingModel { Matches = matches.Select(x => new MatchBet(x)) };
             return View(model);
         }
@@ -46,8 +48,11 @@ namespace Gumblr.Controllers
 
         public async Task<ActionResult> BetSummary()
         {
-            var userBets = await mMatchBetRepository.GetUserBets(User.Identity.GetUserId());
-            return View();
+            var userId = User.Identity.GetUserId();
+            var user = await mUserRepository.GetUser(userId);
+            var userBets = await mMatchBetRepository.GetUserBets(userId);
+            var model = new UserBetsModel { User = user, MatchBets = userBets };
+            return View(model);
         }
     }
 }

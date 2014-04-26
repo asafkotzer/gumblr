@@ -1,7 +1,11 @@
-body .MatchFrame {
+body .BetList {
+  list-style: none;
+}
+body .BetList .MatchFrame {
   font-family: Calibri;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 20px;
   width: 450px;
   height: 250px;
   border-radius: 10px;
@@ -9,47 +13,52 @@ body .MatchFrame {
   padding: 10px 25px;
   position: relative;
 }
-body .MatchFrame .MatchTitle {
+body .BetList .MatchFrame .MatchTitle {
   text-align: center;
   color: #3b3b3b;
 }
-body .MatchFrame .MatchTitle .TeamName {
+body .BetList .MatchFrame .MatchTitle .TeamName {
   font-size: 25px;
   font-weight: bold;
 }
-body .MatchFrame .MatchSubtitle {
+body .BetList .MatchFrame .MatchSubtitle {
   margin: 0px;
   padding: 0px;
   text-align: center;
   color: #3b3b3b;
 }
-body .MatchFrame .LogoContainer {
+body .BetList .MatchFrame .LogoContainer {
   display: inline-block;
 }
-body .MatchFrame .LogoContainer .SelectionMarker {
+body .BetList .MatchFrame .LogoContainer .SelectionMarker {
   width: 27px;
   height: 27px;
   margin: 5px 50px;
   visibility: hidden;
 }
-body .MatchFrame .LogoContainer .Visible {
+body .BetList .MatchFrame .LogoContainer .Visible {
   visibility: visible;
 }
-body .MatchFrame .LogoContainer .Logo {
+body .BetList .MatchFrame .LogoContainer .Selected {
+  border: solid;
+  border-color: red;
+  border-radius: 10px;
+}
+body .BetList .MatchFrame .LogoContainer .Logo {
   display: block;
   width: 57px;
   height: 50px;
   margin: 5px 35px;
 }
-body .MatchFrame .LogoContainer .Logo:hover {
+body .BetList .MatchFrame .LogoContainer .Logo:hover {
   border-color: rgba(255, 106, 0, 0.6);
 }
-body .MatchFrame .LogoContainer .Draw {
+body .BetList .MatchFrame .LogoContainer .Draw {
   border: none;
 }
-body .MatchFrame .StatusLine {
+body .BetList .MatchFrame .StatusLine {
   bottom: 0;
 }
-body .MatchFrame .StatusLine .StatusText {
+body .BetList .MatchFrame .StatusLine .StatusText {
   text-align: center;
 }
