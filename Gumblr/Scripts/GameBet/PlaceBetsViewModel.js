@@ -5,30 +5,41 @@
     this.currentGameIndex = ko.observable(0);
     this.currentGame = ko.observable(model.Matches[0]);
 
+    var onGameBetClick = function (viewModel, event) {
+        var match = viewModel.match;
+        var startTime = new Date(parseInt(match.StartTime.substr(6)));
+        if (startTime.getTime() > new Date().getTime()) {
+            alert("Too late");
+        }
+
+        var target = $(event.currentTarget);
+        if (target.hasClass('Host')) {
+            match.ExpectedResult(0);
+        } else if (target.hasClass('Visitor')) {
+            match.ExpectedResult(2);
+        } else {
+            match.ExpectedResult(1);
+        }
+    };
+
     var matches = [];
     model.Matches.forEach(function (matchItem) {
-        matchItem.ExpectedResult = ko.observable(-1);
-        matches.push({
-            match: matchItem,
-            selected: function (viewModel, event) {
-                var target = $(event.currentTarget);
-                if (target.hasClass('Host')) {
-                    viewModel.match.ExpectedResult(0);
-                } else if (target.hasClass('Visitor')) {
-                    viewModel.match.ExpectedResult(2);
-                } else {
-                    viewModel.match.ExpectedResult(1);
-                }
-            }
-        });
+        var currentExpectedResult = matchItem.ExpectedResult;
+        matchItem.ExpectedResult = ko.observable(currentExpectedResult);
+        matches.push( { match: matchItem, selected: onGameBetClick } );
     });
     this.games = ko.observableArray(matches);
+
+    var prepareModelForUpload = function (model) {
+        model.Matches.forEach(function (x) { x.StartTime = moment(x.StartTime).format(); });
+        return ko.toJSON(model);
+    };
 
     this.uploadBets = function () {
         request = $.ajax({
             url: "/Betting/PlaceBets",
             type: "post",
-            data: JSON.stringify(model),
+            data: prepareModelForUpload(model),
             contentType: 'application/json',
         }).done(function (result) {
             if (result && result.redirectUrl) {

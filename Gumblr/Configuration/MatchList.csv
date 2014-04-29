@@ -1,48 +1,48 @@
-﻿Group A,12/6/2013 17:00,Sao Paulo ,Brazil,Croatia
-Group A,13/6/2013 13:00,Natal ,Mexico,Cameroon
-Group A,17/6/2013 16:00,Fortaleza ,Brazil,Mexico
-Group A,18/6/2013 18:00,Manaus ,Cameroon,Croatia
-Group A,23/6/2013 17:00,Brasilia ,Cameroon,Brazil
-Group A,23/6/2013 17:00,Recife ,Croatia,Mexico
-Group B,13/6/2013 16:00,Salvador,Spain,Netherlands
-Group B,13/6/2013 18:00,Cuiaba ,Chile,Australia
-Group B,18/6/2013 16:00,Rio De Janeiro ,Spain,Chile
-Group B,18/6/2013 13:00,Porto Alegre ,Australia,Netherlands
-Group B,23/6/2013 13:00,Curitiba ,Australia,Spain
-Group B,23/6/2013 13:00,Sao Paulo ,Netherlands,Chile
-Group C,14/6/2013 13:00,Belo Horizonte ,Colombia,Greece
-Group C,14/6/2013 22:00,Recife ,Côte d'Ivoire,Japan
-Group C,19/6/2013 13:00,Brasilia ,Colombia,Côte d'Ivoire
-Group C,19/6/2013 19:00,Natal ,Japan,Greece
-Group C,24/6/2013 16:00,Cuiaba ,Japan,Colombia
-Group C,24/6/2013 17:00,Fortaleza ,Greece,Côte d'Ivoire
-Group D,14/6/2013 16:00,Fortaleza ,Uruguay,Costa Rica
-Group D,14/6/2013 18:00,Manaus ,England,Italy
-Group D,19/6/2013 16:00,Sao Paulo ,Uruguay,England
-Group D,20/6/2013 13:00,Recife ,Italy,Costa Rica
-Group D,24/6/2013 13:00,Natal ,Italy,Uruguay
-Group D,24/6/2013 13:00,Belo Horizonte ,Costa Rica,England
-Group E,15/6/2013 13:00,Brasilia ,Switzerland,Ecuador
-Group E,15/6/2013 16:00,Porto Alegre ,France,Honduras
-Group E,20/6/2013 16:00,Salvador,Switzerland,France
-Group E,20/6/2013 19:00,Curitiba ,Honduras,Ecuador
-Group E,25/6/2013 16:00,Manaus ,Honduras,Switzerland
-Group E,25/6/2013 17:00,Rio De Janeiro ,Ecuador,France
-Group F,15/6/2013 19:00,Rio De Janeiro ,Argentina,Bosnia and Herzegovina
-Group F,16/6/2013 16:00,Curitiba ,Iran,Nigeria
-Group F,21/6/2013 13:00,Belo Horizonte ,Argentina,Iran
-Group F,21/6/2013 18:00,Cuiaba ,Nigeria,Bosnia and Herzegovina
-Group F,25/6/2013 13:00,Porto Alegre ,Nigeria,Argentina
-Group F,25/6/2013 13:00,Salvador,Bosnia and Herzegovina,Iran
-Group G,16/6/2013 13:00,Salvador,Germany,Portugal
-Group G,16/6/2013 19:00,Natal ,Ghana,USA
-Group G,21/6/2013 16:00,Fortaleza ,Germany,Ghana
-Group G,22/6/2013 18:00,Manaus ,USA,Portugal
-Group G,26/6/2013 13:00,Recife ,USA,Germany
-Group G,26/6/2013 13:00,Brasilia ,Portugal,Ghana
-Group H,17/6/2013 13:00,Belo Horizonte ,Belgium,Algeria
-Group H,17/6/2013 18:00,Cuiaba ,Russia,Korea Republic
-Group H,22/6/2013 13:00,Rio De Janeiro ,Belgium,Russia
-Group H,22/6/2013 16:00,Porto Alegre ,Korea Republic,Algeria
-Group H,26/6/2013 17:00,Sao Paulo ,Korea Republic,Belgium
-Group H,26/6/2013 17:00,Curitiba ,Algeria,Russia
+﻿Group A,12/06/2013 20:00,Sao Paulo ,Brazil,Croatia
+Group A,13/06/2013 16:00,Natal ,Mexico,Cameroon
+Group A,17/06/2013 19:00,Fortaleza ,Brazil,Mexico
+Group A,18/06/2013 22:00,Manaus ,Cameroon,Croatia
+Group A,23/06/2013 20:00,Brasilia ,Cameroon,Brazil
+Group A,23/06/2013 20:00,Recife ,Croatia,Mexico
+Group B,13/06/2013 19:00,Salvador,Spain,Netherlands
+Group B,13/06/2013 22:00,Cuiaba ,Chile,Australia
+Group B,18/06/2013 19:00,Rio De Janeiro ,Spain,Chile
+Group B,18/06/2013 16:00,Porto Alegre ,Australia,Netherlands
+Group B,23/06/2013 16:00,Curitiba ,Australia,Spain
+Group B,23/06/2013 16:00,Sao Paulo ,Netherlands,Chile
+Group C,14/06/2013 16:00,Belo Horizonte ,Colombia,Greece
+Group C,15/06/2013 01:00,Recife ,Côte d'Ivoire,Japan
+Group C,19/06/2013 16:00,Brasilia ,Colombia,Côte d'Ivoire
+Group C,19/06/2013 22:00,Natal ,Japan,Greece
+Group C,24/06/2013 20:00,Cuiaba ,Japan,Colombia
+Group C,24/06/2013 20:00,Fortaleza ,Greece,Côte d'Ivoire
+Group D,14/06/2013 19:00,Fortaleza ,Uruguay,Costa Rica
+Group D,14/06/2013 22:00,Manaus ,England,Italy
+Group D,19/06/2013 19:00,Sao Paulo ,Uruguay,England
+Group D,20/06/2013 16:00,Recife ,Italy,Costa Rica
+Group D,24/06/2013 16:00,Natal ,Italy,Uruguay
+Group D,24/06/2013 16:00,Belo Horizonte ,Costa Rica,England
+Group E,15/06/2013 16:00,Brasilia ,Switzerland,Ecuador
+Group E,15/06/2013 19:00,Porto Alegre ,France,Honduras
+Group E,20/06/2013 19:00,Salvador,Switzerland,France
+Group E,20/06/2013 22:00,Curitiba ,Honduras,Ecuador
+Group E,25/06/2013 20:00,Manaus ,Honduras,Switzerland
+Group E,25/06/2013 20:00,Rio De Janeiro ,Ecuador,France
+Group F,15/06/2013 22:00,Rio De Janeiro ,Argentina,Bosnia and Herzegovina
+Group F,16/06/2013 19:00,Curitiba ,Iran,Nigeria
+Group F,21/06/2013 16:00,Belo Horizonte ,Argentina,Iran
+Group F,21/06/2013 22:00,Cuiaba ,Nigeria,Bosnia and Herzegovina
+Group F,25/06/2013 16:00,Porto Alegre ,Nigeria,Argentina
+Group F,25/06/2013 16:00,Salvador,Bosnia and Herzegovina,Iran
+Group G,16/06/2013 16:00,Salvador,Germany,Portugal
+Group G,16/06/2013 22:00,Natal ,Ghana,USA
+Group G,21/06/2013 19:00,Fortaleza ,Germany,Ghana
+Group G,22/06/2013 22:00,Manaus ,USA,Portugal
+Group G,26/06/2013 16:00,Recife ,USA,Germany
+Group G,26/06/2013 16:00,Brasilia ,Portugal,Ghana
+Group H,17/06/2013 16:00,Belo Horizonte ,Belgium,Algeria
+Group H,17/06/2013 22:00,Cuiaba ,Russia,Korea Republic
+Group H,22/06/2013 16:00,Rio De Janeiro ,Belgium,Russia
+Group H,22/06/2013 19:00,Porto Alegre ,Korea Republic,Algeria
+Group H,26/06/2013 20:00,Sao Paulo ,Korea Republic,Belgium
+Group H,26/06/2013 20:00,Curitiba ,Algeria,Russia

@@ -7,7 +7,8 @@ namespace Gumblr.Models
 {
     public enum MatchResult
     {
-        Host = 0,
+        Unknown = -1,
+        Host,
         Draw, 
         Visitor
     }
