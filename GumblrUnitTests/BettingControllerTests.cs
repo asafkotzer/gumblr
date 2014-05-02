@@ -12,10 +12,10 @@ namespace GumblrUnitTests
     public class BettingControllerTests
     {
         [TestMethod]
-        public void PlaceBets_ReturnsModelWithOneMatch()
+        public void PlaceBets_UserPlacedNoBets_ReturnsModelWithOneMatch()
         {
-            var controller = new BettingController(new FakeMatchRepository(), new FakeMatchBetRepository());
-            var result = controller.PlaceBets() as ViewResult;
+            var controller = CreateController();
+            var result = controller.PlaceBets().Result as ViewResult;
             var model = result.Model as BettingModel;
             Assert.AreEqual(1, model.Matches.Count());
         }
@@ -23,10 +23,19 @@ namespace GumblrUnitTests
         [TestMethod]
         public void Index_RedirectedToPlaceBets()
         {
-            var controller = new BettingController(new FakeMatchRepository(), new FakeMatchBetRepository());
+            var controller = CreateController();
             var result = controller.Index();
             var actionName = (result as RedirectToRouteResult).RouteValues["action"];
             Assert.AreEqual("PlaceBets", actionName);
+        }
+
+        private BettingController CreateController()
+        {
+            return new BettingController(
+                new FakeMatchRepository(), 
+                new FakeMatchBetRepository(),
+                new FakeUserRepository(), 
+                new FakeIdentityManager());
         }
     }
 }

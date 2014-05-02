@@ -6,8 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using Gumblr.Storage;
+using Gumblr.Account;
 
 namespace Gumblr.Controllers
 {
@@ -17,12 +17,14 @@ namespace Gumblr.Controllers
         IMatchRepository mMatchRepository;
         IMatchBetRepository mMatchBetRepository;
         IUserRepository mUserRepository;
+        IIdentityManager mIdentityManager;
 
-        public BettingController(IMatchRepository aMatchRepository, IMatchBetRepository aMatchBetRepository, IUserRepository aUserRepository)
+        public BettingController(IMatchRepository aMatchRepository, IMatchBetRepository aMatchBetRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager)
         {
             mMatchRepository = aMatchRepository;
             mMatchBetRepository = aMatchBetRepository;
             mUserRepository = aUserRepository;
+            mIdentityManager = aIdentityManager;
         }
 
         public ActionResult Index()
@@ -32,7 +34,7 @@ namespace Gumblr.Controllers
 
         public async Task<ActionResult> PlaceBets()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = mIdentityManager.GetUserId(User);
 
             Dictionary<string, MatchBet> currentBetsByMatchId = await GetCurrentBets(userId);
             var matches = mMatchRepository.GetMatches().Take(4);
@@ -41,7 +43,7 @@ namespace Gumblr.Controllers
                 Matches = matches.Select(x =>
                 {
                     MatchBet bet;
-                    if (!currentBetsByMatchId.TryGetValue(x.GetMatchId(), out bet))
+                    if (!currentBetsByMatchId.TryGetValue(x.MatchId, out bet))
                     {
                         bet = new MatchBet(x);
                     }
@@ -58,7 +60,7 @@ namespace Gumblr.Controllers
             try
             {
                 var userBets = await mMatchBetRepository.GetUserBets(userId);
-                currentBetsByMatchId = (userBets).ToDictionary(x => x.GetMatchId());
+                currentBetsByMatchId = (userBets).ToDictionary(x => x.MatchId);
             }
             catch (ItemDoesNotExitException) { }
 
@@ -73,7 +75,7 @@ namespace Gumblr.Controllers
                 throw new HttpException(400, "A bet was made after the match started");
             }
 
-            var userId = User.Identity.GetUserId();
+            var userId = mIdentityManager.GetUserId(User);
             await mMatchBetRepository.SetUserBet(userId, aModel.Matches);
 
             // returning a JSON for the client side to redirect (jQuery ajax requirement)
@@ -82,7 +84,7 @@ namespace Gumblr.Controllers
 
         public async Task<ActionResult> BetSummary()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = mIdentityManager.GetUserId(User);
             var user = await mUserRepository.GetUser(userId);
             var userBets = await mMatchBetRepository.GetUserBets(userId);
             var model = new UserBetsModel { User = user, MatchBets = userBets };

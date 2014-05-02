@@ -1,0 +1,12 @@
+Open:
+* Feeding match results
+* MixPanel
+* Raygun
+
+
+Done:
+* Statistics per game (flat by GameId?)
+	- expose endpoint for naive query
+	- match template in client should be wider and include a button to expose stats
+	- client side loader
+	- client side request

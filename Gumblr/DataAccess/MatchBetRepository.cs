@@ -11,20 +11,26 @@ namespace Gumblr.DataAccess
     public class MatchBetRepository : IMatchBetRepository
     {
         IStorageProvider mStorageProvider;
+        IMatchStatisticsRepository mMatchStatisticsRepository;
 
-        public MatchBetRepository(IStorageProvider aStorageProvider)
+        public MatchBetRepository(IStorageProvider aStorageProvider, IMatchStatisticsRepository aMatchStatisticsRepository)
         {
             mStorageProvider = aStorageProvider;
+            mMatchStatisticsRepository = aMatchStatisticsRepository;
         }
 
         public async Task SetUserBet(string aUserId, IEnumerable<MatchBet> aBets)
         {
-            await mStorageProvider.CreateOrUpdate("Bets", aUserId, aBets);
+            // update user bets
+            await mStorageProvider.CreateOrUpdate("UserBets", aUserId, aBets);
+
+            // update statistics
+            await mMatchStatisticsRepository.UpdateUserBets(aUserId, aBets);
         }
 
         public async Task<IEnumerable<MatchBet>> GetUserBets(string aUserId)
         {
-            return await mStorageProvider.Read<IEnumerable<MatchBet>>("Bets", aUserId);
+            return await mStorageProvider.Read<IEnumerable<MatchBet>>("UserBets", aUserId);
         }
     }
 }

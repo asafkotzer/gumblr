@@ -1,64 +1,131 @@
+body .LoaderContainer {
+  min-height: 130px;
+}
+body .LoaderContainer .Spinner {
+  position: relative !important;
+  margin-top: 50px;
+}
 body .BetList {
   list-style: none;
 }
-body .BetList .MatchFrame {
+body .BetList .MatchContainer {
+  margin-top: 20px;
   font-family: Calibri;
+  width: 650px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
+  position: relative;
+}
+body .BetList .MatchContainer .StatisticsFrame {
+  margin-top: 0px;
+  width: 150px;
+  background-color: #dedede;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 0px;
+  display: inline-block;
+  height: 250px;
+  position: relative;
+  vertical-align: top;
+}
+body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer {
+  width: 100px;
+  margin: 0 auto;
+}
+body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer .ShowStatisticsButton {
+  -moz-box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  -webkit-box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+  background: -moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+  background: -webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+  background: -o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+  background: -ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+  background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c', GradientType=0);
+  background-color: #768d87;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #566963;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 11px 23px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #2b665e;
+}
+body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer .ShowStatisticsButton:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+  background: -moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+  background: -webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+  background: -o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+  background: -ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+  background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87', GradientType=0);
+  background-color: #6c7c7c;
+}
+body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer .ShowStatisticsButton.active {
+  position: relative;
+  top: 1px;
+}
+body .BetList .MatchContainer .MatchFrame {
   width: 450px;
   height: 250px;
   border-radius: 10px;
   background-color: #dedede;
   padding: 10px 25px;
+  display: inline-block;
   position: relative;
+  vertical-align: top;
 }
-body .BetList .MatchFrame .MatchTitle {
+body .BetList .MatchContainer .MatchFrame .MatchTitle {
   text-align: center;
   color: #3b3b3b;
 }
-body .BetList .MatchFrame .MatchTitle .TeamName {
+body .BetList .MatchContainer .MatchFrame .MatchTitle .TeamName {
   font-size: 25px;
   font-weight: bold;
 }
-body .BetList .MatchFrame .MatchSubtitle {
+body .BetList .MatchContainer .MatchFrame .MatchSubtitle {
   margin: 0px;
   padding: 0px;
   text-align: center;
   color: #3b3b3b;
 }
-body .BetList .MatchFrame .LogoContainer {
+body .BetList .MatchContainer .MatchFrame .LogoContainer {
   display: inline-block;
 }
-body .BetList .MatchFrame .LogoContainer .SelectionMarker {
+body .BetList .MatchContainer .MatchFrame .LogoContainer .SelectionMarker {
   width: 27px;
   height: 27px;
   margin: 5px 50px;
   visibility: hidden;
 }
-body .BetList .MatchFrame .LogoContainer .Visible {
+body .BetList .MatchContainer .MatchFrame .LogoContainer .Visible {
   visibility: visible;
 }
-body .BetList .MatchFrame .LogoContainer .Selected {
+body .BetList .MatchContainer .MatchFrame .LogoContainer .Selected {
   border: solid;
   border-color: red;
   border-radius: 10px;
 }
-body .BetList .MatchFrame .LogoContainer .Logo {
+body .BetList .MatchContainer .MatchFrame .LogoContainer .Logo {
   display: block;
   width: 57px;
   height: 50px;
   margin: 5px 35px;
 }
-body .BetList .MatchFrame .LogoContainer .Logo:hover {
+body .BetList .MatchContainer .MatchFrame .LogoContainer .Logo:hover {
   border-color: rgba(255, 106, 0, 0.6);
 }
-body .BetList .MatchFrame .LogoContainer .Draw {
+body .BetList .MatchContainer .MatchFrame .LogoContainer .Draw {
   border: none;
 }
-body .BetList .MatchFrame .StatusLine {
+body .BetList .MatchContainer .MatchFrame .StatusLine {
   bottom: 0;
 }
-body .BetList .MatchFrame .StatusLine .StatusText {
+body .BetList .MatchContainer .MatchFrame .StatusLine .StatusText {
   text-align: center;
 }

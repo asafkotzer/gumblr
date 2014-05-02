@@ -163,6 +163,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\IIdentityManager.cs" />
     <Compile Include="Account\LocalUserManager.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLogic\TeamLogoUrlCreator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BetStatisticsController.cs" />
     <Compile Include="Controllers\BettingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\ILoginRepository.cs" />
@@ -179,6 +181,7 @@
     <Compile Include="DataAccess\LoginRepository.cs" />
     <Compile Include="DataAccess\MatchBetRepository.cs" />
     <Compile Include="DataAccess\MatchRepository.cs" />
+    <Compile Include="DataAccess\MatchStatisticsRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,6 +193,7 @@
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\MatchBet.cs" />
     <Compile Include="Models\MatchResult.cs" />
+    <Compile Include="Models\MatchStatisticsModel.cs" />
     <Compile Include="Models\UserBetsModel.cs" />
     <Compile Include="NationalTeamLogoNames.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +209,7 @@
     <Compile Include="Storage\IStorageProvider.cs" />
     <Compile Include="Storage\JsonSerializer.cs" />
     <Compile Include="Storage\MongoDbProvider.cs" />
+    <Compile Include="Storage\StorageProviderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -334,6 +339,10 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.min.js" />
+    <Content Include="Scripts\jquery.flot.pie.js" />
+    <Content Include="Scripts\jquery.flot.pie.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -347,6 +356,9 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Shared\loader.js" />
+    <Content Include="Scripts\spin.js" />
+    <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -378,6 +390,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BetStatistics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -411,7 +424,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52345</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52345/</IISUrl>
+          <IISUrl>http://127.0.0.1:52345/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

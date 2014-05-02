@@ -5,6 +5,64 @@
     this.currentGameIndex = ko.observable(0);
     this.currentGame = ko.observable(model.Matches[0]);
 
+    var getStatistics = function (matchId, loader, target) {
+        console.log(matchId);
+        request = $.ajax({
+            url: "/BetStatistics/Match/" + matchId,
+            type: "get",
+        }).done(function (result) {
+            console.log(JSON.stringify(result));
+            loader.hide();
+
+            var data = [
+                { label: result.Match.Host, data: 0 },
+                { label: "X", data: 0 },
+                { label: result.Match.Visitor, data: 0 }];
+
+            for (var key in result.ExpectedResultByUserId) {
+                var expectedResult = result.ExpectedResultByUserId[key];
+                if (expectedResult == -1) continue;
+                data[expectedResult].data++;
+            }
+                      
+            $.plot(target, data, 
+                {
+                    series: {
+                        pie: {
+                            show: true,
+                            radius: 1,
+                            label: {
+                                show: true,
+                                formatter: function (label, series) { return label.substr(0, 3).toUpperCase(); },
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+
+                });
+
+        }).fail(function (result) {
+            console.log("Fail: " + JSON.stringify(result));
+        });
+    };
+
+    var onShowStatisticsClick = function (viewModel, event) {
+        var parent = $(event.target.parentElement.parentElement)
+        var target = parent.children(".LoaderContainer");
+
+        if (target.children(".Spinner").length > 0) {
+            return;
+        }
+
+        var statisticsLoader = new loader();
+        statisticsLoader.show(target.get(0))
+
+        // TODO: use promise here
+        getStatistics(viewModel.match.MatchId, statisticsLoader, target)
+    };
+
     var onGameBetClick = function (viewModel, event) {
         var match = viewModel.match;
         var startTime = new Date(parseInt(match.StartTime.substr(6)));
@@ -26,7 +84,7 @@
     model.Matches.forEach(function (matchItem) {
         var currentExpectedResult = matchItem.ExpectedResult;
         matchItem.ExpectedResult = ko.observable(currentExpectedResult);
-        matches.push( { match: matchItem, selected: onGameBetClick } );
+        matches.push( { match: matchItem, selected: onGameBetClick, showStatistics: onShowStatisticsClick } );
     });
     this.games = ko.observableArray(matches);
 
@@ -52,25 +110,6 @@
             console.log("failed to upload bets: " + JSON.stringify(result));
         });
     }
-
-    this.selected = function (viewModel, event) {
-        if (event.currentTarget == $(".Host")[0]) {
-            self.currentGame().ExpectedResult = 0;
-        } else if (event.currentTarget == $(".Visitor")[0]) {
-            self.currentGame().ExpectedResult = 2;
-        } else {
-            self.currentGame().ExpectedResult = 1;
-        }
-        
-        if (self.currentGameIndex() == self.model.Matches.length - 1) {
-            self.uploadBets();
-        }
-        else {
-            var newValue = self.currentGameIndex() < self.model.Matches.length ? self.currentGameIndex() + 1 : 0;
-            self.currentGameIndex(newValue);
-            self.currentGame(model.Matches[self.currentGameIndex()]);
-        }
-    };
 
     this.statusLine = ko.computed(function () {
         var betsLeft = [];

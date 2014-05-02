@@ -19,13 +19,7 @@ namespace Gumblr.DataAccess
 
         public async Task<ApplicationUser> GetUser(string aUserId)
         {
-            ApplicationUser user = null;
-            try
-            {
-                user = await mStorageProvider.Read<ApplicationUser>("Users", aUserId);
-            }
-            catch (ItemDoesNotExitException) { }
-
+            var user = await mStorageProvider.TryRead<ApplicationUser>("Users", aUserId);
             return user;
         }
 
