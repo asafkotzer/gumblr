@@ -27,6 +27,11 @@
 <ul data-bind="foreach: games" class="BetList">
     <li>
         <div class="MatchContainer">
+            <div class="ActualResultFrame">
+                <div class="SuccessIndicatorContainer">
+                    <img data-bind="attr:{src: match.SuccessIndicator()}" class="SelectionMarker" />
+                </div>
+            </div>
 
             <div class="MatchFrame">
                 <p class="MatchTitle">

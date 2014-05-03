@@ -17,10 +17,32 @@
         .MatchContainer {
             margin-top: 20px;
             font-family: Calibri;
-            width: 650px;
+            width: 800px;
             margin-right: auto;
             margin-left: auto;
             position: relative; 
+
+            .ActualResultFrame {
+                margin-top:0px;
+                width: 150px;
+                background-color: @BackgroundColor;
+                border-radius: 10px;
+                padding: 10px;
+                margin-right:0px;
+                display: inline-block;
+                height: @FrameHeight;
+                position: relative; 
+                vertical-align: top;
+
+                .SuccessIndicatorContainer {
+                    width: 48px; 
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: -24px;
+                    position: relative; 
+                    top:50%;
+                }
+            }
 
             .StatisticsFrame {
                 margin-top:0px;

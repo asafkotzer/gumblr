@@ -10,7 +10,7 @@ namespace Gumblr.Models
     {
         public Match()
         {
-
+            ActualResult = MatchResult.Unknown;
         }
 
         public Match(Match aMatch)
@@ -20,6 +20,7 @@ namespace Gumblr.Models
             this.StartTime = aMatch.StartTime;
             this.Venue = aMatch.Venue;
             this.Visitor = aMatch.Visitor;
+            this.ActualResult = aMatch.ActualResult;
         }
 
         public string Host { get; set; }
@@ -27,6 +28,7 @@ namespace Gumblr.Models
         public DateTime StartTime { get; set; }
         public string Venue { get; set; }
         public string Group { get; set; }
+        public MatchResult ActualResult { get; set; }
 
         public string HostLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Host); } }
         public string VisitorLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Visitor); } }

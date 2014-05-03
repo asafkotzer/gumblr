@@ -42,15 +42,18 @@ namespace Gumblr.Controllers
             {
                 Matches = matches.Select(x =>
                 {
-                    MatchBet bet;
-                    if (!currentBetsByMatchId.TryGetValue(x.MatchId, out bet))
+                    var bet = new MatchBet(x);
+
+                    MatchBet currentBet;
+                    if (currentBetsByMatchId.TryGetValue(x.MatchId, out currentBet))
                     {
-                        bet = new MatchBet(x);
+                        bet.ExpectedResult = currentBet.ExpectedResult;
                     }
 
                     return bet;
                 })
             };
+
             return View(model);
         }
 

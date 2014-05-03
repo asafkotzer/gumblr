@@ -1,5 +1,9 @@
 Open:
 * Feeding match results
+	- show whether the bet was correct or not
+	- admin interface
+* Ranking users
+* Betting on the winner
 * MixPanel
 * Raygun
 
