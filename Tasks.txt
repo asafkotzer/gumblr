@@ -2,7 +2,9 @@ Open:
 * Feeding match results
 	- show whether the bet was correct or not
 	- admin interface
+	- authorization (user roles)
 * Ranking users
+* action filter for errors
 * Betting on the winner
 * MixPanel
 * Raygun

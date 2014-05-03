@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "GUMBLR | Match administration";
+}
+
+@section ViewHeader {
+    @Scripts.Render("~/Scripts/MatchAdmin/EnterResultsViewModel.js")
+    @Scripts.Render("~/Scripts/MatchAdmin/EnterResults.js")
+    @Scripts.Render("~/Scripts/moment.js")
+
+
+    <script>
+        $(document).ready(function () {
+            var model = @Html.Raw(Json.Encode(Model));
+            var enterResults = new EnterResults(model);
+            enterResults.init();
+        });
+    </script>
+}
+
+<ul data-bind="foreach: matches" class="BetList">
+    <li>
+        <span class="TeamName" data-bind="text: match.Host"></span>
+        vs.
+        <span class="TeamName" data-bind="text: match.Visitor"></span>
+        <span class="MatchSubtitle">
+            <span data-bind="text: moment(match.StartTime).format('MMMM Do YYYY, h:mm:ss a')"></span>
+        </span>
+        <select>
+            <option value="unknown">Unknown</option>
+            <option value="host">Host</option>
+            <option value="draw">Draw</option>
+            <option value="visitor">Visitor</option>
+        </select>
+        <button>submit</button>
+    </li>
+</ul>
+
