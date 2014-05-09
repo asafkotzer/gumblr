@@ -49,6 +49,19 @@ namespace Gumblr.Storage
             return mSerializer.DeserializeObject<T>(bytes);
         }
 
+
+        public Task<IEnumerable<IItemDescriptor>> List(string aContainer)
+        {
+            var containerPath = Path.Combine(mBasePath, aContainer);
+            if (!Directory.Exists(containerPath))
+            {
+                Directory.CreateDirectory(containerPath);
+            }
+
+            var files = Directory.GetFiles(containerPath).Select(x => new ItemDescriptor(aContainer, x) as IItemDescriptor);
+            return Task.FromResult(files);
+        }
+
         public async Task Update(string aContainer, string aKey, object aItem)
         {
             var filePath = Path.Combine(mBasePath, aContainer, aKey);

@@ -37,7 +37,7 @@ namespace Gumblr.Controllers
             var userId = mIdentityManager.GetUserId(User);
 
             var currentBetsByMatchId = await GetCurrentBets(userId);
-            var matches = mMatchRepository.GetMatches().Take(4);
+            var matches = (await mMatchRepository.GetMatches()).Take(4);
             var model = new BettingModel
             {
                 Matches = matches.Select(x =>

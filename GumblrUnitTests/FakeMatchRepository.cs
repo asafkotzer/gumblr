@@ -10,16 +10,16 @@ namespace GumblrUnitTests
 {
     public class FakeMatchRepository : IMatchRepository
     {
-        public IEnumerable<Match> GetMatches()
+        public Task<IEnumerable<Match>> GetMatches()
         {
-            return new List<Match> { new Match 
+            return Task.FromResult<IEnumerable<Match>>(new List<Match> { new Match 
             {
                 Group = "A",
                 Host = "FakeHost",
                 StartTime = new DateTime(2013, 1, 1),
                 Venue = "FakeVenue",
                 Visitor = "FakeVisitor"
-            }};
+            }});
         }
     }
 }

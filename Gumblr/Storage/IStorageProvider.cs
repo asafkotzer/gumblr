@@ -18,5 +18,6 @@ namespace Gumblr.Storage
         Task Update(string aContainer, string aKey, object aItem);
         Task CreateOrUpdate(string aContainer, string aKey, object aItem);
         void Delete(string aContainer, string aKey);
+        Task<IEnumerable<IItemDescriptor>> List(string aContainer);
     }
 }

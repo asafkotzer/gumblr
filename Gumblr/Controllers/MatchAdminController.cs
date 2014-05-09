@@ -1,8 +1,10 @@
-﻿using Gumblr.DataAccess;
+﻿using Gumblr.Account;
+using Gumblr.DataAccess;
 using Gumblr.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,20 +13,37 @@ namespace Gumblr.Controllers
     public class MatchAdminController : Controller
     {
         IMatchRepository mMatchRepository;
+        IUserRepository mUserRepository;
+        IIdentityManager mIdentityManager;
 
-        public MatchAdminController(IMatchRepository aMatchRepository)
+        public MatchAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager)
         {
             mMatchRepository = aMatchRepository;
+            mUserRepository = aUserRepository;
+            mIdentityManager = aIdentityManager;
         }
 
         //
         // GET: /MatchAdmin/
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var matches = mMatchRepository.GetMatches().Take(4);
+            var matches = (await mMatchRepository.GetMatches()).Take(4);
 
             var model = new MatchAdminModel() { Matches = matches };
             return View("EnterResults", model);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Update(MatchAdminModel aModel)
+        {
+            var userId = mIdentityManager.GetUserId(User);
+
+            await Task.WhenAll(aModel.Matches.Select(x => mMatchRepository.Update(x)));
+
+            // returning a JSON for the client side to redirect (jQuery ajax requirement)
+            return Json(new { status = "success" });
+        }
+
+
 	}
 }

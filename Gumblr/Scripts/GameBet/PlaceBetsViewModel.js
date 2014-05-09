@@ -2,8 +2,6 @@
     var self = this;
 
     this.model = model;
-    this.currentGameIndex = ko.observable(0);
-    this.currentGame = ko.observable(model.Matches[0]);
 
     var getStatistics = function (matchId, loader, target) {
         console.log(matchId);
@@ -11,7 +9,6 @@
             url: "/BetStatistics/Match/" + matchId,
             type: "get",
         }).done(function (result) {
-            console.log(JSON.stringify(result));
             loader.hide();
 
             var data = [

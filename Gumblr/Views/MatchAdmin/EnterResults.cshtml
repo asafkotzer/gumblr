@@ -18,20 +18,15 @@
 }
 
 <ul data-bind="foreach: matches" class="BetList">
-    <li>
+    <li style="margin: 10px 0px">
         <span class="TeamName" data-bind="text: match.Host"></span>
         vs.
         <span class="TeamName" data-bind="text: match.Visitor"></span>
         <span class="MatchSubtitle">
             <span data-bind="text: moment(match.StartTime).format('MMMM Do YYYY, h:mm:ss a')"></span>
         </span>
-        <select>
-            <option value="unknown">Unknown</option>
-            <option value="host">Host</option>
-            <option value="draw">Draw</option>
-            <option value="visitor">Visitor</option>
-        </select>
-        <button>submit</button>
+        <select width="50" data-bind="options: possibleResults, value: match.selectedResult"> </select>
     </li>
 </ul>
+<button data-bind="click: submit">submit</button>
 

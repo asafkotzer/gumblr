@@ -1,21 +1,44 @@
 ﻿using Gumblr.Models;
+using Gumblr.Storage;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Gumblr.DataAccess
 {
     public class MatchRepository : IMatchRepository
     {
-        public IEnumerable<Match> GetMatches()
+        IStorageProvider mStorageProvider;
+
+        public MatchRepository(IStorageProvider aStorageProvider)
         {
-            var staticMatchListPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Configuration\MatchList.csv");
-            var matchParser = new CsvMatchParser(File.ReadAllLines(staticMatchListPath));
-            var result = matchParser.ParseMatches();
-            return result;
+            mStorageProvider = aStorageProvider;
         }
 
+        public async Task<IEnumerable<Match>> GetMatches()
+        {
+            var tasks = (await mStorageProvider.List("Matches"))
+                .Select(x => mStorageProvider.Read<Match>(x.Container, x.Key));
+
+            var matches = await Task.WhenAll(tasks);
+            return matches.OrderBy(x => x.StartTime);
+        }
+
+        //public IEnumerable<Match> GetMatches()
+        //{
+        //    var staticMatchListPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Configuration\MatchList.csv");
+        //    var matchParser = new CsvMatchParser(File.ReadAllLines(staticMatchListPath));
+        //    var result = matchParser.ParseMatches();
+
+        //    return result;
+        //}
+
+        public async Task Update(Match aMatch)
+        {
+            await mStorageProvider.Update("Matches", aMatch.MatchId, aMatch);
+        }
     }
 }

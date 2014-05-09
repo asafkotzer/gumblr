@@ -210,6 +210,7 @@
     <Compile Include="Storage\FileSystemProvider.cs" />
     <Compile Include="Storage\ISerializer.cs" />
     <Compile Include="Storage\IStorageProvider.cs" />
+    <Compile Include="Storage\ItemDescriptor.cs" />
     <Compile Include="Storage\JsonSerializer.cs" />
     <Compile Include="Storage\MongoDbProvider.cs" />
     <Compile Include="Storage\StorageProviderExtensions.cs" />
