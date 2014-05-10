@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Gumblr.Storage;
 using Gumblr.Account;
+using Gumblr.BusinessLogic;
 
 namespace Gumblr.Controllers
 {
@@ -18,13 +19,15 @@ namespace Gumblr.Controllers
         IMatchBetRepository mMatchBetRepository;
         IUserRepository mUserRepository;
         IIdentityManager mIdentityManager;
+        IBettingModelValidator mBettingModelValidator;
 
-        public BettingController(IMatchRepository aMatchRepository, IMatchBetRepository aMatchBetRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager)
+        public BettingController(IMatchRepository aMatchRepository, IMatchBetRepository aMatchBetRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, IBettingModelValidator aBettingModelValidator)
         {
             mMatchRepository = aMatchRepository;
             mMatchBetRepository = aMatchBetRepository;
             mUserRepository = aUserRepository;
             mIdentityManager = aIdentityManager;
+            mBettingModelValidator = aBettingModelValidator;
         }
 
         public ActionResult Index()
@@ -38,6 +41,12 @@ namespace Gumblr.Controllers
 
             var currentBetsByMatchId = await GetCurrentBets(userId);
             var matches = (await mMatchRepository.GetMatches()).Take(4);
+            var teams = matches
+                .Select(x => x.Host)
+                .Union(matches.Select(x => x.Visitor))
+                .Distinct()
+                .OrderBy(x => x);
+
             var model = new BettingModel
             {
                 Matches = matches.Select(x =>
@@ -49,9 +58,14 @@ namespace Gumblr.Controllers
                     {
                         bet.ExpectedResult = currentBet.ExpectedResult;
                     }
+                    else
+                    {
+                        bet.ExpectedResult = MatchResult.Unknown;
+                    }
 
                     return bet;
-                })
+                }),
+                PossibleWinners = teams,
             };
 
             return View(model);
@@ -60,12 +74,11 @@ namespace Gumblr.Controllers
         private async Task<Dictionary<string, MatchBet>> GetCurrentBets(string userId)
         {
             Dictionary<string, MatchBet> currentBetsByMatchId = new Dictionary<string, MatchBet>();
-            try
+            var userBets = await mMatchBetRepository.GetUserBets(userId);
+            if (userBets != null)
             {
-                var userBets = await mMatchBetRepository.GetUserBets(userId);
-                currentBetsByMatchId = (userBets).ToDictionary(x => x.MatchId);
+                currentBetsByMatchId = userBets.Matches.ToDictionary(x => x.MatchId);
             }
-            catch (ItemDoesNotExitException) { }
 
             return currentBetsByMatchId;
         }
@@ -73,25 +86,22 @@ namespace Gumblr.Controllers
         [HttpPost]
         public async Task<ActionResult> PlaceBets(BettingModel aModel)
         {
-            if (aModel.Matches.Any(x => x.StartTime > DateTime.UtcNow))
+            var userId = mIdentityManager.GetUserId(User);
+            var currentBets = await mMatchBetRepository.GetUserBets(userId);
+
+            try
             {
-                throw new HttpException(400, "A bet was made after the match started");
+                mBettingModelValidator.ValidateModel(aModel, currentBets);
+            }
+            catch (BettingModelValidationExcpetion ex)
+            {
+                throw new HttpException(400, ex.Message);
             }
 
-            var userId = mIdentityManager.GetUserId(User);
-            await mMatchBetRepository.SetUserBet(userId, aModel.Matches);
+            await mMatchBetRepository.SetUserBet(userId, aModel);
 
             // returning a JSON for the client side to redirect (jQuery ajax requirement)
-            return Json(new { redirectUrl = Url.Action("BetSummary") });
-        }
-
-        public async Task<ActionResult> BetSummary()
-        {
-            var userId = mIdentityManager.GetUserId(User);
-            var user = await mUserRepository.GetUser(userId);
-            var userBets = await mMatchBetRepository.GetUserBets(userId);
-            var model = new UserBetsModel { User = user, MatchBets = userBets };
-            return View(model);
+            return Json(new { status = "success" });
         }
     }
 }

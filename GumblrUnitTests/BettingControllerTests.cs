@@ -5,6 +5,7 @@ using Gumblr.Controllers;
 using System.Web.Mvc;
 using Gumblr.Models;
 using System.Linq;
+using Gumblr.BusinessLogic;
 
 namespace GumblrUnitTests
 {
@@ -35,7 +36,8 @@ namespace GumblrUnitTests
                 new FakeMatchRepository(), 
                 new FakeMatchBetRepository(),
                 new FakeUserRepository(), 
-                new FakeIdentityManager());
+                new FakeIdentityManager(),
+                new BettingModelValidator());
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Gumblr.DataAccess
 {
     public interface IMatchBetRepository
     {
-        Task SetUserBet(string aUserId, IEnumerable<MatchBet> aBets);
-        Task<IEnumerable<MatchBet>> GetUserBets(string aUserId);
+        Task SetUserBet(string aUserId, BettingModel aBet);
+        Task<BettingModel> GetUserBets(string aUserId);
     }
 }

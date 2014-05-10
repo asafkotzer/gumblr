@@ -10,14 +10,14 @@ namespace GumblrUnitTests
 {
     public class FakeMatchBetRepository : IMatchBetRepository
     {
-        public async Task SetUserBet(string aUserId, IEnumerable<Gumblr.Models.MatchBet> aBets)
+        public async Task SetUserBet(string aUserId, BettingModel aBets)
         {
             
         }
 
-        public async Task<IEnumerable<MatchBet>> GetUserBets(string aUserId)
+        public async Task<BettingModel> GetUserBets(string aUserId)
         {
-            return new List<MatchBet>();
+            return new BettingModel();
         }
     }
 }

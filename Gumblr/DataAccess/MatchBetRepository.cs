@@ -19,18 +19,25 @@ namespace Gumblr.DataAccess
             mMatchStatisticsRepository = aMatchStatisticsRepository;
         }
 
-        public async Task SetUserBet(string aUserId, IEnumerable<MatchBet> aBets)
+        public async Task SetUserBet(string aUserId, BettingModel aBet)
         {
             // update user bets
-            await mStorageProvider.CreateOrUpdate("UserBets", aUserId, aBets);
+            await mStorageProvider.CreateOrUpdate("UserBets", aUserId, aBet);
 
             // update statistics
-            await mMatchStatisticsRepository.UpdateUserBets(aUserId, aBets);
+            await mMatchStatisticsRepository.UpdateUserBets(aUserId, aBet);
         }
 
-        public async Task<IEnumerable<MatchBet>> GetUserBets(string aUserId)
+        public async Task<BettingModel> GetUserBets(string aUserId)
         {
-            return await mStorageProvider.Read<IEnumerable<MatchBet>>("UserBets", aUserId);
+            BettingModel result = null;
+            try
+            {
+                result = await mStorageProvider.Read<BettingModel>("UserBets", aUserId);
+            }
+            catch (ItemDoesNotExitException) { }
+
+            return result;
         }
     }
 }

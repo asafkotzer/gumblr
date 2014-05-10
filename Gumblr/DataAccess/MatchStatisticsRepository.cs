@@ -10,7 +10,7 @@ namespace Gumblr.DataAccess
 {
     public interface IMatchStatisticsRepository
     {
-        Task UpdateUserBets(string aUserId, IEnumerable<MatchBet> aBets);
+        Task UpdateUserBets(string aUserId, BettingModel aBet);
         Task<MatchStatisticsModel> GetMatchStatistics(string aMatchId);
     }
 
@@ -34,10 +34,10 @@ namespace Gumblr.DataAccess
             return result;
         }
 
-        public async Task UpdateUserBets(string aUserId, IEnumerable<MatchBet> aBets)
+        public async Task UpdateUserBets(string aUserId, BettingModel aBet)
         {
             // TODO: not scalable because of potential collisions
-            await Task.WhenAll(aBets.Select(x => UpdateMatchStatistics(aUserId, x)));
+            await Task.WhenAll(aBet.Matches.Select(x => UpdateMatchStatistics(aUserId, x)));
         }
 
 

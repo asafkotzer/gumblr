@@ -9,13 +9,14 @@ namespace Gumblr.BusinessLogic
 {
     public interface IUserScoreCalculator 
     {
-        UserScore CalculateScore(IEnumerable<Match> aMatches, IEnumerable<MatchBet> aMatchBets);
+        UserScore CalculateScore(IEnumerable<Match> aMatches, BettingModel aMatchBets);
     }
 
     public class UserScoreCalculator : IUserScoreCalculator
     {
-        public UserScore CalculateScore(IEnumerable<Match> aMatches, IEnumerable<MatchBet> aMatchBets)
+        public UserScore CalculateScore(IEnumerable<Match> aMatches, BettingModel aBet)
         {
+            // aBet could be null
             return new UserScore() { Score = 9 };
         }
     }

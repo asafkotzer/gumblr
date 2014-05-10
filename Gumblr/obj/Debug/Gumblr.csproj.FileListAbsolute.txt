@@ -54,7 +54,6 @@ c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.Owin.Security.Google.xml
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.Owin.Security.Twitter.xml
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.csprojResolveAssemblyReference.cache
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.dll
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.pdb
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.NationalTeamLogoNames.resources
@@ -62,3 +61,4 @@ c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumb
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.csproj.GenerateResource.Cache
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\log4net.dll
 c:\users\asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\log4net.xml
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.csprojResolveAssemblyReference.cache

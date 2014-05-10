@@ -100,8 +100,12 @@
     });
     this.games = ko.observableArray(matches);
 
+    this.winner = ko.observable(model.Winner);
+    this.possibleWinners = ko.observable(model.PossibleWinners);
+
     var prepareModelForUpload = function (model) {
         model.Matches.forEach(function (x) { x.StartTime = moment(x.StartTime).format(); });
+        model.Winner = self.winner();
         return ko.toJSON(model);
     };
 
@@ -112,11 +116,11 @@
             data: prepareModelForUpload(model),
             contentType: 'application/json',
         }).done(function (result) {
-            if (result && result.redirectUrl) {
-                window.location = result.redirectUrl;
+            if (result && result.status == "success") {
+                console.log("Upload bets succeeded");
             }
             else {
-                console.log("Upload bets redirect failed: " + JSON.stringify(result));
+                console.log("Upload bets failed: " + JSON.stringify(result));
             }
         }).fail(function (result) {
             console.log("failed to upload bets: " + JSON.stringify(result));

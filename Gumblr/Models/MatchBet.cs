@@ -22,6 +22,6 @@ namespace Gumblr.Models
     public class UserBets
     {
         public ApplicationUser User { get; set; }
-        public IEnumerable<MatchBet> Bets { get; set; }
+        public BettingModel Bets { get; set; }
     }
 }
