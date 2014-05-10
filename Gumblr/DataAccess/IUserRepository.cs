@@ -13,5 +13,6 @@ namespace Gumblr.DataAccess
         Task<ApplicationUser> GetUser(string aUserId);
         Task CreateUser(ApplicationUser userProfile);
         Task UpdateUser(ApplicationUser aUserProfile);
+        Task<IEnumerable<ApplicationUser>> GetAllUsers();
     }
 }

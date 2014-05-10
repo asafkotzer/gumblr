@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "GUMBLR | Match administration";
+    ViewBag.Title = "Match administration";
 }
 
 @section ViewHeader {
@@ -25,7 +25,7 @@
         <span class="MatchSubtitle">
             <span data-bind="text: moment(match.StartTime).format('MMMM Do YYYY, h:mm:ss a')"></span>
         </span>
-        <select width="50" data-bind="options: possibleResults, value: match.selectedResult"> </select>
+        <select data-bind="options: possibleResults, value: match.selectedResult"> </select>
     </li>
 </ul>
 <button data-bind="click: submit">submit</button>

@@ -36,9 +36,6 @@
         });
     });
 
-    window.matches = matches;
-    window.model = model;
-
     this.matches = ko.observableArray(matches);
 
     var prepareModelForUpload = function (model) {

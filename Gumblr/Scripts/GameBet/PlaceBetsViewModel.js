@@ -4,7 +4,6 @@
     this.model = model;
 
     var getStatistics = function (matchId, loader, target) {
-        console.log(matchId);
         request = $.ajax({
             url: "/BetStatistics/Match/" + matchId,
             type: "get",
@@ -41,6 +40,8 @@
                 });
 
         }).fail(function (result) {
+            loader.hide();
+
             console.log("Fail: " + JSON.stringify(result));
         });
     };

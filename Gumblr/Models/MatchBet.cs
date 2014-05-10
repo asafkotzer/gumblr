@@ -18,4 +18,10 @@ namespace Gumblr.Models
 
         public MatchResult ExpectedResult { get; set; }
     }
+
+    public class UserBets
+    {
+        public ApplicationUser User { get; set; }
+        public IEnumerable<MatchBet> Bets { get; set; }
+    }
 }

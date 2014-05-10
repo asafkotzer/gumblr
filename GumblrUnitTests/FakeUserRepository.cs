@@ -19,5 +19,16 @@ namespace GumblrUnitTests
         {
             throw new NotImplementedException();
         }
+
+
+        public Task<IEnumerable<ApplicationUser>> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUser(ApplicationUser aUserProfile)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

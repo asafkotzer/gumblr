@@ -25,7 +25,12 @@ namespace Gumblr.DataAccess
 
         public async Task<MatchStatisticsModel> GetMatchStatistics(string aMatchId)
         {
-            var result = await mStorageProvider.Read<MatchStatisticsModel>("MatchStatistics", aMatchId);
+            MatchStatisticsModel result = null;
+            try
+            {
+                result = await mStorageProvider.Read<MatchStatisticsModel>("MatchStatistics", aMatchId);
+            }
+            catch (ItemDoesNotExitException) { }
             return result;
         }
 

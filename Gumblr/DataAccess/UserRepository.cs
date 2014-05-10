@@ -32,5 +32,13 @@ namespace Gumblr.DataAccess
         {
             await mStorageProvider.Update("Users", aUserProfile.Id.ToString(), aUserProfile);
         }
+
+        public async Task<IEnumerable<ApplicationUser>> GetAllUsers()
+        {
+            var tasks = (await mStorageProvider.List("Users"))
+                .Select(x => mStorageProvider.Read<ApplicationUser>(x.Container, x.Key));
+
+            return await Task.WhenAll(tasks);
+        }
     }
 }

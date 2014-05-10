@@ -21,6 +21,7 @@ namespace Gumblr.Models
             this.Venue = aMatch.Venue;
             this.Visitor = aMatch.Visitor;
             this.ActualResult = aMatch.ActualResult;
+            this.Stage = aMatch.Stage;
         }
 
         public string Host { get; set; }
@@ -29,6 +30,7 @@ namespace Gumblr.Models
         public string Venue { get; set; }
         public string Group { get; set; }
         public MatchResult ActualResult { get; set; }
+        public MatchStage Stage { get; set; }
 
         public string HostLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Host); } }
         public string VisitorLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Visitor); } }
