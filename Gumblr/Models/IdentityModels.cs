@@ -6,13 +6,8 @@ namespace Gumblr.Models
     public class ApplicationUser : IdentityUser
     {
         public string EmailAddress { get; set; }
+        public UserRole Role { get; set; }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection")
-        {
-        }
-    }
+    public enum UserRole { User, Administrator }
 }

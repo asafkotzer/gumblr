@@ -185,6 +185,7 @@
     <Compile Include="DataAccess\MatchRepository.cs" />
     <Compile Include="DataAccess\MatchStatisticsRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
+    <Compile Include="Filters\AuthorizedAdministratorFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

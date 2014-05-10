@@ -21,5 +21,11 @@ namespace GumblrUnitTests
                 Visitor = "FakeVisitor"
             }});
         }
+
+
+        public Task Update(Match aMatch)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

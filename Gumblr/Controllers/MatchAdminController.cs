@@ -7,9 +7,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Gumblr.Filters;
 
 namespace Gumblr.Controllers
 {
+    [Authorize]
+    [AuthorizedAdministrator]
     public class MatchAdminController : Controller
     {
         IMatchRepository mMatchRepository;
@@ -40,7 +43,6 @@ namespace Gumblr.Controllers
 
             await Task.WhenAll(aModel.Matches.Select(x => mMatchRepository.Update(x)));
 
-            // returning a JSON for the client side to redirect (jQuery ajax requirement)
             return Json(new { status = "success" });
         }
 

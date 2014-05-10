@@ -57,7 +57,9 @@
             contentType: 'application/json',
         }).done(function (result) {
             if (result && result.status == "success") {
-                console.log("Upload results redirect succeeded")
+                //TODO: indicate success/failure better
+
+                alert("Upload results redirect succeeded")
             }
             else {
                 console.log("Upload results redirect failed: " + JSON.stringify(result));

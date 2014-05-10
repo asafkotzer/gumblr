@@ -27,5 +27,10 @@ namespace Gumblr.DataAccess
         {
             await mStorageProvider.Create("Users", userProfile.Id.ToString(), userProfile);
         }
+
+        public async Task UpdateUser(ApplicationUser aUserProfile)
+        {
+            await mStorageProvider.Update("Users", aUserProfile.Id.ToString(), aUserProfile);
+        }
     }
 }

@@ -20,6 +20,9 @@ namespace Gumblr.Controllers
         public AccountController(ILoginRepository aLoginRepository, IUserRepository aUserRepository)
             : this(new LocalUserManager(new UserStore<ApplicationUser>(), aLoginRepository, aUserRepository))
         {
+            // TODO: the LocalUserManager has to be injected and be a singleton.
+            // We can do it with a factory delegate
+
         }
 
         public AccountController(LocalUserManager userManager)
