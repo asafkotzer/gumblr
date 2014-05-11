@@ -16,13 +16,15 @@ namespace Gumblr.Controllers
         IMatchRepository mMatchRepository;
         IUserRepository mUserRepository;
         IUserScoreCalculator mUserScoreCalculator;
+        IFinalResultsRepository mFinalResultsRepository;
 
-        public RankingController(IMatchBetRepository aMatchBetRepository, IUserRepository aUserRepository, IMatchRepository aMatchRepository, IUserScoreCalculator aUserScoreCalculator)
+        public RankingController(IMatchBetRepository aMatchBetRepository, IUserRepository aUserRepository, IMatchRepository aMatchRepository, IUserScoreCalculator aUserScoreCalculator, IFinalResultsRepository aFinalResultsRepository)
         {
             mMatchBetRepository = aMatchBetRepository;
             mUserRepository = aUserRepository;
             mMatchRepository = aMatchRepository;
             mUserScoreCalculator = aUserScoreCalculator;
+            mFinalResultsRepository = aFinalResultsRepository;
         }
 
         public async Task<ActionResult> Index()
@@ -31,8 +33,9 @@ namespace Gumblr.Controllers
             var getBetsTasks = users.Select(u => mMatchBetRepository.GetUserBets(u.Id).ContinueWith(t => new UserBets() { User = u, Bets = t.Result}));
             var allUsersBets = await Task.WhenAll(getBetsTasks);
             var actualResults = await mMatchRepository.GetMatches();
+            var finalResults = await mFinalResultsRepository.GetFinalResults();
 
-            var scoreByUser = allUsersBets.ToDictionary(x => x.User.Id, x => mUserScoreCalculator.CalculateScore(actualResults, x.Bets));
+            var scoreByUser = allUsersBets.ToDictionary(x => x.User.Id, x => mUserScoreCalculator.CalculateScore(actualResults, finalResults, x.Bets));
             var model = new RankingOverviewModel() { ScoreByUserId = scoreByUser, Users = users };
             return View(model);
         }

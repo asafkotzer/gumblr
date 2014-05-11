@@ -180,6 +180,7 @@
     <Compile Include="Controllers\MatchAdminController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="DataAccess\CsvMatchParser.cs" />
+    <Compile Include="DataAccess\IFinalResultsRepository.cs" />
     <Compile Include="DataAccess\ILoginRepository.cs" />
     <Compile Include="DataAccess\IMatchBetRepository.cs" />
     <Compile Include="DataAccess\IMatchRepository.cs" />
@@ -195,6 +196,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BettingModel.cs" />
+    <Compile Include="Models\FinalResultsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginEntity.cs" />
     <Compile Include="Models\Match.cs" />
@@ -225,6 +227,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Themes\base\chosen.css" />
     <Content Include="Content\Themes\base\images\animated-overlay.gif" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -257,6 +260,8 @@
     <Content Include="Content\Themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\Themes\base\jquery.ui.theme.css" />
     <Content Include="Content\Themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\Themes\base\minified\chosen-sprite.png" />
+    <Content Include="Content\Themes\base\minified\chosen.min.css" />
     <Content Include="Content\Themes\base\minified\images\animated-overlay.gif" />
     <Content Include="Content\Themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\Themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -338,11 +343,16 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\QuestionMark.png" />
     <Content Include="Images\UpArrow.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Themes\default\placebets.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen.proto.js" />
+    <Content Include="Scripts\chosen.proto.min.js" />
     <Content Include="Scripts\GameBet\PlaceBets.js" />
     <Content Include="Scripts\GameBet\PlaceBetsViewModel.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

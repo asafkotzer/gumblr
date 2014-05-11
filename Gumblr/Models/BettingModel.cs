@@ -11,5 +11,6 @@ namespace Gumblr.Models
         public IEnumerable<string> PossibleWinners { get; set; }
         public DateTime WinnerBetDeadline { get { return Matches.Min(x => x.StartTime); } }
         public string Winner { get; set; }
+        public Dictionary<string, string> TeamLogoUrlByTeamName { get; set; }
     }
 }

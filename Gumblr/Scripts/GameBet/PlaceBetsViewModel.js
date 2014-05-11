@@ -99,9 +99,14 @@
         });
     });
     this.games = ko.observableArray(matches);
-
     this.winner = ko.observable(model.Winner);
     this.possibleWinners = ko.observable(model.PossibleWinners);
+    this.winnerLogo = ko.computed(function () {
+        if (self.winner() == null) {
+            return "/Images/QuestionMark.png";
+        }
+        return model.TeamLogoUrlByTeamName[self.winner()];
+    });
 
     var prepareModelForUpload = function (model) {
         model.Matches.forEach(function (x) { x.StartTime = moment(x.StartTime).format(); });

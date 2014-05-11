@@ -16,5 +16,9 @@
             function (event) {
                 $(this).siblings(".SelectionMarker").removeClass("Visible", 500, "easeOutBounce");
             });
+
+        $(".DropDown").chosen({
+            search_contains: true
+        });
     }
 };

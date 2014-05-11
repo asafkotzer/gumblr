@@ -30,13 +30,7 @@ namespace Gumblr.DataAccess
 
         public async Task<BettingModel> GetUserBets(string aUserId)
         {
-            BettingModel result = null;
-            try
-            {
-                result = await mStorageProvider.Read<BettingModel>("UserBets", aUserId);
-            }
-            catch (ItemDoesNotExitException) { }
-
+            var result = await mStorageProvider.TryRead<BettingModel>("UserBets", aUserId);
             return result;
         }
     }

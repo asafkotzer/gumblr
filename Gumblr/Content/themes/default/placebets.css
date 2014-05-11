@@ -5,13 +5,53 @@ body .LoaderContainer .Spinner {
   position: relative !important;
   margin-top: 50px;
 }
+body .Logo {
+  display: block;
+  width: 57px;
+  height: 50px;
+  margin: 5px 35px;
+}
+body .Logo:hover {
+  border-color: rgba(255, 106, 0, 0.6);
+}
+body .WinnerSelectionFrame {
+  margin-top: 20px;
+  font-family: Calibri;
+  width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #dedede;
+  border-radius: 10px;
+}
+body .WinnerSelectionFrame .WinnerSelectionFrameTitle {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+body .WinnerSelectionFrame .SelectContainer {
+  vertical-align: top;
+  display: inline-block;
+  margin: 20px 89px;
+}
+body .WinnerSelectionFrame .SelectContainer .DropDown {
+  width: 200px;
+}
+body .WinnerSelectionFrame .SelectedItemContainer {
+  vertical-align: top;
+  display: inline-block;
+  margin: 0px 125px;
+}
 body .BetList {
   list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
 body .BetList .MatchContainer {
   margin-top: 20px;
   font-family: Calibri;
-  width: 800px;
+  width: 760px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
@@ -130,15 +170,6 @@ body .BetList .MatchContainer .MatchFrame .LogoContainer .Selected {
   border: solid;
   border-color: red;
   border-radius: 10px;
-}
-body .BetList .MatchContainer .MatchFrame .LogoContainer .Logo {
-  display: block;
-  width: 57px;
-  height: 50px;
-  margin: 5px 35px;
-}
-body .BetList .MatchContainer .MatchFrame .LogoContainer .Logo:hover {
-  border-color: rgba(255, 106, 0, 0.6);
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .Draw {
   border: none;

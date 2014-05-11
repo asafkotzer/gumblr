@@ -39,7 +39,8 @@ namespace Gumblr.Controllers
         {
             var userId = mIdentityManager.GetUserId(User);
 
-            var currentBetsByMatchId = await GetCurrentBets(userId);
+            var userBets = await mMatchBetRepository.GetUserBets(userId);
+            var currentBetsByMatchId = GetCurrentBets(userBets);
             var matches = (await mMatchRepository.GetMatches()).Take(4);
             var teams = matches
                 .Select(x => x.Host)
@@ -47,37 +48,46 @@ namespace Gumblr.Controllers
                 .Distinct()
                 .OrderBy(x => x);
 
+            var temaLogoUrlByTeamName = matches
+                .Select(x => new { TeamName = x.Host, Logo = x.HostLogoUrl })
+                .Union(matches.Select(x => new { TeamName = x.Visitor, Logo = x.VisitorLogoUrl }))
+                .Distinct()
+                .ToDictionary(x => x.TeamName, x => x.Logo);
+
             var model = new BettingModel
             {
-                Matches = matches.Select(x =>
-                {
-                    var bet = new MatchBet(x);
-
-                    MatchBet currentBet;
-                    if (currentBetsByMatchId.TryGetValue(x.MatchId, out currentBet))
-                    {
-                        bet.ExpectedResult = currentBet.ExpectedResult;
-                    }
-                    else
-                    {
-                        bet.ExpectedResult = MatchResult.Unknown;
-                    }
-
-                    return bet;
-                }),
+                Matches = matches.Select(x => GetCurrentBet(currentBetsByMatchId, x)),
                 PossibleWinners = teams,
+                Winner = userBets.Winner,
+                TeamLogoUrlByTeamName = temaLogoUrlByTeamName,
             };
 
             return View(model);
         }
 
-        private async Task<Dictionary<string, MatchBet>> GetCurrentBets(string userId)
+        private MatchBet GetCurrentBet(Dictionary<string, MatchBet> currentBetsByMatchId, Match x)
+        {
+            var bet = new MatchBet(x);
+
+            MatchBet currentBet;
+            if (currentBetsByMatchId.TryGetValue(x.MatchId, out currentBet))
+            {
+                bet.ExpectedResult = currentBet.ExpectedResult;
+            }
+            else
+            {
+                bet.ExpectedResult = MatchResult.Unknown;
+            }
+
+            return bet;
+        }
+
+        private Dictionary<string, MatchBet> GetCurrentBets(BettingModel aUserBets)
         {
             Dictionary<string, MatchBet> currentBetsByMatchId = new Dictionary<string, MatchBet>();
-            var userBets = await mMatchBetRepository.GetUserBets(userId);
-            if (userBets != null)
+            if (aUserBets != null)
             {
-                currentBetsByMatchId = userBets.Matches.ToDictionary(x => x.MatchId);
+                currentBetsByMatchId = aUserBets.Matches.ToDictionary(x => x.MatchId);
             }
 
             return currentBetsByMatchId;

@@ -12,7 +12,10 @@
     @Scripts.Render("~/Scripts/Shared/loader.js")
     @Scripts.Render("~/Scripts/jquery.flot.min.js")
     @Scripts.Render("~/Scripts/jquery.flot.pie.min.js")
+    @Scripts.Render("~/Scripts/chosen.jquery.min.js")
+    @Scripts.Render("~/Scripts/chosen.proto.min.js")
     @Styles.Render("~/Content/themes/base/jquery-ui.css")
+    @Styles.Render("~/Content/themes/base/minified/chosen.min.css")
     @Styles.Render("~/Content/themes/default/placebets.css")
 
     <script>
@@ -23,7 +26,18 @@
         });
     </script>
 }
-<select data-bind="options: possibleWinners, value: winner, optionsCaption: 'your champion'"> </select>
+
+<div class="WinnerSelectionFrame">
+    <div class="WinnerSelectionFrameTitle">
+        <span>Champion</span>
+    </div>
+    <div class="SelectContainer">
+        <select class="DropDown" data-bind="options: possibleWinners, value: winner, optionsCaption: '...'"> </select>
+    </div>
+    <div class="SelectedItemContainer">
+        <img class="Logo" data-bind="attr:{src: winnerLogo}" />
+    </div>
+</div>
 
 <ul data-bind="foreach: games" class="BetList">
     <li>

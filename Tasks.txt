@@ -1,8 +1,4 @@
 Open:
-* Ranking users
-	- Add "Stage" property to allow different scoring
-	- Betting on the winner
-	- Implement ranking logic
 * Home page
 	- embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
 * Nicer UI with toasts?

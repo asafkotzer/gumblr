@@ -11,13 +11,61 @@
         }
     }
 
+    .Logo {
+        display: block;
+        width: 57px;
+        height: 50px;
+        margin: 5px 35px;
+
+        &:hover {
+            border-color: rgba(255, 106, 0, 0.60);
+        }
+    }
+
+    .WinnerSelectionFrame {
+        margin-top: 20px;
+        font-family: Calibri;
+        width: 760px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: @BackgroundColor;
+        border-radius: 10px;
+
+        .WinnerSelectionFrameTitle {
+            margin-right: auto;
+            margin-left: auto;
+            text-align:center;
+            font-size:25px;
+            font-weight:bold;
+        }
+
+        .SelectContainer {
+            vertical-align: top;
+            display: inline-block;
+            margin:20px 89px;
+
+            .DropDown {
+                width:200px;
+            }
+        }
+
+        .SelectedItemContainer {
+            vertical-align: top;
+            display: inline-block;
+            margin:0px 125px;
+        }
+
+    }
+
     .BetList {
         list-style: none;
+        margin: 0px;
+        padding: 0px;
 
         .MatchContainer {
             margin-top: 20px;
             font-family: Calibri;
-            width: 800px;
+            width: 760px;
             margin-right: auto;
             margin-left: auto;
             position: relative; 
@@ -150,17 +198,6 @@
                         border: solid;
                         border-color: red;
                         border-radius: 10px;
-                    }
-
-                    .Logo {
-                        display: block;
-                        width: 57px;
-                        height: 50px;
-                        margin: 5px 35px;
-
-                        &:hover {
-                            border-color: rgba(255, 106, 0, 0.60);
-                        }
                     }
 
                     .Draw {
