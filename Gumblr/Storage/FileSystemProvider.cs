@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Gumblr.Storage
 {
-    public class FileSystemProvider : IStorageProvider
+    public class FileSystemProvider //: IStorageProvider
     {
         ISerializer mSerializer;
         string mBasePath;

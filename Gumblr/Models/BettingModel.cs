@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Gumblr.Models
 {
-    public class BettingModel
+    public class BettingModel : TableEntity
     {
         public IEnumerable<MatchBet> Matches { get; set; }
         public IEnumerable<string> PossibleWinners { get; set; }

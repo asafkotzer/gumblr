@@ -67,7 +67,7 @@ namespace GumblrIntegrationTests
                 var provider = new FileSystemProvider(new JsonSerializer());
 
                 await provider.Create("TestContainer", key, new TestItem { TextProperty = "SomeText", NumberProperty = 1 });
-                provider.Delete("TestContainer", key);
+                //await provider.Delete("TestContainer", key);
 
                 var path = Path.Combine(@"c:\temp\gumblr\storage\TestContainer\", key);
                 Assert.IsFalse(File.Exists(path));

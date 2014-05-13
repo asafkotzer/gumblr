@@ -48,7 +48,7 @@ namespace Gumblr.Controllers
                 .Distinct()
                 .OrderBy(x => x);
 
-            var temaLogoUrlByTeamName = matches
+            var teamLogoUrlByTeamName = matches
                 .Select(x => new { TeamName = x.Host, Logo = x.HostLogoUrl })
                 .Union(matches.Select(x => new { TeamName = x.Visitor, Logo = x.VisitorLogoUrl }))
                 .Distinct()
@@ -58,8 +58,8 @@ namespace Gumblr.Controllers
             {
                 Matches = matches.Select(x => GetCurrentBet(currentBetsByMatchId, x)),
                 PossibleWinners = teams,
-                Winner = userBets.Winner,
-                TeamLogoUrlByTeamName = temaLogoUrlByTeamName,
+                Winner = userBets != null ? userBets.Winner : null,
+                TeamLogoUrlByTeamName = teamLogoUrlByTeamName,
             };
 
             return View(model);
