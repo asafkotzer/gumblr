@@ -230,6 +230,7 @@
     <Compile Include="Models\MatchStage.cs" />
     <Compile Include="Models\MatchStatisticsModel.cs" />
     <Compile Include="Models\RankingOverviewModel.cs" />
+    <Compile Include="Models\RequestInviteModel.cs" />
     <Compile Include="Models\UserBetsModel.cs" />
     <Compile Include="NationalTeamLogoNames.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,13 +318,16 @@
     <Content Include="Content\Themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\Themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\Themes\default\home.css" />
     <Content Include="Content\Themes\default\placebets.css" />
+    <Content Include="Content\Themes\default\shared.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
+    <Content Include="Images\closebutton.png" />
     <Content Include="Images\Draw.png" />
     <Content Include="Images\Flags\ALG.png" />
     <Content Include="Images\Flags\ARG.png" />
@@ -373,6 +377,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Themes\default\placebets.less" />
+    <Content Include="Content\Themes\default\home.less" />
+    <Content Include="Content\Themes\default\shared.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
@@ -380,6 +386,8 @@
     <Content Include="Scripts\chosen.proto.min.js" />
     <Content Include="Scripts\GameBet\PlaceBets.js" />
     <Content Include="Scripts\GameBet\PlaceBetsViewModel.js" />
+    <Content Include="Scripts\Home\Home.js" />
+    <Content Include="Scripts\Home\HomeViewModel.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -389,6 +397,7 @@
     <Content Include="Scripts\jquery.flot.min.js" />
     <Content Include="Scripts\jquery.flot.pie.js" />
     <Content Include="Scripts\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\jquery.tools.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
