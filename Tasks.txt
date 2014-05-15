@@ -1,10 +1,18 @@
 Open:
+* Azure integration
+	- Complete TableDataContext implementation
+	- TableEntities must be flat (no composite types)
+	- Refactor
+	- Test
 * Home page
 	- embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
+	- Request an invite
+	- Disable registration action
 * Nicer UI with toasts?
+Administration:
+	- Add matches to list
+	- Add users
 * action filter for errors
-* Azure SDK
-* Azure integration
 * MixPanel
 * Raygun
 

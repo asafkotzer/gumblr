@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Gumblr.Models
 {
-    public class LoginEntity
+    public class LoginEntity : TableEntity
     {
         public string Provider { get; set; }
         public string Identifier { get; set; }
