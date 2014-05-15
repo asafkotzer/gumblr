@@ -58,7 +58,7 @@ namespace Gumblr.Controllers
             {
                 Matches = matches.Select(x => GetCurrentBet(currentBetsByMatchId, x)),
                 PossibleWinners = teams,
-                Winner = userBets.Winner,
+                Winner = userBets == null ? null : userBets.Winner,
                 TeamLogoUrlByTeamName = temaLogoUrlByTeamName,
             };
 

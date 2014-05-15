@@ -1,14 +1,47 @@
 ﻿@{
     ViewBag.Title = "Home";
 }
+@section ViewHeader {
+@Scripts.Render("~/Scripts/Home/Home.js")
+@Scripts.Render("~/Scripts/Home/HomeViewModel.js")
+@Scripts.Render("~/Scripts/jquery.tools.min.js")
+@Styles.Render("~/Content/themes/default/home.css")
+@Styles.Render("~/Content/themes/default/shared.css")
 
-<div class="jumbotron">
-    <h1>GUMBLR</h1>
-    <p class="lead">Get informed. Place bets. Follow matches. Lose.</p>
-    <p><a href="mailto:shacharmanor@gmail.com" class="btn btn-primary btn-large">Request an invite &raquo;</a></p>
+<script>
+    $(document).ready(function () {
+        var home = new Home();
+        home.init();
+    });
+</script>
+
+}
+<div>
+    <div class="centerBox">
+        <h1>GUMBLR</h1>
+        <p class="tagLine">Place bets. Follow matches. Lose.</p>
+        <p><a href="#" class="DefaultButton" rel="#overlay1">Request an invite &raquo;</a></p>
+    </div>
 </div>
 
-<object width='300' height='198' id='flashCountDown' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'><param name='movie' value='http://www.fifa.com/flash/widgets/worldcup2014/countdown.swf?lang=en' /><param name='bgcolor' value='#ffffff' /><param name='wmode' value='transparent' /><param name='flashvars' value='lang=en'> <embed width='300' height='198' flashvars='lang=en' wmode='transparent' bgcolor='#ffffff' name='flashCountDown' id='flashCountDown' src=http://www.fifa.com/flash/widgets/worldcup2014/countdown.swf?lang =en type='application/x-shockwave-flash' /></object>
-
-<a class="twitter-timeline" href="https://twitter.com/FIFAWorldCup" data-widget-id="465123322397597698">Tweets by @@FIFAWorldCup</a>
-<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+<div class="simpleOverlay" id="overlay1">
+    <a href="#" class="cancel close"></a>
+    <div class="requestInviteContainer">
+        <div>
+            <span>Email address</span>
+        </div>
+        <div>
+            <input class="emailTextBox" type="text" data-bind="value: emailAddress" />
+        </div>
+        <div class="commentsCaptionContainer">
+            <span>Comments</span>
+        </div>
+        <div>
+            <textarea class="commentsTextBox" rows="5" data-bind="value: comments"></textarea>
+        </div>
+        <div class="submitButtonContainer">
+            <button class="DefaultButton" data-bind="click: submit">submit</button>
+            <!-- $("a[rel]").overlay().close(); -->
+        </div>
+    </div>
+</div>

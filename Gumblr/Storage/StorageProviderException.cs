@@ -5,17 +5,17 @@ using System.Web;
 
 namespace Gumblr.Storage
 {
-    public class StorageException : Exception
+    public class StorageProviderException : Exception
     {
-        public StorageException() { }
+        public StorageProviderException() { }
     }
 
-    public class ItemAlreadyExistsException : StorageException
+    public class ItemAlreadyExistsException : StorageProviderException
     {
         public ItemAlreadyExistsException() { }
     }
 
-    public class ItemDoesNotExitException : StorageException
+    public class ItemDoesNotExitException : StorageProviderException
     {
         public ItemDoesNotExitException()  { }
     }
