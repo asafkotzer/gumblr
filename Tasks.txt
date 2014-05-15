@@ -1,6 +1,7 @@
 Open:
 * Azure integration
 	- Complete TableDataContext implementation
+	- TableEntities must be flat (no composite types)
 	- Refactor
 	- Test
 * Home page

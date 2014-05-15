@@ -55,12 +55,20 @@ namespace Gumblr.Storage.Azure
 
         public async Task Update(string aContainer, string aKey, ITableEntity aItem)
         {
-            throw new NotImplementedException();
+            aItem.PartitionKey = aKey;
+            aItem.RowKey = "";
+            var table = await GetTableReference(aContainer);
+            var operation = TableOperation.Replace(aItem);
+            await table.ExecuteAsync(operation);
         }
 
         public async Task CreateOrUpdate(string aContainer, string aKey, ITableEntity aItem)
         {
-            throw new NotImplementedException();
+            aItem.PartitionKey = aKey;
+            aItem.RowKey = "";
+            var table = await GetTableReference(aContainer);
+            var operation = TableOperation.InsertOrReplace(aItem);
+            await table.ExecuteAsync(operation);
         }
 
         public async Task Delete(string aContainer, string aKey)
