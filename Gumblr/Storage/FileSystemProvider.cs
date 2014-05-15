@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Gumblr.Storage
 {
-    public class FileSystemProvider : IStorageProvider
+    public class FileSystemProvider //: IStorageProvider
     {
         ISerializer mSerializer;
         string mBasePath;
@@ -74,7 +74,7 @@ namespace Gumblr.Storage
             await WriteToFile(filePath, bytes, true);
         }
 
-        public async Task CreateOrUpdate(string aContainer, string aKey, object aItem)
+        public async Task CreateOrReplace(string aContainer, string aKey, object aItem)
         {
             var filePath = Path.Combine(mBasePath, aContainer, aKey);
             if (File.Exists(filePath))
@@ -87,7 +87,7 @@ namespace Gumblr.Storage
             }
         }
 
-        public void Delete(string aContainer, string aKey)
+        public async Task Delete(string aContainer, string aKey)
         {
             var filePath = Path.Combine(mBasePath, aContainer, aKey);
             if (!File.Exists(filePath))

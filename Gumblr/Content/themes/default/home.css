@@ -1,0 +1,33 @@
+body .centerBox {
+  background-color: #dedede;
+  font-family: Calibri;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+body .requestInviteContainer {
+  font-family: Calibri;
+  color: #fff;
+  margin: 60px;
+}
+body .requestInviteContainer .commentsCaptionContainer {
+  margin-top: 10px;
+}
+body .requestInviteContainer .commentsTextBox {
+  width: 400px;
+  max-width: 400px;
+}
+body .requestInviteContainer .emailTextBox {
+  max-width: 400px;
+  width: 400px;
+}
+body .requestInviteContainer .submitButtonContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  float: right;
+}
