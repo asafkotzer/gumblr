@@ -9,7 +9,7 @@ namespace Gumblr.BusinessLogic
 {
     public interface IUserScoreCalculator 
     {
-        UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsModel aFinalResultsModel, BettingModel aMatchBets);
+        UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsMode aFinalResultsModel, BettingModel aMatchBets);
     }
 
     public class UserScoreCalculator : IUserScoreCalculator
@@ -18,7 +18,7 @@ namespace Gumblr.BusinessLogic
         static readonly int CorrectMatchBet_GroupStage_Value = 1;
         static readonly int CorrectMatchBet_TournamentStage_Value = 2;
 
-        public UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsModel aFinalResultsModel, BettingModel aBet)
+        public UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsMode aFinalResultsModel, BettingModel aBet)
         {
             var score = new UserScore() { Score = 0 };
             

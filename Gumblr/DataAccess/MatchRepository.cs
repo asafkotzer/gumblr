@@ -20,7 +20,10 @@ namespace Gumblr.DataAccess
 
         public async Task<IEnumerable<Match>> GetMatches()
         {
-            var matches = await mStorageProvider.Read<Match>("Matches", "");
+            var tasks = (await mStorageProvider.List("Matches"))
+                .Select(x => mStorageProvider.Read<Match>(x.Container, x.Key));
+
+            var matches = await Task.WhenAll(tasks);
             return matches.OrderBy(x => x.StartTime);
         }
 

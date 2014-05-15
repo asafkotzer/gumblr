@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Gumblr.Models
 {
-    public class LoginEntity : TableEntity
+    public class LoginEntity
     {
         public string Provider { get; set; }
         public string Identifier { get; set; }

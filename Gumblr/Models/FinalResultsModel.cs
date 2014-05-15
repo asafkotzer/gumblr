@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Gumblr.Models
 {
-    public class FinalResultsModel : TableEntity
+    public class FinalResultsMode
     {
         public string Winner { get; set; }
     }

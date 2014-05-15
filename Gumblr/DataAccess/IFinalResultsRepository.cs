@@ -10,8 +10,8 @@ namespace Gumblr.DataAccess
 {
     public interface IFinalResultsRepository
     {
-        Task<FinalResultsModel> GetFinalResults();
-        Task SetFinalResults(FinalResultsModel aItem);
+        Task<FinalResultsMode> GetFinalResults();
+        Task SetFinalResults(FinalResultsMode aItem);
     }
 
     public class FinalResultsRepository : IFinalResultsRepository
@@ -23,13 +23,13 @@ namespace Gumblr.DataAccess
             mStorageProvider = aStorageProvider;
         }
 
-        public async Task<FinalResultsModel> GetFinalResults()
+        public async Task<FinalResultsMode> GetFinalResults()
         {
-            var results = await mStorageProvider.TryRead<FinalResultsModel>("FinalResults", "All");
+            var results = await mStorageProvider.TryRead<FinalResultsMode>("FinalResults", "All");
             return results;
         }
 
-        public async Task SetFinalResults(FinalResultsModel aItem)
+        public async Task SetFinalResults(FinalResultsMode aItem)
         {
             await mStorageProvider.Update("FinalResults", "All", aItem);
         }

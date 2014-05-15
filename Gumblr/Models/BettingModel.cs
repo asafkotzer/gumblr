@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Gumblr.Models
 {
-    public class BettingModel : TableEntity
+    public class BettingModel
     {
         public IEnumerable<MatchBet> Matches { get; set; }
         public IEnumerable<string> PossibleWinners { get; set; }

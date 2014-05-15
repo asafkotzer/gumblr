@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,12 +8,12 @@ namespace Gumblr.Storage
 {
     public static class StorageProviderExtensions
     {
-        public static async Task<T> TryRead<T>(this IStorageProvider aProvider, string aContainer, string aKey) where T : class, ITableEntity, new()
+        public static async Task<T> TryRead<T>(this IStorageProvider aProvider, string aContainer, string aKey) where T : class
         {
             T item = null;
             try
             {
-                item = await aProvider.ReadOne<T>(aContainer, aKey);
+                item = await aProvider.Read<T>(aContainer, aKey);
             }
             catch (ItemDoesNotExitException) { }
 

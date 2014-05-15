@@ -38,7 +38,7 @@ namespace Gumblr.Models
         public string MatchId { get { return string.Format("{0}_{1}_{2}", Host.ToLower(), Visitor.ToLower(), StartTime.Ticks); } }
     }
 
-    public class Match : TableEntity
+    public class Match
     {
         public Match()
         {

@@ -12,42 +12,4 @@ namespace Gumblr.Models
 
     public enum UserRole { User, Administrator }
 
-    public class ApplicationUserEntity : TableEntity
-    {
-        public virtual string Id { get; set; }
-        public virtual string UserName { get; set; }
-        public string EmailAddress { get; set; }
-        public UserRole Role { get; set; }
-    }
-
-    public interface IApplicationUserConverter
-    {
-        ApplicationUser Convert(ApplicationUserEntity aApplicationUserEntity);
-        ApplicationUserEntity Convert(ApplicationUser aApplicationUser);
-    }
-
-    public class ApplicationUserConverter : IApplicationUserConverter
-    {
-        public ApplicationUser Convert(ApplicationUserEntity aSource)
-        {
-            return new ApplicationUser
-            {
-                Id = aSource.Id,
-                UserName = aSource.UserName,
-                EmailAddress = aSource.EmailAddress,
-                Role = aSource.Role,
-            };
-        }
-
-        public ApplicationUserEntity Convert(ApplicationUser aSource)
-        {
-            return new ApplicationUserEntity
-            {
-                Id = aSource.Id,
-                UserName = aSource.UserName,
-                EmailAddress = aSource.EmailAddress,
-                Role = aSource.Role,
-            };
-        }
-    }
 }
