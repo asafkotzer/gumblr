@@ -9,5 +9,6 @@ namespace Gumblr.Models
     {
         public string EmailAddress { get; set; }
         public string Comments { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -109,3 +109,14 @@ C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\ru\System.
 C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.csprojResolveAssemblyReference.cache
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.Threading.Tasks.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\SendGridMail.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Smtpapi.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\System.Net.Http.Extensions.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\System.Net.Http.Primitives.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.Threading.Tasks.xml
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\System.Net.Http.Extensions.xml
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\System.Net.Http.Primitives.xml
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\obj\Debug\Gumblr.csproj.App.config

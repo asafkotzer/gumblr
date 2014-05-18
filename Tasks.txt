@@ -1,13 +1,11 @@
 Open:
-* Azure integration
-	- Complete TableDataContext implementation
-	- TableEntities must be flat (no composite types)
-	- Refactor
-	- Test
+* Is there anything that should be table-based?
 * Home page
-	- embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
-	- Request an invite
+	- complete request an invite - email
+	- close invite form when received response
 	- Disable registration action
+* Switch to tables where needed
+* Scalability
 * Nicer UI with toasts?
 Administration:
 	- Add matches to list
@@ -15,6 +13,7 @@ Administration:
 * action filter for errors
 * MixPanel
 * Raygun
+* embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
 
 
 Done:
