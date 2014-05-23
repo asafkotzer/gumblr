@@ -4,7 +4,7 @@
     this.users = ko.observableArray();
 
     this.addUser = function () {
-        self.users.push({ EmailAddress: "" });
+        self.users.push({ Name: "", EmailAddress: "", Password: "" });
     };
 
     var prepareModelForUpload = function (addedUsers) {

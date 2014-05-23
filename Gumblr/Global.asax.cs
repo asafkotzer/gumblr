@@ -10,6 +10,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Gumblr.Account;
 using Gumblr.Storage;
 using Gumblr.Storage.Azure;
 
@@ -24,6 +25,7 @@ namespace Gumblr
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces();
             builder.RegisterType<BlobStorageProvider>().As<IStorageProvider>().SingleInstance();
             builder.RegisterFilterProvider();
+            builder.RegisterType<LocalUserManager>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

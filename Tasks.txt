@@ -7,7 +7,6 @@ Open:
 * Nicer UI with toasts?
 * Administration:
 	- Add matches to list -- instead, we can create the matches based on tournament logic
-	- Add users
 * action filter for errors
 * MixPanel
 * Raygun

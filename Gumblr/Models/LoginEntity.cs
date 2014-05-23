@@ -10,7 +10,7 @@ namespace Gumblr.Models
     {
         public string Provider { get; set; }
         public string Identifier { get; set; }
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         public string PasswordHash { get; set; }
     }
 }

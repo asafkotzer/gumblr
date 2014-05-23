@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Gumblr.Filters;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Gumblr.Controllers
 {
@@ -18,12 +20,14 @@ namespace Gumblr.Controllers
 		IMatchRepository mMatchRepository;
 		IUserRepository mUserRepository;
 		IIdentityManager mIdentityManager;
+	    private LocalUserManager mLocalUserManager;
 
-		public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager)
+		public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, ILoginRepository aLoginRepository, LocalUserManager.Factory aLocalUserManagerFactory)
 		{
 			mMatchRepository = aMatchRepository;
 			mUserRepository = aUserRepository;
 			mIdentityManager = aIdentityManager;
+		    mLocalUserManager = aLocalUserManagerFactory(new UserStore<ApplicationUser>(), aLoginRepository, aUserRepository);
 		}
 
         public ActionResult Users()
@@ -52,7 +56,18 @@ namespace Gumblr.Controllers
 	    [HttpPost]
 	    public async Task<ActionResult> UpdateUsers(UsersAdminModel aModel)
 	    {
-//            var users = aModel.Users.Select(x => new )
+            try
+            {
+                foreach (var modelItem in aModel.Users)
+                {
+                    var user = new ApplicationUser() { UserName = modelItem.Name, EmailAddress = modelItem.EmailAddress, Id = Guid.NewGuid().ToString() };
+                    var result = await mLocalUserManager.CreateAsync(user, modelItem.Password);
+                }
+            }
+            catch (Exception es)
+            {
+                return Json(new { status = "fail" });
+            }
             return Json(new { status = "success" });
 	    }
 	}

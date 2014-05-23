@@ -11,13 +11,13 @@ using System.Web;
 
 namespace Gumblr.Account
 {
-    public interface ILocalUserManager { }
-
-    public class LocalUserManager : UserManager<ApplicationUser>, ILocalUserManager
+    public class LocalUserManager : UserManager<ApplicationUser>
     {
         static readonly ILog sLogger = LogManager.GetLogger(typeof(LocalUserManager));
         ILoginRepository mLoginRepository;
         IUserRepository mUserRepository;
+
+        public delegate LocalUserManager Factory(IUserStore<ApplicationUser> aUserStore, ILoginRepository aLoginRepository, IUserRepository aUserRepository);
 
         public LocalUserManager(IUserStore<ApplicationUser> aUserStore, ILoginRepository aLoginRepository, IUserRepository aUserRepository)
             : base(aUserStore)
@@ -49,6 +49,21 @@ namespace Gumblr.Account
         {
             var user = await mUserRepository.GetUser(userId);
             return user;
+        }
+
+        public override async Task<IdentityResult> CreateAsync(ApplicationUser user, string password)
+        {
+            await mLoginRepository.CreateLogin(new LoginEntity
+            {
+                Identifier = user.EmailAddress,
+                PasswordHash = PasswordHasher.HashPassword(password),
+                Provider = "local",
+                UserId = user.Id
+            });
+
+            await mUserRepository.CreateUser(user);
+
+            return new IdentityResult();
         }
 
         public override async Task<ClaimsIdentity> CreateIdentityAsync(ApplicationUser user, string authenticationType)
