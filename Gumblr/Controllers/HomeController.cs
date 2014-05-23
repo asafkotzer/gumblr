@@ -30,15 +30,7 @@ namespace Gumblr.Controllers
         public async Task<ActionResult> RequestInvite(RequestInviteModel aRequestInviteModel)
         {
             var generator = new InviteRequestEmailGenerator(aRequestInviteModel);
-            var message = new EmailMessage
-            {
-                ToAddress = "asafkoter@gmail.com",
-                ToName = "Shachar",
-                Content = generator,
-                Subject = generator, 
-            };
-
-            await mEmailProvider.Send(message);
+            await mEmailProvider.Send(generator.GetMessage());
             return Json(new { result = "success" });
         }
 

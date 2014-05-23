@@ -31,7 +31,8 @@ namespace Gumblr.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email address")]
         public string UserName { get; set; }
 
         [Required]
