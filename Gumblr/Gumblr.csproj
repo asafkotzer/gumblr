@@ -402,7 +402,6 @@
     <Content Include="Content\Themes\default\placebets.less" />
     <Content Include="Content\Themes\default\home.less" />
     <Content Include="Content\Themes\default\shared.less" />
-    <Content Include="BusinessLogic\Email\InviteRequest.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
