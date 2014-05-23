@@ -17,6 +17,7 @@ var HomeViewModel = function () {
             contentType: 'application/json',
         }).done(function (result) {
             if (result && result.status == "success") {
+                //TODO: call remove overlay here
                 console.log("submit succeeded");
             }
             else {

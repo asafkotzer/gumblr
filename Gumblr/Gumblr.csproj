@@ -214,13 +214,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLogic\BettingModelValidationExcpetion.cs" />
     <Compile Include="BusinessLogic\BettingModelValidator.cs" />
+    <Compile Include="BusinessLogic\IStandingsCalculator.cs" />
     <Compile Include="BusinessLogic\TeamLogoUrlCreator.cs" />
     <Compile Include="BusinessLogic\UserScoreCalculator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BetStatisticsController.cs" />
     <Compile Include="Controllers\BettingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MatchAdminController.cs" />
+    <Compile Include="Controllers\GroupAdminController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="DataAccess\CsvMatchParser.cs" />
     <Compile Include="DataAccess\IFinalResultsRepository.cs" />
@@ -246,7 +247,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginEntity.cs" />
     <Compile Include="Models\Match.cs" />
-    <Compile Include="Models\MatchAdminModel.cs" />
+    <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\MatchBet.cs" />
     <Compile Include="Models\MatchResult.cs" />
     <Compile Include="Models\MatchStage.cs" />
@@ -408,6 +409,8 @@
     <Content Include="Scripts\chosen.proto.min.js" />
     <Content Include="Scripts\GameBet\PlaceBets.js" />
     <Content Include="Scripts\GameBet\PlaceBetsViewModel.js" />
+    <Content Include="Scripts\GroupAdmin\Users.js" />
+    <Content Include="Scripts\GroupAdmin\UsersViewModel.js" />
     <Content Include="Scripts\Home\Home.js" />
     <Content Include="Scripts\Home\HomeViewModel.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -426,8 +429,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.1.0.debug.js" />
     <Content Include="Scripts\knockout-3.1.0.js" />
-    <Content Include="Scripts\MatchAdmin\EnterResults.js" />
-    <Content Include="Scripts\MatchAdmin\EnterResultsViewModel.js" />
+    <Content Include="Scripts\GroupAdmin\Matches.js" />
+    <Content Include="Scripts\GroupAdmin\MatchesViewModel.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-langs.js" />
     <Content Include="Scripts\moment-with-langs.min.js" />
@@ -470,8 +473,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Betting\PlaceBets.cshtml" />
     <Content Include="Views\Betting\BetSummary.cshtml" />
-    <Content Include="Views\MatchAdmin\EnterResults.cshtml" />
+    <Content Include="Views\GroupAdmin\Matches.cshtml" />
     <Content Include="Views\Ranking\Index.cshtml" />
+    <Content Include="Views\GroupAdmin\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

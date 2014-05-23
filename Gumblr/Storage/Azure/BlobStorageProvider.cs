@@ -130,14 +130,37 @@ namespace Gumblr.Storage.Azure
         {
             return HttpUtility.UrlDecode(aUri.Segments.Last());
         }
+        
+        private object syncRoot = new object();
+        private Dictionary<string, CloudBlobContainer> mCachedContainers;
+        public Dictionary<string, CloudBlobContainer> CachedContainers 
+        {
+            get
+            {
+                if (mCachedContainers == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (mCachedContainers == null)
+                        {
+                            mCachedContainers = new Dictionary<string, CloudBlobContainer>();
+                        }
+                    }
+                }
+
+                return mCachedContainers;
+            }
+        }
 
         private async Task<CloudBlobContainer> GetContainer(string aContainer)
         {
-            //TODO: add in-memory caching, so we dont try to create containers we created
+            CloudBlobContainer container;
+            if (!CachedContainers.TryGetValue(aContainer, out container))
+            {
+                container = mBlobClient.GetContainerReference(aContainer.ToLower());
+                await container.CreateIfNotExistsAsync();                
+            }
             
-            CloudBlobContainer container = mBlobClient.GetContainerReference(aContainer.ToLower());
-            await container.CreateIfNotExistsAsync();
-
             return container;
         }
     }

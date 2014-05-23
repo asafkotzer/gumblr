@@ -1,4 +1,5 @@
-﻿using Gumblr.Account;
+﻿using System.Threading.Tasks;
+using Gumblr.Account;
 using Gumblr.DataAccess;
 using Gumblr.Models;
 using System;
@@ -15,11 +16,11 @@ namespace Gumblr.Filters
         public IIdentityManager IdentityManager { get; set; }
         public IUserRepository UserRepository { get; set; }
 
-        public override async void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
             var userId = IdentityManager.GetUserId(filterContext.HttpContext.User);
-            var user = await UserRepository.GetUser(userId);
+            var user = Task.Run(() => UserRepository.GetUser(userId)).Result;
             if (user.Role != UserRole.Administrator)
             {
                 throw new HttpException(401, "Only match administrators can access this page");

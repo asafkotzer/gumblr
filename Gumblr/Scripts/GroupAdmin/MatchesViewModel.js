@@ -1,4 +1,4 @@
-﻿var EnterResultsViewModel = function (model) {
+﻿var MatchesViewModel = function (model) {
     var self = this;
     this.model = model;
 
@@ -46,9 +46,31 @@
         return ko.toJSON(model);
     };
 
+//    var getPossibleTeams = function () {
+//        var possibleTeamsUnique = {};
+//        model.Matches.forEach(function (x) {
+//            possibleTeamsUnique[x.Host] = true;
+//            possibleTeamsUnique[x.Visitor] = true;
+//        });
+//
+//        var possibleTeams = [];
+//        for (var key in possibleTeamsUnique) {
+//            possibleTeams.push(key);
+//        }
+//
+//        return possibleTeams;
+//    };
+//
+//    this.possibleTeams = getPossibleTeams();
+//
+//    this.addMatch = function () {
+//        var matchItem = { ActualResult: -1, Group: "A", Host: "NewHost", Stage: 0, StartTime: "/Date(1356991200000)/", Venue: "NewVenue", Visitor: "NewVisitor" };
+//        self.matches.push({ match: matchItem, possibleResults: ["Unknown"] });
+//    };
+
     this.submit = function () {
         request = $.ajax({
-            url: "/MatchAdmin/Update",
+            url: "/GroupAdmin/UpdateMatches",
             type: "post",
             data: prepareModelForUpload(model),
             contentType: 'application/json',
@@ -56,7 +78,7 @@
             if (result && result.status == "success") {
                 //TODO: indicate success/failure better
 
-                alert("Upload results redirect succeeded")
+                alert("Upload results redirect succeeded");
             }
             else {
                 console.log("Upload results redirect failed: " + JSON.stringify(result));

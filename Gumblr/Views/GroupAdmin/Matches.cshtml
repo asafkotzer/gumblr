@@ -3,16 +3,16 @@
 }
 
 @section ViewHeader {
-    @Scripts.Render("~/Scripts/MatchAdmin/EnterResultsViewModel.js")
-    @Scripts.Render("~/Scripts/MatchAdmin/EnterResults.js")
+    @Scripts.Render("~/Scripts/GroupAdmin/MatchesViewModel.js")
+    @Scripts.Render("~/Scripts/GroupAdmin/Matches.js")
     @Scripts.Render("~/Scripts/moment.js")
 
 
     <script>
         $(document).ready(function () {
             var model = @Html.Raw(Json.Encode(Model));
-            var enterResults = new EnterResults(model);
-            enterResults.init();
+            var matches = new Matches(model);
+            matches.init();
         });
     </script>
 }
@@ -28,5 +28,6 @@
         <select data-bind="options: possibleResults, value: match.selectedResult"> </select>
     </li>
 </ul>
+
 <button data-bind="click: submit">submit</button>
 

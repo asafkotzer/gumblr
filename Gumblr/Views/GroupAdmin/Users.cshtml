@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "User administration";
+}
+
+@section ViewHeader {
+    @Scripts.Render("~/Scripts/GroupAdmin/UsersViewModel.js")
+    @Scripts.Render("~/Scripts/GroupAdmin/Users.js")
+
+
+    <script>
+        $(document).ready(function () {
+            var users = new Users();
+            users.init();
+        });
+    </script>
+}
+
+
+<ul data-bind="foreach: users" >
+    <li style="margin: 10px 0px">
+        <span>Email address: </span>
+        <input data-bind="value: EmailAddress" />
+    </li>
+</ul>
+
+<button data-bind="click: addUser">add user</button>
+<button data-bind="click: submit">submit</button>
+

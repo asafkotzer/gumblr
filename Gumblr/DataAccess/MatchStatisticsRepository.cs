@@ -32,6 +32,9 @@ namespace Gumblr.DataAccess
         public async Task UpdateUserBets(string aUserId, BettingModel aBet)
         {
             // TODO: not scalable because of potential collisions
+            // What we can do here use a table with PK=MatchId, RK=UserId
+            // this means the commit will not fail when results are updated, but select will take more time
+            // (whole partition). We can start with it for now
             await Task.WhenAll(aBet.Matches.Select(x => UpdateMatchStatistics(aUserId, x)));
         }
 

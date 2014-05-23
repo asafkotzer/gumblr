@@ -3,22 +3,31 @@ Open:
 * Home page
 	- complete request an invite - email
 	- close invite form when received response
-	- Disable registration action
-* Switch to tables where needed
-* Scalability
+* Switch to tables where needed - there's a TODO on this
 * Nicer UI with toasts?
-Administration:
-	- Add matches to list
+* Administration:
+	- Add matches to list -- instead, we can create the matches based on tournament logic
 	- Add users
 * action filter for errors
 * MixPanel
 * Raygun
+* Scalability review
 * embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
 
-
-Done:
-* Statistics per game (flat by GameId?)
-	- expose endpoint for naive query
-	- match template in client should be wider and include a button to expose stats
-	- client side loader
-	- client side request
+Possible match times:
+SATURDAY, JUNE 28, 2014, 12:00	Second Round	Estadio Mineirão
+SATURDAY, JUNE 28, 2014, 4:00	Second Round	Estadio do Maracanã
+SUNDAY, JUNE 29, 2014, 12:00	Second Round	Estadio Castelão
+SUNDAY, JUNE 29, 2014, 4:00	Second Round	Arena Pernambuco
+MONDAY, JUNE 30, 201412:00	Second Round	Nacional
+MONDAY, JUNE 30, 2014, 4:00	Second Round	Estadio Beira-Rio
+TUESDAY, JULY 1, 2014, 12:00	Second Round	Arena Corinthians
+TUESDAY, JULY 1, 2014, 4:00	Second Round	Arena Fonte Nova
+FRIDAY, JULY 4, 2014, 12:00	Quarterfinals	Estadio do Maracanã
+FRIDAY, JULY 4, 2014, 4:00	Quarterfinals	Estadio Castelão
+SATURDAY, JULY 5, 2014, 12:00	Quarterfinals	Nacional
+SATURDAY, JULY 5, 2014, 4:00	Quarterfinals	Arena Fonte Nova
+TUESDAY, JULY 8, 2014, 4:00	Semifinals	Estadio Mineirão
+WEDNESDAY, JULY 9, 2014, 4:00	Semifinals	Arena Corinthians
+SATURDAY, JULY 12, 2014, 4:00	Third Place	Nacional
+SUNDAY, JULY 13, 2014, 3:00	Final	Estadio do Maracanã

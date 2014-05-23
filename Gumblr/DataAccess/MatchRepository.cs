@@ -20,21 +20,23 @@ namespace Gumblr.DataAccess
 
         public async Task<IEnumerable<Match>> GetMatches()
         {
-            var tasks = (await mStorageProvider.List("Matches"))
-                .Select(x => mStorageProvider.Read<Match>(x.Container, x.Key));
+            // get all predefined matches
+            var matches = await GetMatches("Matches");
 
-            var matches = await Task.WhenAll(tasks);
+            // TODO: if we want to use the IStandingsCalculator, we have to get all stub matches
+            // var stubMatches = await GetMatches("StubMatches");
+
             return matches.OrderBy(x => x.StartTime);
         }
 
-        //public IEnumerable<Match> GetMatches()
-        //{
-        //    var staticMatchListPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Configuration\MatchList.csv");
-        //    var matchParser = new CsvMatchParser(File.ReadAllLines(staticMatchListPath));
-        //    var result = matchParser.ParseMatches();
+        private async Task<IEnumerable<Match>> GetMatches(string aContainerName)
+        {
+            var tasks = (await mStorageProvider.List(aContainerName))
+                .Select(x => mStorageProvider.Read<Match>(x.Container, x.Key));
 
-        //    return result;
-        //}
+            var matches = await Task.WhenAll(tasks);
+            return matches;
+        }
 
         public async Task Update(Match aMatch)
         {

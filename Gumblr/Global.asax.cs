@@ -10,6 +10,8 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Gumblr.Storage;
+using Gumblr.Storage.Azure;
 
 namespace Gumblr
 {
@@ -20,6 +22,7 @@ namespace Gumblr
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces();
+            builder.RegisterType<BlobStorageProvider>().As<IStorageProvider>().SingleInstance();
             builder.RegisterFilterProvider();
 
             var container = builder.Build();

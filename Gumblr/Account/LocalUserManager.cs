@@ -11,7 +11,9 @@ using System.Web;
 
 namespace Gumblr.Account
 {
-    public class LocalUserManager : UserManager<ApplicationUser>
+    public interface ILocalUserManager { }
+
+    public class LocalUserManager : UserManager<ApplicationUser>, ILocalUserManager
     {
         static readonly ILog sLogger = LogManager.GetLogger(typeof(LocalUserManager));
         ILoginRepository mLoginRepository;
@@ -26,7 +28,6 @@ namespace Gumblr.Account
 
         public override async Task<ApplicationUser> FindAsync(string userName, string password)
         {
-            // TODO: query Logins and validate the password
             var login = await mLoginRepository.GetLogin("local", userName);
             if (login == null)
             {
