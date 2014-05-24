@@ -4,6 +4,10 @@
     this.model = model;
 
     var getStatistics = function (matchId, loader, target) {
+        mixpanel.track('statistics request', {
+            'matchId': matchId,
+        });
+
         request = $.ajax({
             url: "/BetStatistics/Match/" + matchId,
             type: "get",
@@ -65,6 +69,9 @@
         var match = viewModel.match;
         var startTime = new Date(parseInt(match.StartTime.substr(6)));
         if (startTime.getTime() > new Date().getTime()) {
+            mixpanel.track('late bet change', {
+                'matchId': viewModel.match.MatchId,
+            });
             alert("Too late");
         }
 
@@ -76,6 +83,12 @@
         } else {
             match.ExpectedResult(1);
         }
+
+        mixpanel.track('bet change', {
+            'matchId': viewModel.match.MatchId,
+            'expectedResult': match.ExpectedResult()
+        });
+
     };
 
     var matches = [];
@@ -115,6 +128,8 @@
     };
 
     this.uploadBets = function () {
+        mixpanel.track('upload bets');
+
         request = $.ajax({
             url: "/Betting/PlaceBets",
             type: "post",

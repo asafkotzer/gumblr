@@ -21,7 +21,6 @@ body .WinnerSelectionFrame {
   margin-right: auto;
   margin-left: auto;
   background-color: #dedede;
-  border-radius: 10px;
 }
 body .WinnerSelectionFrame .WinnerSelectionFrameTitle {
   margin-right: auto;
@@ -60,7 +59,6 @@ body .BetList .MatchContainer .ActualResultFrame {
   margin-top: 0px;
   width: 150px;
   background-color: #dedede;
-  border-radius: 10px;
   padding: 10px;
   margin-right: 0px;
   display: inline-block;
@@ -80,7 +78,6 @@ body .BetList .MatchContainer .StatisticsFrame {
   margin-top: 0px;
   width: 150px;
   background-color: #dedede;
-  border-radius: 10px;
   padding: 10px;
   margin-right: 0px;
   display: inline-block;
@@ -95,7 +92,6 @@ body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer {
 body .BetList .MatchContainer .MatchFrame {
   width: 450px;
   height: 250px;
-  border-radius: 10px;
   background-color: #dedede;
   padding: 10px 25px;
   display: inline-block;
@@ -131,7 +127,6 @@ body .BetList .MatchContainer .MatchFrame .LogoContainer .Visible {
 body .BetList .MatchContainer .MatchFrame .LogoContainer .Selected {
   border: solid;
   border-color: red;
-  border-radius: 10px;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .Draw {
   border: none;
