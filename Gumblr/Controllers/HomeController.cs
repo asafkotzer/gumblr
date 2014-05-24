@@ -21,7 +21,12 @@ namespace Gumblr.Controllers
             mConfigurationRetriever = aConfigurationRetriever;
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult RequestAnInvite()
         {
             return View();
         }
@@ -31,7 +36,7 @@ namespace Gumblr.Controllers
         {
             var generator = new InviteRequestEmailGenerator(aRequestInviteModel);
             await mEmailProvider.Send(generator.GetMessage());
-            return Json(new { result = "success" });
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

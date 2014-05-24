@@ -39,6 +39,6 @@ namespace Gumblr.Models
 
         public string HostLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Host); } }
         public string VisitorLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Visitor); } }
-        public string MatchId { get { return string.Format("{0}_{1}_{2}", Host.ToLower(), Visitor.ToLower(), StartTime.Ticks); } }
+        public string MatchId { get { return string.Format("{0}_{1}_{2}", Host.ToLower(), Visitor.ToLower(), StartTime.ToUniversalTime().Ticks); } }
     }
 }

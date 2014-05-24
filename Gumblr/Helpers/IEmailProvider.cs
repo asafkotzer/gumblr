@@ -63,7 +63,7 @@ namespace Gumblr.Helpers
 
     public class InviteRequestEmailGenerator : IEmailContentGenerator, IEmailSubjectGenerator
     {
-        static readonly string ToAddress = "asafkotzer@gmail.com";
+        static readonly string ToAddress = "shacharmanor@gmail.com";
         static readonly string ToName = "Asaf";
         RequestInviteModel mModel;
 
@@ -80,7 +80,7 @@ namespace Gumblr.Helpers
 
         public string GenerateSubject()
         {
-            return string.Format("{0} requested an invite to Gumblr", mModel.Name ?? "A new user");
+            return string.Format("{0} requested an invite to Gumblr", string.IsNullOrWhiteSpace(mModel.Name) ? "A new user" : mModel.Name);
         }
 
         public EmailMessage GetMessage()

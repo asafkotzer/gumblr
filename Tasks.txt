@@ -1,6 +1,7 @@
 Open:
+* Bugs:
+	- success and fail.png were not found on server
 * Home page
-	- complete request an invite - email
 	- close invite form when received response
 * Switch to tables where needed - there's a TODO on this
 * Nicer UI with toasts?

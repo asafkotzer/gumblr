@@ -55,10 +55,10 @@
         }
 
         var statisticsLoader = new loader();
-        statisticsLoader.show(target.get(0))
+        statisticsLoader.show(target.get(0));
 
         // TODO: use promise here
-        getStatistics(viewModel.match.MatchId, statisticsLoader, target)
+        getStatistics(viewModel.match.MatchId, statisticsLoader, target);
     };
 
     var onGameBetClick = function (viewModel, event) {

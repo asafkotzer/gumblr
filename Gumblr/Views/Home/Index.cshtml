@@ -2,46 +2,14 @@
     ViewBag.Title = "Home";
 }
 @section ViewHeader {
-@Scripts.Render("~/Scripts/Home/Home.js")
-@Scripts.Render("~/Scripts/Home/HomeViewModel.js")
-@Scripts.Render("~/Scripts/jquery.tools.min.js")
 @Styles.Render("~/Content/themes/default/home.css")
 @Styles.Render("~/Content/themes/default/shared.css")
-
-    <script>
-        $(document).ready(function () {
-            var home = new Home();
-            home.init();
-        });
-    </script>
 
 }
 <div>
     <div class="centerBox">
         <h1>GUMBLR</h1>
         <p class="tagLine">Place bets. Follow matches. Lose.</p>
-        <p><a href="#" class="DefaultButton" rel="#overlay1">Request an invite &raquo;</a></p>
-    </div>
-</div>
-
-<div class="simpleOverlay" id="overlay1">
-    <a href="#" class="cancel close"></a>
-    <div class="requestInviteContainer">
-        <div>
-            <span>Email address</span>
-        </div>
-        <div>
-            <input class="emailTextBox" type="text" data-bind="value: emailAddress" />
-        </div>
-        <div class="commentsCaptionContainer">
-            <span>Comments</span>
-        </div>
-        <div>
-            <textarea class="commentsTextBox" rows="5" data-bind="value: comments"></textarea>
-        </div>
-        <div class="submitButtonContainer">
-            <button class="DefaultButton" data-bind="click: submit">submit</button>
-            <!-- $("a[rel]").overlay().close(); -->
-        </div>
+        <p><a href="/Home/RequestAnInvite" class="DefaultButton">Request an invite &raquo;</a></p>
     </div>
 </div>

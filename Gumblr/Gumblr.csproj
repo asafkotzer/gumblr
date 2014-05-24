@@ -411,8 +411,6 @@
     <Content Include="Scripts\GameBet\PlaceBetsViewModel.js" />
     <Content Include="Scripts\GroupAdmin\Users.js" />
     <Content Include="Scripts\GroupAdmin\UsersViewModel.js" />
-    <Content Include="Scripts\Home\Home.js" />
-    <Content Include="Scripts\Home\HomeViewModel.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -476,6 +474,7 @@
     <Content Include="Views\GroupAdmin\Matches.cshtml" />
     <Content Include="Views\Ranking\Index.cshtml" />
     <Content Include="Views\GroupAdmin\Users.cshtml" />
+    <Content Include="Views\Home\RequestAnInvite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
