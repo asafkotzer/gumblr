@@ -137,13 +137,13 @@
             contentType: 'application/json',
         }).done(function (result) {
             if (result && result.status == "success") {
-                console.log("Upload bets succeeded");
+                toastr.success("Your bets were submitted", "Got it");
             }
             else {
-                console.log("Upload bets failed: " + JSON.stringify(result));
+                toastr.fail("Please try again later", "We can't update your bets right now");
             }
         }).fail(function (result) {
-            console.log("failed to upload bets: " + JSON.stringify(result));
+            toastr.fail("Please try again later", "We can't update your bets right now");
         });
     }
 

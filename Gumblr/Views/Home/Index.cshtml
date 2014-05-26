@@ -2,8 +2,19 @@
     ViewBag.Title = "Home";
 }
 @section ViewHeader {
+@Scripts.Render("~/Scripts/toastr.min.js")
+@Scripts.Render("~/Scripts/Home/Home.js")
 @Styles.Render("~/Content/themes/default/home.css")
 @Styles.Render("~/Content/themes/default/shared.css")
+@Styles.Render("~/Content/toastr.css")
+
+
+<script>
+    $(document).ready(function () {
+        var home = new Home();
+        home.init();
+    });
+</script>
 
 }
 <div>

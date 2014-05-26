@@ -343,7 +343,10 @@
     <Content Include="Content\Themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Content\Themes\default\home.css" />
     <Content Include="Content\Themes\default\placebets.css" />
+    <Content Include="Content\Themes\default\ranking.css" />
     <Content Include="Content\Themes\default\shared.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -402,6 +405,9 @@
     <Content Include="Content\Themes\default\placebets.less" />
     <Content Include="Content\Themes\default\home.less" />
     <Content Include="Content\Themes\default\shared.less" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Content\Themes\default\ranking.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
@@ -411,6 +417,7 @@
     <Content Include="Scripts\GameBet\PlaceBetsViewModel.js" />
     <Content Include="Scripts\GroupAdmin\Users.js" />
     <Content Include="Scripts\GroupAdmin\UsersViewModel.js" />
+    <Content Include="Scripts\Home\Home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -441,6 +448,8 @@
     <Content Include="Scripts\Shared\loader.js" />
     <Content Include="Scripts\spin.js" />
     <Content Include="Scripts\spin.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -475,6 +484,7 @@
     <Content Include="Views\Ranking\Index.cshtml" />
     <Content Include="Views\GroupAdmin\Users.cshtml" />
     <Content Include="Views\Home\RequestAnInvite.cshtml" />
+    <Content Include="Scripts\toastr.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

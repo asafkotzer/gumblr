@@ -1,17 +1,15 @@
 Open:
 * Bugs:
 	- success and fail.png were not found on server
-* Home page
-	- close invite form when received response
-* Switch to tables where needed - there's a TODO on this
-* Nicer UI with toasts?
 * Administration:
 	- Add matches to list -- instead, we can create the matches based on tournament logic
+* Switch to tables where needed - there's a TODO on this
 * action filter for errors
 * MixPanel
 	- events
 * Raygun
 * Scalability review
+* Improve Ranking UI
 * embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
 
 Possible match times:

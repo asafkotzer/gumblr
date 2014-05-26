@@ -36,7 +36,15 @@ namespace Gumblr.Controllers
             var finalResults = await mFinalResultsRepository.GetFinalResults();
 
             var scoreByUser = allUsersBets.ToDictionary(x => x.User.Id, x => mUserScoreCalculator.CalculateScore(actualResults, finalResults, x.Bets));
-            var model = new RankingOverviewModel() { ScoreByUserId = scoreByUser, Users = users };
+            int maxScore = scoreByUser.Max(x => x.Value.Score);
+            int minScore = scoreByUser.Min(x => x.Value.Score);
+            var model = new RankingOverviewModel()
+            {
+                ScoreByUserId = scoreByUser,
+                Users = users,
+                MaxScore = maxScore,
+                MinScore = minScore
+            };
             return View(model);
         }
     }

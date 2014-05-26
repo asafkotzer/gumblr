@@ -5,6 +5,9 @@
 @section ViewHeader {
     @Scripts.Render("~/Scripts/Ranking/RankingOverviewViewModel.js")
     @Scripts.Render("~/Scripts/Ranking/RankingOverview.js")
+    @Styles.Render("~/Content/themes/default/ranking.css")
+    @Styles.Render("~/Content/themes/default/shared.css")
+
 
     <script>
         $(document).ready(function () {
@@ -15,19 +18,17 @@
     </script>
 }
 
-<ul data-bind="foreach: users">
-    <li style="margin: 10px 0px">
-        <span data-bind="text: user.UserName"></span>
-        <span data-bind="text: userScore.Score"></span>
-    </li>
-</ul>
-
-@*<object width='300' height='400' id='flashWorldCup' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'>
-        <param name='movie' value='http://www.fifa.com/flash/widgets/fwcqualifiers/main.swf?team=usa&lang=e' />
-        <param name='bgcolor' value='#ffffff' />
-        <param name='quality' value='high' />
-        <param name='wmode' value='transparent' />
-        <param name='flashvars' value='lang=e&team=usa'>
-        <embed width='300' height='400' flashvars='lang=e&amp;team=usa' wmode='transparent' quality='high' bgcolor='#ffffff' name='flashWorldCup' id='flashWorldCup' src=http://www.fifa.com/flash/widgets/fwcqualifiers/main.swf?team =usa&lang =e type='application/x-shockwave-flash' />
-    </object>*@
-
+<div class="table-container">
+    <ul data-bind="foreach: users" class="ranking-list">
+        <li class="table-item-container" data-bind="css:{ winner: isWinner, loser: isLoser}">
+            <div class="table-item-main">
+                <div class="table-item-container name-container">
+                    <span data-bind="text: user.UserName"></span>
+                </div>
+                <div class="table-item-container score-container">
+                    <span data-bind="text: userScore.Score"></span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Gumblr.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
         IEmailProvider mEmailProvider;
@@ -34,9 +35,14 @@ namespace Gumblr.Controllers
         [HttpPost]
         public async Task<ActionResult> RequestInvite(RequestInviteModel aRequestInviteModel)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                throw new HttpException(400, "This action is not for logged in users");
+            }
+
             var generator = new InviteRequestEmailGenerator(aRequestInviteModel);
             await mEmailProvider.Send(generator.GetMessage());
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { invite = "true" });
         }
 
         public ActionResult About()
