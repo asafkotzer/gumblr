@@ -1,0 +1,40 @@
+body {
+  font-family: Calibri;
+}
+body .table-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 760px;
+}
+body .table-container .ranking-list {
+  list-style: none;
+}
+body .table-container .ranking-list .table-item-container {
+  padding: 2px;
+}
+body .table-container .ranking-list .table-item-container .table-item-main {
+  margin: 1px;
+}
+body .table-container .ranking-list .table-item-container .table-item-main .table-item-container {
+  background-color: #dedede;
+  width: 355px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+body .table-container .ranking-list .table-item-container .table-item-main .table-item-container span {
+  line-height: 30px;
+}
+body .table-container .ranking-list .table-item-container .table-item-main .name-container {
+  padding-left: 4px;
+}
+body .table-container .ranking-list .table-item-container .table-item-main .score-container {
+  text-align: center;
+}
+body .table-container .ranking-list .winner {
+  background-color: rgba(102, 177, 50, 0.71);
+}
+body .table-container .ranking-list .loser {
+  background-color: rgba(177, 102, 50, 0.71);
+}

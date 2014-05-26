@@ -1,0 +1,53 @@
+﻿body {
+    @BackgroundColor: #dedede;
+    @LineHeight: 30px;
+    font-family: Calibri;
+
+    .table-container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 760px;
+
+        .ranking-list {
+            list-style: none;
+
+            .table-item-container {
+                padding: 2px;// remove this
+
+                .table-item-main {
+                    margin: 1px;
+
+                    .table-item-container {
+                        background-color: @BackgroundColor;
+                        width: 355px;
+                        height: @LineHeight;
+                        position:relative;
+                        display: inline-block;
+                        vertical-align:middle;
+                    }
+
+                    .table-item-container span {
+                        line-height:@LineHeight;
+                     }
+
+                    .name-container {
+                        padding-left:4px;
+                    }
+
+                    .score-container {
+                        text-align: center;
+
+                    }
+                }
+            }
+
+            .winner {
+                background-color: rgba(102, 177, 50, 0.71);
+            }
+
+            .loser {
+                background-color: rgba(177, 102, 50, 0.71);
+            }
+        }
+    }
+}
