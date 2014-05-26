@@ -355,6 +355,7 @@
     <Content Include="Images\bullet.png" />
     <Content Include="Images\closebutton.png" />
     <Content Include="Images\Draw.png" />
+    <Content Include="Images\fail.png" />
     <Content Include="Images\Flags\ALG.png" />
     <Content Include="Images\Flags\ARG.png" />
     <Content Include="Images\Flags\AUS.png" />
@@ -399,6 +400,7 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Images\QuestionMark.png" />
+    <Content Include="Images\success.png" />
     <Content Include="Images\UpArrow.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
