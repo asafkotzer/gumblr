@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,12 +22,24 @@
     
     <script>
         $(document).ready(function () {
+            var userId = "@User.Identity.GetUserId()";
+            var userName = "@User.Identity.GetUserName()";
+
+            console.log(userName);
+            if (userName != "") {
+                mixpanel.people.set_once({ "Name": userName });
+                mixpanel.identify(userId);
+            }
+
             mixpanel.track('page viewed', {
                 'page name': document.title.replace(" | GUMBLR", ""),
                 'url': window.location.pathname
             });
+
+            console.log("done");
+
         });
-    </script>
+</script>
 
 
 </head>

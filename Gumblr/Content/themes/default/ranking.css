@@ -1,10 +1,8 @@
-body {
-  font-family: Calibri;
-}
 body .table-container {
   margin-left: auto;
   margin-right: auto;
   width: 760px;
+  font-family: Calibri;
 }
 body .table-container .ranking-list {
   list-style: none;

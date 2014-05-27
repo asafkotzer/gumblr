@@ -1,6 +1,4 @@
 Open:
-* Bugs:
-	- success and fail.png were not found on server
 * Administration:
 	- Add matches to list -- instead, we can create the matches based on tournament logic
 * Switch to tables where needed - there's a TODO on this
