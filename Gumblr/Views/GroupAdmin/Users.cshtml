@@ -9,7 +9,13 @@
 
     <script>
         $(document).ready(function () {
-            var users = new Users();
+            var model = {
+                emailAddress: "@ViewBag.Email",
+                username: "@ViewBag.Username",
+                password: "@ViewBag.Password"
+            };
+
+            var users = new Users(model);
             users.init();
         });
     </script>

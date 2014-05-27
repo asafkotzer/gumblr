@@ -64,7 +64,7 @@ namespace Gumblr.Helpers
     public class InviteRequestEmailGenerator : IEmailContentGenerator, IEmailSubjectGenerator
     {
         static readonly string ToAddress = "shacharmanor@gmail.com";
-        static readonly string ToName = "Asaf";
+        static readonly string ToName = "Shachar";
         RequestInviteModel mModel;
 
         public InviteRequestEmailGenerator(RequestInviteModel aModel)
@@ -74,7 +74,14 @@ namespace Gumblr.Helpers
 
         public string GenerateContent()
         {
-            var format = string.Format("<html><body style='font-family: Calibri'><p>Hi Shachar,<br/>A user has requested an invite to Gumblr:</p><p><span style='font-weight:bold'>Email address: </span>{0}</p><p><span style='font-weight:bold'>Request text: </span><span>{1}</span></p>Go to the <a href='{2}/GroupAdmin/Users'>User Administration page to add them</a><p>Thanks,<br/>Gumblr</p></html></body>", mModel.EmailAddress, mModel.Comments, "http://gumblr.azurewebsites.net");
+            var format = string.Format(
+                "<html><body style='font-family: Calibri'><p>Hi Shachar,<br/>A user has requested an invite to Gumblr:</p><p><span style='font-weight:bold'>Email address: </span>{0}</p><p><span style='font-weight:bold'>Request text: </span><span>{1}</span></p>Go to the <a href='{2}/GroupAdmin/Users?email={3}&username={4}'>User Administration page to add them</a><p>Thanks,<br/>Gumblr</p></html></body>", 
+                mModel.EmailAddress, 
+                mModel.Comments, 
+                "http://gumblr.azurewebsites.net", 
+                HttpUtility.UrlEncode(mModel.EmailAddress), 
+                HttpUtility.UrlEncode(mModel.Name));
+
             return format;
         }
 

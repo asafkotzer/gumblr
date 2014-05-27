@@ -30,9 +30,34 @@ namespace Gumblr.Controllers
 		    mLocalUserManager = aLocalUserManagerFactory(new UserStore<ApplicationUser>(), aLoginRepository, aUserRepository);
 		}
 
-        public ActionResult Users()
+        public ActionResult Users(string email, string username)
         {
+            ViewBag.Email = email;
+            ViewBag.Username = username;
+            ViewBag.Password = GenerateSuggestedPassword(username);
             return View();
+        }
+
+        private string GenerateSuggestedPassword(string username)
+        {
+            if (username == null) username = string.Empty;
+
+            var password = "";
+            var words = username.Split(' ');
+            if (words.Length > 1 && words.All(x => x.Length > 0))
+            {
+                password = new string(words.Select(x => x.First()).ToArray()) + "-" + Guid.NewGuid().ToString().Split('-').Skip(1).First();
+            }
+            else if (words.Length > 0 && words.First().Length > 1)
+            {
+                password = new string(words.First().Take(2).ToArray()) + "-" + Guid.NewGuid().ToString().Split('-').Skip(1).First();
+            }
+            else
+            {
+                password = Guid.NewGuid().ToString().Split('-').First();
+            }
+
+            return password;
         }
 
 		public async Task<ActionResult> Matches()

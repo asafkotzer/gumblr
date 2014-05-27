@@ -1,6 +1,6 @@
-﻿var Users = function () {
+﻿var Users = function (model) {
 
     this.init = function () {
-        ko.applyBindings(new UsersViewModel());
+        ko.applyBindings(new UsersViewModel(model));
     }
 };
