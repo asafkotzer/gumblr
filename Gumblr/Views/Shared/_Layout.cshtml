@@ -25,7 +25,6 @@
             var userId = "@User.Identity.GetUserId()";
             var userName = "@User.Identity.GetUserName()";
 
-            console.log(userName);
             if (userName != "") {
                 mixpanel.people.set_once({ "Name": userName });
                 mixpanel.identify(userId);
@@ -35,9 +34,6 @@
                 'page name': document.title.replace(" | GUMBLR", ""),
                 'url': window.location.pathname
             });
-
-            console.log("done");
-
         });
 </script>
 

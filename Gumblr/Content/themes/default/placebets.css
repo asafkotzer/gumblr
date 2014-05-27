@@ -127,13 +127,19 @@ body .BetList .MatchContainer .MatchFrame .LogoContainer .Visible {
 body .BetList .MatchContainer .MatchFrame .LogoContainer .Selected {
   border: solid;
   border-color: red;
+  border-radius: 10px;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .Draw {
   border: none;
 }
-body .BetList .MatchContainer .MatchFrame .StatusLine {
-  bottom: 0;
+body .BottomLine {
+  margin: 40px auto;
 }
-body .BetList .MatchContainer .MatchFrame .StatusLine .StatusText {
+body .BottomLine .SubmitContainer {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+body .BottomLine .SubmitContainer .StatusText {
   text-align: center;
 }
