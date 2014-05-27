@@ -342,6 +342,7 @@
     <Content Include="Content\Themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Content\Themes\default\home.css" />
+    <Content Include="Content\Themes\default\matchadmin.css" />
     <Content Include="Content\Themes\default\placebets.css" />
     <Content Include="Content\Themes\default\ranking.css" />
     <Content Include="Content\Themes\default\shared.css" />
@@ -410,6 +411,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Content\Themes\default\ranking.less" />
+    <Content Include="Content\Themes\default\matchadmin.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />

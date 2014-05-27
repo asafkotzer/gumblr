@@ -1,5 +1,6 @@
 Open:
-* Champion container width is a bit too much
+* re-create all matches to conform to UTC
+* Champion container width is a bit too much - wait for shachar's changes on flags
 * Administration:
 	- Add matches to list -- instead, we can create the matches based on tournament logic
 * Switch to tables where needed - there's a TODO on this
