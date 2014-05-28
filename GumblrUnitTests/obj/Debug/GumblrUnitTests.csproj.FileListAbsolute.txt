@@ -186,3 +186,9 @@ C:\Users\asaf\Documents\GitHub\gumblr\GumblrUnitTests\bin\Debug\zh-Hant\System.S
 C:\Users\asaf\Documents\GitHub\gumblr\GumblrUnitTests\obj\Debug\GumblrUnitTests.csprojResolveAssemblyReference.cache
 C:\Users\asaf\Documents\GitHub\gumblr\GumblrUnitTests\obj\Debug\GumblrUnitTests.dll
 C:\Users\asaf\Documents\GitHub\gumblr\GumblrUnitTests\obj\Debug\GumblrUnitTests.pdb
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\SendGridMail.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\Smtpapi.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\nunit.framework.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\nunit.framework.xml

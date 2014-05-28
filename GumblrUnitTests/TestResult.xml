@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" total="7" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-05-28" time="22:32:03">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.8000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="HOME-PC" user="Asaf" user-domain="HOME-PC" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Project" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" executed="True" result="Success" success="True" time="0.130" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" executed="True" result="Success" success="True" time="0.111" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="GumblrUnitTests" executed="True" result="Success" success="True" time="0.111" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="StandingsCalculatorTests" executed="True" result="Success" success="True" time="0.108" asserts="0">
+                <results>
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_EmptyList_ReturnsEmptyResult" executed="True" result="Success" success="True" time="0.034" asserts="1" />
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_ListWithOneMatch_ReturnsOneGroupWithTwoTeams" executed="True" result="Success" success="True" time="0.032" asserts="1" />
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_ListWithOneMatchWhereHostWins_CorrectStandings" executed="True" result="Success" success="True" time="0.005" asserts="8" />
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_NullList_ThrowsNullArgumentException" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-suite type="ParameterizedTest" name="GetStandingsByGroup_OneMacthTie_CoinFlip_CorrectScore" executed="True" result="Success" success="True" time="0.005" asserts="0">
+                    <results>
+                      <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_OneMacthTie_CoinFlip_CorrectScore()" executed="True" result="Success" success="True" time="0.002" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_OneMatch_Tie_CorrectStandings" executed="True" result="Success" success="True" time="0.001" asserts="8" />
+                  <test-suite type="ParameterizedTest" name="GetStandingsByGroup_TwoMacthesFourTeams_TwoTeamsWithSameScoreDifferentGoalCount_CorrectScore" executed="True" result="Success" success="True" time="0.002" asserts="0">
+                    <results>
+                      <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_TwoMacthesFourTeams_TwoTeamsWithSameScoreDifferentGoalCount_CorrectScore()" executed="True" result="Success" success="True" time="0.001" asserts="4" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

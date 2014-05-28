@@ -202,3 +202,7 @@ C:\Users\asaf\Documents\GitHub\gumblr\GumblrIntegrationTests\bin\Debug\zh-Hant\S
 C:\Users\asaf\Documents\GitHub\gumblr\GumblrIntegrationTests\obj\Debug\GumblrIntegrationTests.csprojResolveAssemblyReference.cache
 C:\Users\asaf\Documents\GitHub\gumblr\GumblrIntegrationTests\obj\Debug\GumblrIntegrationTests.dll
 C:\Users\asaf\Documents\GitHub\gumblr\GumblrIntegrationTests\obj\Debug\GumblrIntegrationTests.pdb
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\SendGridMail.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\Smtpapi.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\GumblrIntegrationTests\bin\Debug\Microsoft.Threading.Tasks.xml
