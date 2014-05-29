@@ -36,6 +36,7 @@ namespace Gumblr.Models
         public MatchStage Stage { get; set; }
         public int GoalsScoredByHost { get; set; }
         public int GoalsScoredByVisitor { get; set; }
+        public HashSet<string> Dependencies { get; set; }
 
         public string HostLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Host); } }
         public string VisitorLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Visitor); } }

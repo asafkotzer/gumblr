@@ -1,8 +1,10 @@
 Open:
-* re-create all matches to conform to UTC
 * Champion container width is a bit too much - wait for shachar's changes on flags
 * Administration:
-	- Add matches to list -- instead, we can create the matches based on tournament logic
+	- Improve match IDs
+	- Make ActualResult a getter only (for bets)
+	- Add a MatchDependencies list on each match
+	- When actual results are updated, check match dependencies and create new matches
 * Switch to tables where needed - there's a TODO on this
 * action filter for errors
 * MixPanel
