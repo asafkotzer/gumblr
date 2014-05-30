@@ -39,19 +39,20 @@ namespace Gumblr.DataAccess
                 Visitor = split[4],
             };
 
-            MatchResult actualResult = MatchResult.Unknown;
-            if (split.Length > 5)
-            {
-                Enum.TryParse<MatchResult>(split[5], true, out actualResult);
-            }
-            match.ActualResult = actualResult;
+            // Depracated, fix:
+            //MatchResult actualResult = MatchResult.Unknown;
+            //if (split.Length > 5)
+            //{
+            //    Enum.TryParse<MatchResult>(split[5], true, out actualResult);
+            //}
+            //match.ActualResult = actualResult;
 
-            MatchStage stage = MatchStage.Qualifying;   // not a valid state really, it's before the tournament
-            if (split.Length > 6)
-            {
-                Enum.TryParse<MatchStage>(split[6], true, out stage);
-            }
-            match.Stage = stage;
+            //MatchStage stage = MatchStage.Qualifying;   // not a valid state really, it's before the tournament
+            //if (split.Length > 6)
+            //{
+            //    Enum.TryParse<MatchStage>(split[6], true, out stage);
+            //}
+            //match.Stage = stage;
 
             return match;
         }

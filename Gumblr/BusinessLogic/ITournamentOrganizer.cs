@@ -17,19 +17,34 @@ namespace Gumblr.BusinessLogic
 
         public TournamentOrganizer(IMatchGeneratorFactory aMatchGeneratorFactory)
         {
+            if (aMatchGeneratorFactory == null)
+            {
+                throw new ArgumentNullException("aMatchGeneratorFactory");
+            }
+
             mMatchGeneratorFactory = aMatchGeneratorFactory;
         }
 
         public IEnumerable<Match> GenerateMatches(IEnumerable<Match> aCompleteMatches, IEnumerable<Match> aMatchStubs)
         {
+            if (aCompleteMatches == null)
+            {
+                throw new ArgumentNullException("aCompleteMatches");
+            }
+
             if (aCompleteMatches.Any(x => x.ActualResult == MatchResult.Unknown))
             {
-                throw new AggregateException("Complete matches list cannot include incomplete matches");
+                throw new ArgumentException("Complete matches list cannot include incomplete matches");
+            }
+
+            if (aMatchStubs == null)
+            {
+                throw new ArgumentNullException("aMatchStubs");
             }
 
             var completedMatchesByMatchId = aCompleteMatches.ToDictionary(x => x.MatchId);
 
-            var createdStubs = aMatchStubs.Where(x => x.Dependencies.All(d => completedMatchesByMatchId.ContainsKey(d)));
+            var createdStubs = aMatchStubs.Where(x => x.Dependency.GetDeterminigMatchIds().All(d => completedMatchesByMatchId.ContainsKey(d)));
 
             // we can tell by the stage of the stub - FirstRound will be A, others will be B
             // (Group will also depend on Qualifying, but that's a more complex logic
@@ -39,11 +54,30 @@ namespace Gumblr.BusinessLogic
             var newMatches = createdStubs.Select(s =>
             {
                 var matchGenerator = mMatchGeneratorFactory.GetMatchGenerator(s.Stage);
-                var newMatch = matchGenerator.GetMatch(s, s.Dependencies.Select(d => completedMatchesByMatchId[d]));
+                var newMatch = matchGenerator.GetMatch(s, new MatchDependencyContainer(s.Dependency, completedMatchesByMatchId));
                 return newMatch;
             });
 
             return newMatches;
+        }
+    }
+
+    public class MatchDependencyContainer
+    {
+        public MatchDependencyType Type { get; set; }
+        public IEnumerable<Match> HostDeterminingMatches { get; set; }
+        public IEnumerable<Match> VisitorDeterminingMatches { get; set; }
+
+        public MatchDependencyContainer(MatchDependency aDependency, Dictionary<string, Match> aCompleteMatchesByMatchId)
+        {
+            Type = aDependency.Type;
+            HostDeterminingMatches = aDependency.HostDeterminingMatchIds.Select(d => aCompleteMatchesByMatchId[d]);
+            VisitorDeterminingMatches = aDependency.VisitorDeterminingMatchIds.Select(d => aCompleteMatchesByMatchId[d]);
+        }
+
+        public IEnumerable< Match> GetDeterminigMatches()
+        {
+            return HostDeterminingMatches.Union(VisitorDeterminingMatches);
         }
     }
 
@@ -54,10 +88,16 @@ namespace Gumblr.BusinessLogic
 
     public class MatchGeneratorFactory : IMatchGeneratorFactory
     {
+        IStandingsCalculator mStandingsCalculator;
+        public MatchGeneratorFactory(IStandingsCalculator aStandingsCalculator)
+        {
+            mStandingsCalculator = aStandingsCalculator;
+        }
+
         public IMatchGenerator GetMatchGenerator(MatchStage aMatchStage)
         {
             var matchGenerator = aMatchStage == MatchStage.FirstRound ?
-                (IMatchGenerator)new FirstRoundMatchGenerator() :
+                (IMatchGenerator)new FirstRoundMatchGenerator(mStandingsCalculator) :
                 (IMatchGenerator)new PlayoffMatchGenerator();
 
             return matchGenerator;
@@ -66,22 +106,59 @@ namespace Gumblr.BusinessLogic
 
     public interface IMatchGenerator
     {
-        Match GetMatch(Match aStub, IEnumerable<Match> aDependencies);
+        Match GetMatch(Match aStub, MatchDependencyContainer aMatchDependencyContainer);
     }
 
     public class FirstRoundMatchGenerator : IMatchGenerator
     {
-        public Match GetMatch(Match aStub, IEnumerable<Match> aDependencies)
+        IStandingsCalculator mStandingsCalculator;
+        public FirstRoundMatchGenerator(IStandingsCalculator aStandingsCalculator)
         {
-            throw new NotImplementedException();
+            mStandingsCalculator = aStandingsCalculator;
+        }
+
+        public Match GetMatch(Match aStub, MatchDependencyContainer aMatchDependencyContainer)
+        {
+            if (aMatchDependencyContainer.HostDeterminingMatches.Select(x => x.Group).Distinct().Count() != 1 ||
+                aMatchDependencyContainer.VisitorDeterminingMatches.Select(x => x.Group).Distinct().Count() != 1)
+            {
+                throw new MatchGeneratorException("A match in the first round can depend only on one group from each side");
+            }
+
+            aStub.Host = mStandingsCalculator.GetGroupStandings(aMatchDependencyContainer.HostDeterminingMatches).GetWinnerName();
+            aStub.Visitor = mStandingsCalculator.GetGroupStandings(aMatchDependencyContainer.VisitorDeterminingMatches).GetSecondName();
+
+            return aStub;
         }
     }
 
     public class PlayoffMatchGenerator : IMatchGenerator
     {
-        public Match GetMatch(Match aStub, IEnumerable<Match> aDependencies)
+        public Match GetMatch(Match aStub, MatchDependencyContainer aMatchDependencyContainer)
         {
-            throw new NotImplementedException();
+            if (aMatchDependencyContainer.HostDeterminingMatches.Count() != 1 || aMatchDependencyContainer.VisitorDeterminingMatches.Count() != 1)
+            {
+                throw new MatchGeneratorException("A playoff match can depend only on one match from each side");
+            }
+
+            if (aMatchDependencyContainer.GetDeterminigMatches().Any(x => x.ActualResult == MatchResult.Draw))
+            {
+                throw new MatchGeneratorException("A playoff match cannot end with a tie");
+            }
+
+            aStub.Host = aMatchDependencyContainer.HostDeterminingMatches.First().GetWinner();
+            aStub.Visitor = aMatchDependencyContainer.VisitorDeterminingMatches.First().GetWinner();
+
+            return aStub;
+        }
+    }
+
+    public class MatchGeneratorException : Exception
+    {
+        public MatchGeneratorException(string aMessage) 
+            : base(aMessage)
+        {
+
         }
     }
 }

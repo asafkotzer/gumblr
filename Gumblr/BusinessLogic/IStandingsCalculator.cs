@@ -76,6 +76,9 @@ namespace Gumblr.BusinessLogic
     public class Group
     {
         public List<Team> Teams { get; set; }
+
+        public string GetWinnerName() { return Teams[0].Name; }
+        public string GetSecondName() { return Teams[1].Name; }
     }
 
     public class Team
