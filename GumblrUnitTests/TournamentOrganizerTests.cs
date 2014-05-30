@@ -77,6 +77,21 @@ namespace GumblrUnitTests
         }
 
         [Test]
+        public void GenerateMatches_FirstRoundMatchGenerator_NoCompleteMatches_NoResults()
+        {
+            var generator = new TournamentOrganizer(new MatchGeneratorFactory(new StandingsCalculator()));
+            var match1 = new Match { Group = "A", MatchId = "id1", Host = "host1", Visitor = "visitor1", IsComplete = true, GoalsScoredByHost = 1, GoalsScoredByVisitor = 0, };
+            var match2 = new Match { Group = "B", MatchId = "id2", Host = "host2", Visitor = "visitor2", IsComplete = true, GoalsScoredByHost = 1, GoalsScoredByVisitor = 0, };
+
+            var dependency = new MatchDependency { Type = MatchDependencyType.TwoGroups, HostDeterminingMatchIds = new List<string> { "id1" }, VisitorDeterminingMatchIds = new List<string> { "id2" } };
+            var stubMatch = new Match { Stage = MatchStage.FirstRound, Dependency = dependency };
+
+            var result = generator.GenerateMatches(new List<Match>(), new List<Match> { stubMatch });
+
+            Assert.AreEqual(0, result.Count());
+        }
+
+        [Test]
         public void GenerateMatches_FirstRoundMatchGenerator_HostIsWinnerInFirstGroup_VisitorIsSecondInSecondGroup()
         {
             var generator = new TournamentOrganizer(new MatchGeneratorFactory(new StandingsCalculator()));
@@ -91,6 +106,31 @@ namespace GumblrUnitTests
             Assert.AreEqual(1, result.Count());
             Assert.AreEqual("host1", result.First().Host);
             Assert.AreEqual("visitor2", result.First().Visitor);
+        }
+
+        [Test]
+        public void GenerateMatches_FirstRoundMatchGeneratorTwoStubs_TwoMatchesGeneratedWithCorrectTeams()
+        {
+            var generator = new TournamentOrganizer(new MatchGeneratorFactory(new StandingsCalculator()));
+
+            var match1 = new Match { Group = "A", MatchId = "id1", Host = "host1", Visitor = "visitor1", IsComplete = true, GoalsScoredByHost = 1, GoalsScoredByVisitor = 0, };
+            var match2 = new Match { Group = "B", MatchId = "id2", Host = "host2", Visitor = "visitor2", IsComplete = true, GoalsScoredByHost = 1, GoalsScoredByVisitor = 0, };
+            var dependency1 = new MatchDependency { Type = MatchDependencyType.TwoGroups, HostDeterminingMatchIds = new List<string> { "id1" }, VisitorDeterminingMatchIds = new List<string> { "id2" } };
+            var stubMatch1 = new Match { Stage = MatchStage.FirstRound, Dependency = dependency1 };
+
+            var match3 = new Match { Group = "C", MatchId = "id3", Host = "host3", Visitor = "visitor3", IsComplete = true, GoalsScoredByHost = 1, GoalsScoredByVisitor = 0, };
+            var match4 = new Match { Group = "D", MatchId = "id4", Host = "host4", Visitor = "visitor4", IsComplete = true, GoalsScoredByHost = 1, GoalsScoredByVisitor = 0, };
+            var dependency2 = new MatchDependency { Type = MatchDependencyType.TwoGroups, HostDeterminingMatchIds = new List<string> { "id3" }, VisitorDeterminingMatchIds = new List<string> { "id4" } };
+            var stubMatch2 = new Match { Stage = MatchStage.FirstRound, Dependency = dependency2 };
+
+            var result = generator.GenerateMatches(new List<Match> { match1, match2, match3, match4 }, new List<Match> { stubMatch1, stubMatch2 });
+
+            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual("host1", result.First().Host);
+            Assert.AreEqual("visitor2", result.First().Visitor);
+
+            Assert.AreEqual("host3", result.Last().Host);
+            Assert.AreEqual("visitor4", result.Last().Visitor);
         }
     }
 }

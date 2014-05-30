@@ -5,8 +5,8 @@
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" Expanded="true" />
-    <Node UniqueName="[0-1018]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" Expanded="true" />
-    <Node UniqueName="[0-1019]GumblrUnitTests" Expanded="true" />
+    <Node UniqueName="[0-1021]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" Expanded="true" />
+    <Node UniqueName="[0-1022]GumblrUnitTests" Expanded="true" />
     <Node UniqueName="[0-1001]GumblrUnitTests.StandingsCalculatorTests" Expanded="true" />
     <Node UniqueName="[0-1009]GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_OneMacthTie_CoinFlip_CorrectScore" Expanded="true" />
     <Node UniqueName="[0-1007]GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_TwoMacthesFourTeams_TwoTeamsWithSameScoreDifferentGoalCount_CorrectScore" Expanded="true" />
