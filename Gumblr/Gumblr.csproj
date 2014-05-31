@@ -217,6 +217,7 @@
     <Compile Include="BusinessLogic\IMatchGenerator.cs" />
     <Compile Include="BusinessLogic\IMatchGeneratorFactory.cs" />
     <Compile Include="BusinessLogic\IStandingsCalculator.cs" />
+    <Compile Include="BusinessLogic\IMatchResultsHandler.cs" />
     <Compile Include="BusinessLogic\ITournamentOrganizer.cs" />
     <Compile Include="BusinessLogic\TeamLogoUrlCreator.cs" />
     <Compile Include="BusinessLogic\UserScoreCalculator.cs" />
@@ -241,9 +242,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\IEmailProvider.cs" />
-    <Compile Include="Helpers\IEmailSender.cs" />
+    <Compile Include="BusinessLogic\Emails\IEmailProvider.cs" />
+    <Compile Include="BusinessLogic\Emails\IEmailSender.cs" />
     <Compile Include="Helpers\IConfigurationRetriever.cs" />
+    <Compile Include="BusinessLogic\Emails\InviteRequestEmailGenerator.cs" />
+    <Compile Include="BusinessLogic\Emails\NewMatchesEmailGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BettingModel.cs" />
     <Compile Include="Models\FinalResultsModel.cs" />
@@ -255,6 +258,7 @@
     <Compile Include="Models\MatchResult.cs" />
     <Compile Include="Models\MatchStage.cs" />
     <Compile Include="Models\MatchStatisticsModel.cs" />
+    <Compile Include="Models\NewMatchesModel.cs" />
     <Compile Include="Models\RankingOverviewModel.cs" />
     <Compile Include="Models\RequestInviteModel.cs" />
     <Compile Include="Models\UserBetsModel.cs" />

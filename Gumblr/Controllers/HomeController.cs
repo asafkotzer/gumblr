@@ -1,4 +1,5 @@
-﻿using Gumblr.Helpers;
+﻿using Gumblr.BusinessLogic.Emails;
+using Gumblr.Helpers;
 using Gumblr.Models;
 using System;
 using System.Collections.Generic;

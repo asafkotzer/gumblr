@@ -22,15 +22,15 @@ namespace Gumblr.Controllers
 		IUserRepository mUserRepository;
 		IIdentityManager mIdentityManager;
 	    LocalUserManager mLocalUserManager;
-        ITournamentOrganizer mTournamentOrganizer;
+        IMatchResultsHandler mTournamentGenerator;
 
-        public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, ILoginRepository aLoginRepository, LocalUserManager.Factory aLocalUserManagerFactory, ITournamentOrganizer aTournamentOrganizer)
+        public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, ILoginRepository aLoginRepository, LocalUserManager.Factory aLocalUserManagerFactory, IMatchResultsHandler aTournamentGenerator)
 		{
 			mMatchRepository = aMatchRepository;
 			mUserRepository = aUserRepository;
 			mIdentityManager = aIdentityManager;
 		    mLocalUserManager = aLocalUserManagerFactory(new UserStore<ApplicationUser>(), aLoginRepository, aUserRepository);
-            mTournamentOrganizer = aTournamentOrganizer;
+            mTournamentGenerator = aTournamentGenerator;
 		}
 
         public async Task<ActionResult> Users(string email, string username)
@@ -91,12 +91,7 @@ namespace Gumblr.Controllers
 			await Task.WhenAll(aModel.Matches.Select(x => mMatchRepository.Update(x)));
 
             // generate new matches if needed
-            var allMatches = await mMatchRepository.GetAllMatches();
-            var newMatches = mTournamentOrganizer.GenerateMatches(
-                allMatches.Where(x => x.IsStub() == false), 
-                allMatches.Where(x => x.IsStub() == true));
-
-            await Task.WhenAll(newMatches.Select(x => mMatchRepository.Create(x)));
+            await mTournamentGenerator.UpdateNewMatches();
 
 			return Json(new { status = "success" });
 		}

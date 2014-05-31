@@ -1,10 +1,7 @@
 Open:
 * Champion container width is a bit too much - wait for shachar's changes on flags
-* Administration:
-	- Improve match IDs
-	- Make ActualResult a getter only (for bets)
-	- Add a MatchDependencies list on each match
-	- When actual results are updated, check match dependencies and create new matches
+* base URL (for emails) should be in configuration (web.config)
+* Disable 'draw' on tournament matches
 * action filter for errors
 * MixPanel
 	- events
@@ -12,21 +9,3 @@ Open:
 * Scalability review
 * Improve Ranking UI
 * embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
-
-Possible match times:
-SATURDAY, JUNE 28, 2014, 12:00	Second Round	Estadio Mineirão
-SATURDAY, JUNE 28, 2014, 4:00	Second Round	Estadio do Maracanã
-SUNDAY, JUNE 29, 2014, 12:00	Second Round	Estadio Castelão
-SUNDAY, JUNE 29, 2014, 4:00	Second Round	Arena Pernambuco
-MONDAY, JUNE 30, 201412:00	Second Round	Nacional
-MONDAY, JUNE 30, 2014, 4:00	Second Round	Estadio Beira-Rio
-TUESDAY, JULY 1, 2014, 12:00	Second Round	Arena Corinthians
-TUESDAY, JULY 1, 2014, 4:00	Second Round	Arena Fonte Nova
-FRIDAY, JULY 4, 2014, 12:00	Quarterfinals	Estadio do Maracanã
-FRIDAY, JULY 4, 2014, 4:00	Quarterfinals	Estadio Castelão
-SATURDAY, JULY 5, 2014, 12:00	Quarterfinals	Nacional
-SATURDAY, JULY 5, 2014, 4:00	Quarterfinals	Arena Fonte Nova
-TUESDAY, JULY 8, 2014, 4:00	Semifinals	Estadio Mineirão
-WEDNESDAY, JULY 9, 2014, 4:00	Semifinals	Arena Corinthians
-SATURDAY, JULY 12, 2014, 4:00	Third Place	Nacional
-SUNDAY, JULY 13, 2014, 3:00	Final	Estadio do Maracanã

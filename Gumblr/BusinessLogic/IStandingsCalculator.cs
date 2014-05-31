@@ -55,6 +55,7 @@ namespace Gumblr.BusinessLogic
             var orderedList = teamByTeamName.Values
                 .OrderByDescending(x => x.Score)
                 .ThenByDescending(x => x.ScoredGoals - x.ReceivedGoals)
+                .ThenByDescending(x => x.ScoredGoals)
                 .ThenByDescending(x => aCoinFlips.Count(c => c.Winner == x.Name))
                 .ToList();
 
