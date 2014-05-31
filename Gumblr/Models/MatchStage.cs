@@ -9,7 +9,6 @@ namespace Gumblr.Models
     {
         Qualifying,
         Group,
-        FirstRound,
         RoundOfSixteen,
         QuarterFinals,
         SemiFinals,

@@ -1,20 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" total="9" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-05-30" time="14:29:30">
+<test-results name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" total="16" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-05-30" time="15:52:50">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.8000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="HOME-PC" user="Asaf" user-domain="HOME-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" executed="True" result="Success" success="True" time="0.180" asserts="0">
+  <test-suite type="Project" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" executed="True" result="Success" success="True" time="0.221" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" executed="True" result="Success" success="True" time="0.161" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" executed="True" result="Success" success="True" time="0.202" asserts="0">
         <results>
-          <test-suite type="Namespace" name="GumblrUnitTests" executed="True" result="Success" success="True" time="0.161" asserts="0">
+          <test-suite type="Namespace" name="GumblrUnitTests" executed="True" result="Success" success="True" time="0.202" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="TournamentOrganizerTests" executed="True" result="Success" success="True" time="0.158" asserts="0">
+              <test-suite type="TestFixture" name="StandingsCalculatorTests" executed="True" result="Success" success="True" time="0.121" asserts="0">
                 <results>
-                  <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_CompleteMatchesWithUnknownResult_Throws" executed="True" result="Success" success="True" time="0.033" asserts="1" />
-                  <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_FirstRoundMatchGenerator_HostIsWinnerInFirstGroup_VisitorIsSecondInSecondGroup" executed="True" result="Success" success="True" time="0.072" asserts="3" />
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_EmptyList_ReturnsEmptyResult" executed="True" result="Success" success="True" time="0.033" asserts="1" />
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_ListWithOneMatch_ReturnsOneGroupWithTwoTeams" executed="True" result="Success" success="True" time="0.031" asserts="1" />
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_ListWithOneMatchWhereHostWins_CorrectStandings" executed="True" result="Success" success="True" time="0.006" asserts="8" />
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_NullList_ThrowsNullArgumentException" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-suite type="ParameterizedTest" name="GetStandingsByGroup_OneMacthTie_CoinFlip_CorrectScore" executed="True" result="Success" success="True" time="0.005" asserts="0">
+                    <results>
+                      <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_OneMacthTie_CoinFlip_CorrectScore()" executed="True" result="Success" success="True" time="0.002" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_OneMatch_Tie_CorrectStandings" executed="True" result="Success" success="True" time="0.001" asserts="8" />
+                  <test-suite type="ParameterizedTest" name="GetStandingsByGroup_TwoMacthesFourTeams_TwoTeamsWithSameScoreDifferentGoalCount_CorrectScore" executed="True" result="Success" success="True" time="0.002" asserts="0">
+                    <results>
+                      <test-case name="GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_TwoMacthesFourTeams_TwoTeamsWithSameScoreDifferentGoalCount_CorrectScore()" executed="True" result="Success" success="True" time="0.001" asserts="4" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="TournamentOrganizerTests" executed="True" result="Success" success="True" time="0.075" asserts="0">
+                <results>
+                  <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_CompleteMatchesWithUnknownResult_Throws" executed="True" result="Success" success="True" time="0.005" asserts="1" />
+                  <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_FirstRoundMatchGenerator_HostIsWinnerInFirstGroup_VisitorIsSecondInSecondGroup" executed="True" result="Success" success="True" time="0.038" asserts="3" />
                   <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_FirstRoundMatchGenerator_NoCompleteMatches_NoResults" executed="True" result="Success" success="True" time="0.001" asserts="1" />
-                  <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_FirstRoundMatchGeneratorTwoStubs_TwoMatchesGeneratedWithCorrectTeams" executed="True" result="Success" success="True" time="0.004" asserts="5" />
+                  <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_FirstRoundMatchGeneratorTwoStubs_TwoMatchesGeneratedWithCorrectTeams" executed="True" result="Success" success="True" time="0.002" asserts="5" />
                   <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_NullCompleteMatches_Throws" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                   <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_NullMatchStubs_Throws" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                   <test-case name="GumblrUnitTests.TournamentOrganizerTests.GenerateMatches_PlayoffMatchGenerator_DrawInDependency_Throws" executed="True" result="Success" success="True" time="0.003" asserts="1" />

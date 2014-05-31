@@ -67,7 +67,7 @@
 
     var onGameBetClick = function (viewModel, event) {
         var match = viewModel.match;
-        var startTime = new Date(parseInt(match.StartTime.substr(6)));
+        var startTime = new Date(parseInt(match.StartTime.substr(6, 12)));
         if (startTime.getTime() > new Date().getTime()) {
             mixpanel.track('late bet change', {
                 'matchId': viewModel.match.MatchId,

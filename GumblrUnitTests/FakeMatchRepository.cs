@@ -27,5 +27,15 @@ namespace GumblrUnitTests
         {
             throw new NotImplementedException();
         }
+
+        public Task Create(Match aMatch)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Match>> GetAllMatches()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

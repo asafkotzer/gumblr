@@ -16,6 +16,7 @@ namespace Gumblr.Models
 
         public Match(Match aMatch)
         {
+            this.MatchId = aMatch.MatchId;
             this.Group = aMatch.Group;
             this.Host = aMatch.Host;
             this.StartTime = aMatch.StartTime;
@@ -58,6 +59,19 @@ namespace Gumblr.Models
             if (ActualResult == MatchResult.Visitor) return Visitor;
 
             throw new Exception("Can't get winner on this match");
+        }
+
+        public string GetLoser()
+        {
+            if (ActualResult == MatchResult.Host) return Visitor;
+            if (ActualResult == MatchResult.Visitor) return Host;
+
+            throw new Exception("Can't get loser on this match");
+        }
+
+        public bool IsStub()
+        {
+            return string.IsNullOrEmpty(Host);
         }
     }
 

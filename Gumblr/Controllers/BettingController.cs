@@ -41,7 +41,7 @@ namespace Gumblr.Controllers
 
             var userBets = await mMatchBetRepository.GetUserBets(userId);
             var currentBetsByMatchId = GetCurrentBets(userBets);
-            var matches = (await mMatchRepository.GetMatches()).Take(4);
+            var matches = (await mMatchRepository.GetMatches());
             var teams = matches
                 .Select(x => x.Host)
                 .Union(matches.Select(x => x.Visitor))

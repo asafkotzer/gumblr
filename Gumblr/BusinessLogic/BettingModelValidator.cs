@@ -36,7 +36,7 @@ namespace Gumblr.BusinessLogic
                 return match.ExpectedResult != MatchResult.Unknown;
             });
 
-            if (changedBets.Any(x => x.StartTime > DateTime.UtcNow))
+            if (changedBets.Any(x => x.StartTime < DateTime.UtcNow))
             {
                 throw new BettingModelValidationExcpetion("A bet was made after the match started");
             }

@@ -22,39 +22,80 @@ namespace Gumblr.DataAccess
 
         public IEnumerable<Match> ParseMatches()
         {
-            return mLines.Select(x => ParseMatchLine(x));
-        }
-
-        private Match ParseMatchLine(string aLine)
-        {
-            // times in UTC can be found here: http://www.espnfc.com/fixtures/_/league/fifa.world/fifa-world-cup?cc=4716
-            var split = aLine.Split(',');
-
-            var match = new Match
+            var matchByIndex = new Dictionary<int, Match>();
+            foreach (var line in mLines)
             {
-                Group = split[0],
-                StartTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.Parse(split[1]), TimeZoneInfo.Local),
-                Venue = split[2],
-                Host = split[3],
-                Visitor = split[4],
-            };
+                var split = line.Split(',');
 
-            // Depracated, fix:
-            //MatchResult actualResult = MatchResult.Unknown;
-            //if (split.Length > 5)
-            //{
-            //    Enum.TryParse<MatchResult>(split[5], true, out actualResult);
-            //}
-            //match.ActualResult = actualResult;
+                var index = int.Parse(split[0]);
 
-            //MatchStage stage = MatchStage.Qualifying;   // not a valid state really, it's before the tournament
-            //if (split.Length > 6)
-            //{
-            //    Enum.TryParse<MatchStage>(split[6], true, out stage);
-            //}
-            //match.Stage = stage;
+                MatchDependency dependency = null;
 
-            return match;
+                string host = null;
+                string visitor = null;
+                string group = null;
+                MatchStage stage = MatchStage.Group;
+                if (split.Length > 6)
+                {
+                    Enum.TryParse<MatchStage>(split[2], true, out stage);
+                }
+
+                if (stage == MatchStage.Group)
+                {
+                    group = split[1];
+                    host = split[6];
+                    visitor = split[7];
+                }
+                else if (stage == MatchStage.RoundOfSixteen)
+                {
+                    if (index == 49)
+                    {
+                        Console.WriteLine(index);
+                    }
+
+
+                    var hostDependentIndices = split[6].Split(';').Select(x => int.Parse(x));
+                    var visitorDependentIndices = split[7].Split(';').Select(x => int.Parse(x));
+
+                    if (hostDependentIndices.Count() != 6) throw new Exception();
+                    if (visitorDependentIndices.Count() != 6) throw new Exception();
+
+                    dependency = new MatchDependency()
+                    {
+                        Type = MatchDependencyType.TwoGroups,
+                        HostDeterminingMatchIds = hostDependentIndices.Select(x => matchByIndex[x].MatchId),
+                        VisitorDeterminingMatchIds = visitorDependentIndices.Select(x => matchByIndex[x].MatchId),
+                    };
+                }
+                else
+                {
+                    dependency = new MatchDependency()
+                    {
+                        Type = MatchDependencyType.TwoMatches,
+                        HostDeterminingMatchIds = new List<string> { matchByIndex[int.Parse(split[6])].MatchId },
+                        VisitorDeterminingMatchIds = new List<string> { matchByIndex[int.Parse(split[7])].MatchId },
+                    };
+                }
+
+                var startTime = DateTime.Parse(split[3]);
+                var venue = split[4];
+
+                var match = new Match
+                {
+                    MatchId = Guid.NewGuid().ToString(),
+                    Stage = stage,
+                    Group = group,
+                    StartTime = startTime,
+                    Venue = venue,
+                    Host = host,
+                    Visitor = visitor,
+                    Dependency = dependency,
+                };
+
+                matchByIndex[index] = match;
+            }
+
+            return matchByIndex.Values.ToList();
         }
 
     }

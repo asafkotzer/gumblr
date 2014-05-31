@@ -157,7 +157,7 @@ namespace Gumblr.Storage.Azure
             CloudBlobContainer container;
             if (!CachedContainers.TryGetValue(aContainer, out container))
             {
-                container = mBlobClient.GetContainerReference(aContainer.ToLower());
+                CachedContainers[aContainer] = container = mBlobClient.GetContainerReference(aContainer.ToLower());
                 await container.CreateIfNotExistsAsync();                
             }
             

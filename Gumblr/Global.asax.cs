@@ -26,6 +26,7 @@ namespace Gumblr
             builder.RegisterType<BlobStorageProvider>().As<IStorageProvider>().SingleInstance();
             builder.RegisterFilterProvider();
             builder.RegisterType<LocalUserManager>();
+            builder.RegisterType<TableStorageProvider>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

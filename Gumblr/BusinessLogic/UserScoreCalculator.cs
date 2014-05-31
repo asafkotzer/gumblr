@@ -51,7 +51,6 @@ namespace Gumblr.BusinessLogic
             {
                 case MatchStage.Group:
                     return CorrectMatchBet_GroupStage_Value;
-                case MatchStage.FirstRound:
                 case MatchStage.RoundOfSixteen:
                 case MatchStage.QuarterFinals:
                 case MatchStage.SemiFinals:

@@ -10,6 +10,8 @@ namespace Gumblr.DataAccess
     public interface IMatchRepository
     {
         Task<IEnumerable<Match>> GetMatches();
+        Task<IEnumerable<Match>> GetAllMatches();
         Task Update(Match aMatch);
+        Task Create(Match aMatch);
     }
 }

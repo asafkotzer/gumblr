@@ -1,5 +1,7 @@
-﻿using Gumblr.Models;
+﻿using Gumblr.Helpers;
+using Gumblr.Models;
 using Gumblr.Storage;
+using Gumblr.Storage.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,50 +18,43 @@ namespace Gumblr.DataAccess
 
     public class MatchStatisticsRepository : IMatchStatisticsRepository
     {
+        ITableProvider mTableProvider;
         IStorageProvider mStorageProvider;
 
-        public MatchStatisticsRepository(IStorageProvider aStorageProvider)
+        public MatchStatisticsRepository(IStorageProvider aStorageProvider, IConfigurationRetriever aConfigurationRetriever, TableStorageProvider.Factory aTableProviderFactory)
         {
             mStorageProvider = aStorageProvider;
+            mTableProvider = aTableProviderFactory(aConfigurationRetriever, "MatchStatistics");
         }
 
         public async Task<MatchStatisticsModel> GetMatchStatistics(string aMatchId)
         {
-            var result = await mStorageProvider.TryRead<MatchStatisticsModel>("MatchStatistics", aMatchId);
-            return result;
+            var match = await mStorageProvider.TryRead<Match>("Matches", aMatchId);
+
+            var expectedResults = await mTableProvider.GetPartition(aMatchId);
+
+            var model = new MatchStatisticsModel();
+            model.Match = match;
+            model.ExpectedResultByUserId = expectedResults
+                .Select(x => new { Key = x.Properties["UserId"] as string, Value = (MatchResult)x.Properties["ExpectedResult"] })
+                .ToDictionary(x => x.Key, x => (MatchResult)x.Value);
+
+            return model;
         }
 
         public async Task UpdateUserBets(string aUserId, BettingModel aBet)
         {
-            // TODO: not scalable because of potential collisions
-            // What we can do here use a table with PK=MatchId, RK=UserId
-            // this means the commit will not fail when results are updated, but select will take more time
-            // (whole partition). We can start with it for now
             await Task.WhenAll(aBet.Matches.Select(x => UpdateMatchStatistics(aUserId, x)));
         }
 
 
         private async Task UpdateMatchStatistics(string aUserId, MatchBet aBet)
         {
-            var currentStatistics = await mStorageProvider.TryRead<MatchStatisticsModel>("MatchStatistics", aBet.MatchId);
-            var updatedData = UpdateMatchData(aUserId, aBet, currentStatistics);
-            await mStorageProvider.CreateOrUpdate("MatchStatistics", aBet.MatchId, updatedData);
-        }
-
-        private MatchStatisticsModel UpdateMatchData(string aUserId, MatchBet aBet, MatchStatisticsModel aCurrentStatistics)
-        {
-            if (aCurrentStatistics == null)
-            {
-                aCurrentStatistics = new MatchStatisticsModel();
-            }
-
-            if (aCurrentStatistics.Match == null)
-            {
-                aCurrentStatistics.Match = new Match(aBet);
-            }
-
-            aCurrentStatistics.ExpectedResultByUserId[aUserId] = aBet.ExpectedResult;
-            return aCurrentStatistics;
+            var statisticsEntity = new TableEntity();
+            statisticsEntity.Properties["MatchId"] = aBet.MatchId;
+            statisticsEntity.Properties["UserId"] = aUserId;
+            statisticsEntity.Properties["ExpectedResult"] = (int)aBet.ExpectedResult;
+            await mTableProvider.CreateOrUpdate(aBet.MatchId, aUserId, statisticsEntity);
         }
     }
 }

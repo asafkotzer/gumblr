@@ -214,6 +214,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLogic\BettingModelValidationExcpetion.cs" />
     <Compile Include="BusinessLogic\BettingModelValidator.cs" />
+    <Compile Include="BusinessLogic\IMatchGenerator.cs" />
+    <Compile Include="BusinessLogic\IMatchGeneratorFactory.cs" />
     <Compile Include="BusinessLogic\IStandingsCalculator.cs" />
     <Compile Include="BusinessLogic\ITournamentOrganizer.cs" />
     <Compile Include="BusinessLogic\TeamLogoUrlCreator.cs" />
@@ -265,6 +267,7 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Storage\Azure\BlobStorageProvider.cs" />
+    <Compile Include="Storage\Azure\TableStorageProvider.cs" />
     <Compile Include="Storage\StorageProviderException.cs" />
     <Compile Include="Storage\FileSystemProvider.cs" />
     <Compile Include="Storage\ISerializer.cs" />

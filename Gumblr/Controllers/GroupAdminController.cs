@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using Gumblr.Filters;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Gumblr.BusinessLogic;
 
 namespace Gumblr.Controllers
 {
@@ -20,17 +21,19 @@ namespace Gumblr.Controllers
 		IMatchRepository mMatchRepository;
 		IUserRepository mUserRepository;
 		IIdentityManager mIdentityManager;
-	    private LocalUserManager mLocalUserManager;
+	    LocalUserManager mLocalUserManager;
+        ITournamentOrganizer mTournamentOrganizer;
 
-		public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, ILoginRepository aLoginRepository, LocalUserManager.Factory aLocalUserManagerFactory)
+        public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, ILoginRepository aLoginRepository, LocalUserManager.Factory aLocalUserManagerFactory, ITournamentOrganizer aTournamentOrganizer)
 		{
 			mMatchRepository = aMatchRepository;
 			mUserRepository = aUserRepository;
 			mIdentityManager = aIdentityManager;
 		    mLocalUserManager = aLocalUserManagerFactory(new UserStore<ApplicationUser>(), aLoginRepository, aUserRepository);
+            mTournamentOrganizer = aTournamentOrganizer;
 		}
 
-        public ActionResult Users(string email, string username)
+        public async Task<ActionResult> Users(string email, string username)
         {
             ViewBag.Email = email;
             ViewBag.Username = username;
@@ -60,6 +63,18 @@ namespace Gumblr.Controllers
             return password;
         }
 
+        public async Task<ActionResult> MatchUpload()
+        {
+            var parser = new CsvMatchParser(System.IO.File.ReadAllLines(@"C:\Temp\Gumblr\Matches.csv"));
+            var matches = parser.ParseMatches();
+            foreach (var match in matches)
+            {
+                await mMatchRepository.Create(match);
+            }
+
+            return Json("OK", JsonRequestBehavior.AllowGet);
+        }
+
 		public async Task<ActionResult> Matches()
 		{
 			var matches = (await mMatchRepository.GetMatches()).Take(4);
@@ -74,6 +89,14 @@ namespace Gumblr.Controllers
 			var userId = mIdentityManager.GetUserId(User);
 
 			await Task.WhenAll(aModel.Matches.Select(x => mMatchRepository.Update(x)));
+
+            // generate new matches if needed
+            var allMatches = await mMatchRepository.GetAllMatches();
+            var newMatches = mTournamentOrganizer.GenerateMatches(
+                allMatches.Where(x => x.IsStub() == false), 
+                allMatches.Where(x => x.IsStub() == true));
+
+            await Task.WhenAll(newMatches.Select(x => mMatchRepository.Create(x)));
 
 			return Json(new { status = "success" });
 		}

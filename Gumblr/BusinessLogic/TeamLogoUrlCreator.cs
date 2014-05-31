@@ -43,7 +43,12 @@ namespace Gumblr.BusinessLogic
 
         public string GetLogoUrl(string aTeam)
         {
-            var teamName = aTeam.Replace(' ', '_').Replace('\'', '_');
+            if (string.IsNullOrEmpty(aTeam))
+            {
+                return string.Empty;
+            }
+
+            var teamName = aTeam.Replace(' ', '_');
             return string.Format("/Images/Flags/{0}.png", AbbreviationByFullName[teamName].ToLower());
         }
 
