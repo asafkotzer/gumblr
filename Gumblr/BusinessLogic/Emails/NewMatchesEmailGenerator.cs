@@ -62,7 +62,7 @@ namespace Gumblr.BusinessLogic.Emails
                     stage = "Quarter final";
                     break;
                 case MatchStage.SemiFinals:
-                    stage = "Third place";
+                    stage = "Semi final";
                     break;
                 case MatchStage.ThirdPlace:
                     stage = "Third place";

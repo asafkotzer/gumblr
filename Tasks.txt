@@ -1,9 +1,16 @@
 Open:
-* Champion bet only until first match
+* How come I can submit after match is complete? (not a bug, just weird that it works)
+* Bets should be grayed out after StartTime
+* Allow hiding done matches
+* Indicate stages in bets view
+* Champion bet should only be available until first match
+* Disable 'draw' on tournament matches
+* Winner is not calculated in score
+* Final=20, SF=15, QF=12, R16=10, Group=8
+* In ranking view, click on name should expand and include match-level details + final winner
 * Champion container width is a bit too much - wait for shachar's changes on flags
 * Welcome email
 * base URL (for emails) should be in configuration (web.config)
-* Disable 'draw' on tournament matches
 * action filter for errors
 * MixPanel
 	- events
@@ -11,3 +18,6 @@ Open:
 * Scalability review
 * Improve Ranking UI
 * embed from http://www.fifa.com/newscentre/widgets/ (based on your winner)
+
+* Last email - Third place appears on final too
+* Ranking is not sorted by score

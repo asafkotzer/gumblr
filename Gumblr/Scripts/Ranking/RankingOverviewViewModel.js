@@ -15,5 +15,17 @@
         users.push(userScoreItem);
     });
 
+    function compare(a, b) {
+        if (a.userScore.Score < b.userScore.Score)
+            return 1;
+        if (a.userScore.Score > b.userScore.Score)
+            return -1;
+        return 0;
+    }
+
+    console.log(users);
+    var sortedUsers = users.sort(compare);
+    console.log(sortedUsers);
+
     this.users = ko.observableArray(users);
 };
