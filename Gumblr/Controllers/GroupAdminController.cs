@@ -89,7 +89,11 @@ namespace Gumblr.Controllers
 		{
 			var userId = mIdentityManager.GetUserId(User);
 
-			await Task.WhenAll(aModel.Matches.Select(x => mMatchRepository.Update(x)));
+			await Task.WhenAll(aModel.Matches.Select(x => 
+            {
+                x.IsComplete = true;
+                return mMatchRepository.Update(x);
+            }));
 
             // generate new matches if needed
             await mTournamentGenerator.UpdateNewMatches();

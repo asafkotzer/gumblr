@@ -35,7 +35,7 @@ namespace Gumblr.BusinessLogic
             var allMatches = await mMatchRepository.GetAllMatches();
             var newMatches = mTournamentOrganizer.GenerateMatches(
                 allMatches.Where(x => x.IsStub() == false),
-                allMatches.Where(x => x.IsStub() == true));
+                allMatches.Where(x => x.IsStub() == true)).ToList();
 
             if (newMatches.Count() > 0)
             {
