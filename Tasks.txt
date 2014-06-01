@@ -1,5 +1,6 @@
 Open:
 * Champion container width is a bit too much - wait for shachar's changes on flags
+* Welcome email
 * base URL (for emails) should be in configuration (web.config)
 * Disable 'draw' on tournament matches
 * action filter for errors

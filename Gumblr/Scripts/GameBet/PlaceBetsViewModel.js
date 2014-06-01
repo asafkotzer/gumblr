@@ -72,7 +72,7 @@
             mixpanel.track('late bet change', {
                 'matchId': viewModel.match.MatchId,
             });
-            alert("Too late");
+            toastr.fail("Too late, the game already started", "That's low");
         }
 
         var target = $(event.currentTarget);
