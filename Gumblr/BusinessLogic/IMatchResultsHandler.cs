@@ -40,7 +40,7 @@ namespace Gumblr.BusinessLogic
             if (newMatches.Count() > 0)
             {
                 // update repository
-                await Task.WhenAll(newMatches.Select(x => mMatchRepository.Create(x)));
+                await Task.WhenAll(newMatches.Select(x => mMatchRepository.Update(x)));
 
                 // send emails to all users
                 var users = await mUserRepository.GetAllUsers();
