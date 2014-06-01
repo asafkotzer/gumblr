@@ -41,8 +41,7 @@ namespace Gumblr.DataAccess
                 .Select(x => mStorageProvider.Read<Match>(x.Container, x.Key));
 
             var matches = (await Task.WhenAll(tasks))
-                .OrderBy(x => x.StartTime)
-                .Take(4);
+                .OrderBy(x => x.StartTime);
 
             return matches;
         }

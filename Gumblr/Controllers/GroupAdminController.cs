@@ -65,7 +65,8 @@ namespace Gumblr.Controllers
 
         public async Task<ActionResult> MatchUpload()
         {
-            var parser = new CsvMatchParser(System.IO.File.ReadAllLines(@"C:\Temp\Gumblr\Matches.csv"));
+            var filename = @"C:\Temp\Gumblr\Matches-Fake.csv";
+            var parser = new CsvMatchParser(System.IO.File.ReadAllLines(filename));
             var matches = parser.ParseMatches();
             foreach (var match in matches)
             {
@@ -77,7 +78,7 @@ namespace Gumblr.Controllers
 
 		public async Task<ActionResult> Matches()
 		{
-			var matches = (await mMatchRepository.GetMatches()).Take(4);
+			var matches = (await mMatchRepository.GetMatches());
 
 			var model = new MatchesAdminModel() { Matches = matches };
 			return View(model);
