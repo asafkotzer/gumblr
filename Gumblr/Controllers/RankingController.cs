@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Gumblr.Controllers
 {
+    [Authorize]
     public class RankingController : Controller
     {
         IMatchBetRepository mMatchBetRepository;
