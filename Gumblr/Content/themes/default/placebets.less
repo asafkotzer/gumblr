@@ -22,6 +22,10 @@
         }
     }
 
+    .hide-button-container{
+        text-align:right;
+    }
+
     .WinnerSelectionFrame {
         margin-top: 20px;
         font-family: Calibri;
@@ -33,27 +37,26 @@
         .WinnerSelectionFrameTitle {
             margin-right: auto;
             margin-left: auto;
-            text-align:center;
-            font-size:25px;
-            font-weight:bold;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
         }
 
         .SelectContainer {
             vertical-align: top;
             display: inline-block;
-            margin:20px 89px;
+            margin: 20px 89px;
 
             .DropDown {
-                width:200px;
+                width: 200px;
             }
         }
 
         .SelectedItemContainer {
             vertical-align: top;
             display: inline-block;
-            margin:0px 125px;
+            margin: 0px 125px;
         }
-
     }
 
     .BetList {
@@ -62,21 +65,31 @@
         padding: 0px;
         font-family: Calibri;
 
+        .HiddenMatchContainer {
+            height: 0px;
+            margin: 0px;
+            visibility: hidden;
+
+            .MatchFrame {
+                padding:0px;
+            }
+        }
+
         .StartedMatchContainer {
             margin-top: 3px;
             width: 760px;
             margin-right: auto;
             margin-left: auto;
-            position: relative; 
+            position: relative;
 
             .ActualResultFrame {
-                visibility:hidden;
-                height:0;
+                visibility: hidden;
+                height: 0;
             }
 
             .StatisticsFrame {
-                visibility:hidden;
-                height:0;
+                visibility: hidden;
+                height: 0;
             }
 
             .MatchFrame {
@@ -84,23 +97,23 @@
                 height: 70px;
                 background-color: @BackgroundColor;
                 padding: 5px 25px;
-                position: relative; 
+                position: relative;
                 vertical-align: top;
 
-                
-                .TeamsContainer{
-                    margin-right:auto;
-                    margin-left:auto;
-                    width:370px;
+
+                .TeamsContainer {
+                    margin-right: auto;
+                    margin-left: auto;
+                    width: 370px;
                 }
 
                 .MatchSubtitle {
                     margin: 0px;
-                    visibility:hidden;
+                    visibility: hidden;
                 }
 
                 .LogoContainer {
-                    vertical-align:top;
+                    vertical-align: top;
                     display: inline-block;
 
                     .Logo {
@@ -111,19 +124,18 @@
                     }
 
                     .team-name-container {
-                        text-align:center;
+                        text-align: center;
 
                         .TeamName {
                             font-size: 12px;
                             font-weight: bold;
                         }
-
                     }
 
                     .Selected {
                         border: solid;
                         border-color: red;
-                        border-radius: 2px;
+                        border-radius: 5px;
                     }
 
                     .Draw {
@@ -138,42 +150,42 @@
             width: 760px;
             margin-right: auto;
             margin-left: auto;
-            position: relative; 
+            position: relative;
 
             .ActualResultFrame {
-                margin-top:0px;
+                margin-top: 0px;
                 width: 150px;
                 background-color: @BackgroundColor;
                 padding: 10px;
-                margin-right:0px;
+                margin-right: 0px;
                 display: inline-block;
                 height: @FrameHeight;
-                position: relative; 
+                position: relative;
                 vertical-align: top;
 
                 .SuccessIndicatorContainer {
-                    width: 48px; 
+                    width: 48px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: -24px;
-                    position: relative; 
-                    top:50%;
+                    position: relative;
+                    top: 50%;
                 }
             }
 
             .StatisticsFrame {
-                margin-top:0px;
+                margin-top: 0px;
                 width: 150px;
                 background-color: @BackgroundColor;
                 padding: 10px;
-                margin-right:0px;
+                margin-right: 0px;
                 display: inline-block;
                 height: @FrameHeight;
-                position: relative; 
+                position: relative;
                 vertical-align: top;
 
                 .ShowStatisticsButtonContainer {
-                    width: 100px; 
+                    width: 100px;
                     margin-right: auto;
                     margin-left: auto;
                     margin-bottom: 5px;
@@ -186,20 +198,19 @@
                 background-color: @BackgroundColor;
                 padding: 10px 25px;
                 display: inline-block;
-                position: relative; 
+                position: relative;
                 vertical-align: top;
 
-                .TeamsContainer{
-                    margin-right:auto;
-                    margin-left:auto;
-                    width:370px;
-                    height:100px;
+                .TeamsContainer {
+                    margin-right: auto;
+                    margin-left: auto;
+                    width: 370px;
+                    height: 100px;
                 }
 
                 .MatchTitle {
                     text-align: center;
                     color: #3b3b3b;
-
                 }
 
                 .MatchSubtitle {
@@ -210,12 +221,12 @@
                 }
 
                 .LogoContainer {
-                    vertical-align:top;
-                    height:80px;
+                    vertical-align: top;
+                    height: 80px;
                     display: inline-block;
 
                     .team-name-container {
-                        text-align:center;
+                        text-align: center;
 
                         .title-text {
                             font-size: 25px;
@@ -225,7 +236,6 @@
                             font-size: 25px;
                             font-weight: bold;
                         }
-
                     }
 
                     .SelectionMarker {
@@ -242,7 +252,7 @@
                     .Selected {
                         border: solid;
                         border-color: red;
-                        border-radius: 2px;
+                        border-radius: 5px;
                     }
 
                     .Draw {
@@ -258,8 +268,8 @@
 
         .SubmitContainer {
             width: 100px;
-            margin-left:auto;
-            margin-right:auto;
+            margin-left: auto;
+            margin-right: auto;
 
             .StatusText {
                 text-align: center;

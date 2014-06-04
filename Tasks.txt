@@ -1,8 +1,5 @@
 Open:
-* New flags
-* Bets should be grayed out after StartTime
 * Show toastr when submitting after StartTime (depends on previous)
-* Allow hiding done matches
 * Indicate stages in bets view
 * Champion bet should only be available until first match
 * Disable 'draw' on tournament matches(?)
@@ -22,3 +19,6 @@ Open:
 
 * Last email - Third place appears on final too
 * Ranking is not sorted by score
+* Bets should be grayed out after StartTime
+* Allow hiding done matches
+* New flags

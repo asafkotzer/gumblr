@@ -164,15 +164,44 @@
         }, this);
 
         matchItem.drawLogoUrl = ko.observable("/Images/draw.png");
+        matchItem.isHidden = ko.observable(false);
 
         matches.push({
             match: matchItem,
             selected: onGameBetClick,
             showStatistics: onShowStatisticsClick,
-            getMatchContainerClass: ko.computed(function () { return matchItem.HasStarted ? "StartedMatchContainer" : "MatchContainer"; })
+            getMatchContainerClass: ko.computed(function () {
+                if (matchItem.isHidden() == true) {
+                    return "HiddenMatchContainer";
+                }
+                return matchItem.HasStarted ? "StartedMatchContainer" : "MatchContainer";
+            })
         });
     });
     this.matches = ko.observableArray(matches);
+    this.showingStartedMatches = ko.observable(true);
+    this.hideButtonText = ko.computed(function () {
+        if (self.showingStartedMatches()) {
+            return "hide started matches";
+        } else {
+            return "show all matches";
+        }
+    });
+    this.hideStartedMatches = function () {
+        if (self.showingStartedMatches()) {
+            self.showingStartedMatches(false);
+            self.matches().forEach(function (matchWrapper) {
+                if (matchWrapper.match.HasStarted) {
+                    matchWrapper.match.isHidden(true);
+                }
+            });
+        } else {
+            self.showingStartedMatches(true);
+            self.matches().forEach(function (matchWrapper) {
+                matchWrapper.match.isHidden(false);
+            });
+        }
+    };
     this.winner = ko.observable(model.Winner);
     this.possibleWinners = ko.observable(model.PossibleWinners);
     this.winnerLogo = ko.computed(function () {
