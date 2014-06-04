@@ -42,41 +42,47 @@
     </div>
 </div>
 
-<ul data-bind="foreach: games" class="BetList">
+<ul data-bind="foreach: matches" class="BetList">
     <li>
-        <div class="MatchContainer">
-            <div class="ActualResultFrame">
+        <div data-bind="css: getMatchContainerClass">
+            @*<div class="ActualResultFrame">
                 <div class="SuccessIndicatorContainer">
                     <img data-bind="attr:{src: match.SuccessIndicator()}" class="SelectionMarker" />
                 </div>
-            </div>
+            </div>*@
 
             <div class="MatchFrame">
-                <p class="MatchTitle">
+                @*<div class="MatchTitle">
                     <span class="TeamName" data-bind="text: match.Host"></span>
                     vs.
                     <span class="TeamName" data-bind="text: match.Visitor"></span>
-                </p>
+                </div>*@
+                <div class="TeamsContainer">
+                    <div class="LogoContainer">
+                        <div class="team-name-container">
+                            <span class="TeamName" data-bind="text: match.Host"></span>
+                        </div>
+                        <input class="Logo Host" type="image" data-bind="attr:{src: match.hostLogoUrl }, click: selected, css: { 'Selected': match.ExpectedResult() == 0 }, event: { mouseover: match.onMouseIn, mouseout: match.onMouseOut }" />
+                    </div>
+                    <div class="LogoContainer">
+                        <div class="team-name-container">
+                            <span class="title-text">vs.</span>
+                        </div>
+                        <input class="Logo Tie" type="image" data-bind="attr:{src: match.drawLogoUrl }, click: selected, css: { 'Selected': match.ExpectedResult() == 1, 'Draw': match.ExpectedResult() != 1}, event: { mouseover: match.onMouseIn, mouseout: match.onMouseOut } " />
+                    </div>
+                    <div class="LogoContainer">
+                        <div class="team-name-container">
+                            <span class="TeamName" data-bind="text: match.Visitor"></span>
+                        </div>
+                        <input class="Logo Visitor" type="image" data-bind="attr:{src: match.visitorLogoUrl}, click: selected, css: { 'Selected': match.ExpectedResult() == 2 }, event: { mouseover: match.onMouseIn, mouseout: match.onMouseOut }" />
+                    </div>
+                </div>
                 <p class="MatchSubtitle">
                     <span data-bind="text: match.Venue"></span>
                 </p>
                 <p class="MatchSubtitle">
                     <span data-bind="text: moment(match.StartTime).format('MMMM Do YYYY, h:mm:ss a')"></span>
                 </p>
-                <div>
-                    <div class="LogoContainer">
-                        <input class="Logo Host" type="image" data-bind="attr:{src: match.HostLogoUrl}, click: selected, css: { 'Selected': match.ExpectedResult() == 0 }" />
-                        <img src="/Images/UpArrow.png" class="SelectionMarker" />
-                    </div>
-                    <div class="LogoContainer">
-                        <input class="Logo" type="image" data-bind="click: selected, css: { 'Selected': match.ExpectedResult() == 1, 'Draw': match.ExpectedResult() != 1 }" src="/Images/Draw.png" />
-                        <img src="/Images/UpArrow.png" class="SelectionMarker" />
-                    </div>
-                    <div class="LogoContainer">
-                        <input class="Logo Visitor" type="image" data-bind="attr:{src: match.VisitorLogoUrl}, click: selected, css: { 'Selected': match.ExpectedResult() == 2 }" />
-                        <img src="/Images/UpArrow.png" class="SelectionMarker" />
-                    </div>
-                </div>
             </div>
 
             <div class="StatisticsFrame">

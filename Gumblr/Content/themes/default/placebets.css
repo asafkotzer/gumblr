@@ -7,7 +7,7 @@ body .LoaderContainer .Spinner {
 }
 body .Logo {
   display: block;
-  width: 57px;
+  width: 50px;
   height: 50px;
   margin: 5px 35px;
 }
@@ -46,10 +46,65 @@ body .BetList {
   list-style: none;
   margin: 0px;
   padding: 0px;
+  font-family: Calibri;
+}
+body .BetList .StartedMatchContainer {
+  margin-top: 3px;
+  width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+body .BetList .StartedMatchContainer .ActualResultFrame {
+  visibility: hidden;
+}
+body .BetList .StartedMatchContainer .StatisticsFrame {
+  visibility: hidden;
+}
+body .BetList .StartedMatchContainer .MatchFrame {
+  width: 760px;
+  height: 70px;
+  background-color: #dedede;
+  padding: 5px 25px;
+  position: relative;
+  vertical-align: top;
+}
+body .BetList .StartedMatchContainer .MatchFrame .TeamsContainer {
+  margin-right: auto;
+  margin-left: auto;
+  width: 370px;
+}
+body .BetList .StartedMatchContainer .MatchFrame .MatchSubtitle {
+  margin: 0px;
+  visibility: hidden;
+}
+body .BetList .StartedMatchContainer .MatchFrame .LogoContainer {
+  vertical-align: top;
+  display: inline-block;
+}
+body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .Logo {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 5px 35px;
+}
+body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .team-name-container {
+  text-align: center;
+}
+body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .team-name-container .TeamName {
+  font-size: 12px;
+  font-weight: bold;
+}
+body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .Selected {
+  border: solid;
+  border-color: red;
+  border-radius: 2px;
+}
+body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .Draw {
+  border: none;
 }
 body .BetList .MatchContainer {
-  margin-top: 20px;
-  font-family: Calibri;
+  margin-top: 3px;
   width: 760px;
   margin-right: auto;
   margin-left: auto;
@@ -62,7 +117,7 @@ body .BetList .MatchContainer .ActualResultFrame {
   padding: 10px;
   margin-right: 0px;
   display: inline-block;
-  height: 250px;
+  height: 200px;
   position: relative;
   vertical-align: top;
 }
@@ -81,30 +136,34 @@ body .BetList .MatchContainer .StatisticsFrame {
   padding: 10px;
   margin-right: 0px;
   display: inline-block;
-  height: 250px;
+  height: 200px;
   position: relative;
   vertical-align: top;
 }
 body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer {
   width: 100px;
-  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5px;
 }
 body .BetList .MatchContainer .MatchFrame {
-  width: 450px;
-  height: 250px;
+  width: 600px;
+  height: 200px;
   background-color: #dedede;
   padding: 10px 25px;
   display: inline-block;
   position: relative;
   vertical-align: top;
 }
+body .BetList .MatchContainer .MatchFrame .TeamsContainer {
+  margin-right: auto;
+  margin-left: auto;
+  width: 370px;
+  height: 100px;
+}
 body .BetList .MatchContainer .MatchFrame .MatchTitle {
   text-align: center;
   color: #3b3b3b;
-}
-body .BetList .MatchContainer .MatchFrame .MatchTitle .TeamName {
-  font-size: 25px;
-  font-weight: bold;
 }
 body .BetList .MatchContainer .MatchFrame .MatchSubtitle {
   margin: 0px;
@@ -113,7 +172,19 @@ body .BetList .MatchContainer .MatchFrame .MatchSubtitle {
   color: #3b3b3b;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer {
+  vertical-align: top;
+  height: 80px;
   display: inline-block;
+}
+body .BetList .MatchContainer .MatchFrame .LogoContainer .team-name-container {
+  text-align: center;
+}
+body .BetList .MatchContainer .MatchFrame .LogoContainer .team-name-container .title-text {
+  font-size: 25px;
+}
+body .BetList .MatchContainer .MatchFrame .LogoContainer .team-name-container .TeamName {
+  font-size: 25px;
+  font-weight: bold;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .SelectionMarker {
   width: 27px;
@@ -127,7 +198,7 @@ body .BetList .MatchContainer .MatchFrame .LogoContainer .Visible {
 body .BetList .MatchContainer .MatchFrame .LogoContainer .Selected {
   border: solid;
   border-color: red;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .Draw {
   border: none;

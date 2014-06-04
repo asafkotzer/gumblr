@@ -39,8 +39,6 @@ namespace Gumblr.Models
         public int GoalsScoredByVisitor { get; set; }
         public MatchDependency Dependency { get; set; }
 
-        public string HostLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Host); } }
-        public string VisitorLogoUrl { get { return TeamLogoUrlCreator.Instance.GetLogoUrl(Visitor); } }
         public string MatchId { get; set; }
         public MatchResult ActualResult
         {
@@ -52,6 +50,8 @@ namespace Gumblr.Models
                 else return MatchResult.Draw;
             }
         }
+
+        public bool HasStarted { get { return DateTime.UtcNow > StartTime; } }
 
         public string GetWinner()
         {

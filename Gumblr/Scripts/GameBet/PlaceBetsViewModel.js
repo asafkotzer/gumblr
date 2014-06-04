@@ -66,7 +66,11 @@
     };
 
     var onGameBetClick = function (viewModel, event) {
+
         var match = viewModel.match;
+
+        if (match.HasStarted) { return; }
+
         var startTime = new Date(parseInt(match.StartTime.substr(6, 12)));
         if (startTime.getTime() > new Date().getTime()) {
             mixpanel.track('late bet change', {
@@ -91,9 +95,63 @@
 
     };
 
+    var getFlag = function (country, modifier) {
+        var suffix = "";
+        if (modifier == "glow") suffix = "-glow";
+        if (modifier == "bw") suffix = "-bw";
+        return "/Images/Flags/" + country.toLowerCase().replace(' ', '-') + suffix + ".png";
+    };
+
+    var getDrawIcon = function (modifier) {
+        var suffix = "";
+        if (modifier == "glow") suffix = "-glow";
+        if (modifier == "bw") suffix = "-bw";
+        return "/Images/draw" + suffix + ".png";
+    };
+
     var matches = [];
     model.Matches.forEach(function (matchItem) {
         var currentExpectedResult = matchItem.ExpectedResult;
+
+        matchItem.onMouseIn = function (viewModel, event) {
+
+            if (matchItem.HasStarted) { return;}
+
+            var isHost = $(event.target).hasClass("Host");
+            var isVisitor = $(event.target).hasClass("Visitor");
+            var isDraw = $(event.target).hasClass("Tie");
+            if (isHost) {
+                matchItem.hostLogoUrl(getFlag(matchItem.Host, "glow"));
+            }
+            else if (isVisitor) {
+                matchItem.visitorLogoUrl(getFlag(matchItem.Visitor, "glow"));
+            }
+            else if (isDraw) {
+                matchItem.drawLogoUrl(getDrawIcon("glow"));
+            }
+        };
+
+        matchItem.onMouseOut = function (viewModel, event) {
+
+            if (matchItem.HasStarted) { return; }
+
+            var isHost = $(event.target).hasClass("Host");
+            var isVisitor = $(event.target).hasClass("Visitor");
+            var isDraw = $(event.target).hasClass("Tie");
+            if (isHost) {
+                matchItem.hostLogoUrl(getFlag(matchItem.Host));
+            }
+            else if (isVisitor) {
+                matchItem.visitorLogoUrl(getFlag(matchItem.Visitor));
+            }
+            else if (isDraw) {
+                matchItem.drawLogoUrl(getDrawIcon());
+            }
+        };
+
+        matchItem.hostLogoUrl = ko.observable(getFlag(matchItem.Host));
+        matchItem.visitorLogoUrl = ko.observable(getFlag(matchItem.Visitor));
+
         matchItem.ExpectedResult = ko.observable(currentExpectedResult);
         matchItem.SuccessIndicator = ko.computed(function () {
             if (matchItem.ActualResult == -1) {
@@ -105,20 +163,23 @@
             }
         }, this);
 
+        matchItem.drawLogoUrl = ko.observable("/Images/draw.png");
+
         matches.push({
             match: matchItem,
             selected: onGameBetClick,
-            showStatistics: onShowStatisticsClick
+            showStatistics: onShowStatisticsClick,
+            getMatchContainerClass: ko.computed(function () { return matchItem.HasStarted ? "StartedMatchContainer" : "MatchContainer"; })
         });
     });
-    this.games = ko.observableArray(matches);
+    this.matches = ko.observableArray(matches);
     this.winner = ko.observable(model.Winner);
     this.possibleWinners = ko.observable(model.PossibleWinners);
     this.winnerLogo = ko.computed(function () {
         if (self.winner() == null) {
             return "/Images/QuestionMark.png";
         }
-        return model.TeamLogoUrlByTeamName[self.winner()];
+        return "/Images/Flags/" + self.winner().toLowerCase().replace(' ', '-') + ".png";
     });
 
     var prepareModelForUpload = function (model) {

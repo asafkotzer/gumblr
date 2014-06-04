@@ -48,18 +48,11 @@ namespace Gumblr.Controllers
                 .Distinct()
                 .OrderBy(x => x);
 
-            var temaLogoUrlByTeamName = matches
-                .Select(x => new { TeamName = x.Host, Logo = x.HostLogoUrl })
-                .Union(matches.Select(x => new { TeamName = x.Visitor, Logo = x.VisitorLogoUrl }))
-                .Distinct()
-                .ToDictionary(x => x.TeamName, x => x.Logo);
-
             var model = new BettingModel
             {
                 Matches = matches.Select(x => GetCurrentBet(currentBetsByMatchId, x)),
                 PossibleWinners = teams,
                 Winner = userBets == null ? null : userBets.Winner,
-                TeamLogoUrlByTeamName = temaLogoUrlByTeamName,
             };
 
             return View(model);
