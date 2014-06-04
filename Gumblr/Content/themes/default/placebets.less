@@ -1,6 +1,10 @@
 ﻿body {
     @BackgroundColor: #dedede;
-    @FrameHeight: 200px;
+    @FrameHeight: 180px;
+
+    .bold {
+        font-weight:bold;
+    }
 
     .LoaderContainer {
         min-height: 130px;
@@ -13,9 +17,9 @@
 
     .Logo {
         display: block;
-        width: 50px;
-        height: 50px;
-        margin: 5px 35px;
+        width: 80px;
+        height: 80px;
+        margin: 5px 50px;
 
         &:hover {
             border-color: rgba(255, 106, 0, 0.60);
@@ -45,7 +49,7 @@
         .SelectContainer {
             vertical-align: top;
             display: inline-block;
-            margin: 20px 89px;
+            margin: 33px 89px;
 
             .DropDown {
                 width: 200px;
@@ -55,7 +59,7 @@
         .SelectedItemContainer {
             vertical-align: top;
             display: inline-block;
-            margin: 0px 125px;
+            margin: 0px 99.5px;
         }
     }
 
@@ -193,7 +197,7 @@
             }
 
             .MatchFrame {
-                width: 600px;
+                width: 607px;
                 height: @FrameHeight;
                 background-color: @BackgroundColor;
                 padding: 10px 25px;
@@ -204,8 +208,8 @@
                 .TeamsContainer {
                     margin-right: auto;
                     margin-left: auto;
-                    width: 370px;
-                    height: 100px;
+                    width: 570px;
+                    height: 120px;
                 }
 
                 .MatchTitle {
@@ -224,16 +228,17 @@
                     vertical-align: top;
                     height: 80px;
                     display: inline-block;
+                    width:180px;
 
                     .team-name-container {
                         text-align: center;
 
                         .title-text {
-                            font-size: 25px;
+                            font-size: 21px;
                         }
 
                         .TeamName {
-                            font-size: 25px;
+                            font-size: 21px;
                             font-weight: bold;
                         }
                     }

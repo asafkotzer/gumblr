@@ -27,7 +27,7 @@ namespace Gumblr.BusinessLogic.Emails
             {
                 matchListBuilder.AppendLine(string.Format(
                     "<span style='font-weight:bold'>{0}: </span><span>{1} vs. {2} ({3})</span><br/>",
-                    GetStageString(match.Stage), 
+                    match.StageString, 
                     match.Host, 
                     match.Visitor, 
                     match.StartTime.ToString("dd/MM HH:mm")));
@@ -41,41 +41,6 @@ namespace Gumblr.BusinessLogic.Emails
                 "http://gumblr.azurewebsites.net");
 
             return format;
-        }
-
-        private string GetStageString(MatchStage aMatchStage)
-        {
-            string stage = null;
-
-            switch (aMatchStage)
-            {
-                case MatchStage.Qualifying:
-                    stage = "Qualifying";
-                    break;
-                case MatchStage.Group:
-                    stage = "Group stage";
-                    break;
-                case MatchStage.RoundOfSixteen:
-                    stage = "Round of sixteen";
-                    break;
-                case MatchStage.QuarterFinals:
-                    stage = "Quarter final";
-                    break;
-                case MatchStage.SemiFinals:
-                    stage = "Semi final";
-                    break;
-                case MatchStage.ThirdPlace:
-                    stage = "Third place";
-                    break;
-                case MatchStage.Finals:
-                    stage = "The Final";
-                    break;
-                default:
-                    stage = aMatchStage.ToString();
-                    break;
-            }
-
-            return stage;
         }
 
         public string GenerateSubject()

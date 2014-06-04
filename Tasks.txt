@@ -1,6 +1,4 @@
 Open:
-* Show toastr when submitting after StartTime (depends on previous)
-* Indicate stages in bets view
 * Champion bet should only be available until first match
 * Disable 'draw' on tournament matches(?)
 * Winner is not calculated in score
@@ -22,3 +20,4 @@ Open:
 * Bets should be grayed out after StartTime
 * Allow hiding done matches
 * New flags
+* Indicate stages in bets view

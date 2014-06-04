@@ -53,6 +53,42 @@ namespace Gumblr.Models
 
         public bool HasStarted { get { return DateTime.UtcNow > StartTime; } }
 
+        public string StageString { get 
+            {
+                string stage = null;
+
+                switch (this.Stage)
+                {
+                    case MatchStage.Qualifying:
+                        stage = "Qualifying";
+                        break;
+                    case MatchStage.Group:
+                        stage = "Group stage";
+                        break;
+                    case MatchStage.RoundOfSixteen:
+                        stage = "Round of sixteen";
+                        break;
+                    case MatchStage.QuarterFinals:
+                        stage = "Quarter final";
+                        break;
+                    case MatchStage.SemiFinals:
+                        stage = "Semi final";
+                        break;
+                    case MatchStage.ThirdPlace:
+                        stage = "Third place";
+                        break;
+                    case MatchStage.Finals:
+                        stage = "The Final";
+                        break;
+                    default:
+                        stage = this.Stage.ToString();
+                        break;
+                }
+
+                return stage;
+            } 
+        }
+
         public string GetWinner()
         {
             if (ActualResult == MatchResult.Host) return Host;

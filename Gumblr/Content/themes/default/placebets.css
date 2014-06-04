@@ -1,3 +1,6 @@
+body .bold {
+  font-weight: bold;
+}
 body .LoaderContainer {
   min-height: 130px;
 }
@@ -7,9 +10,9 @@ body .LoaderContainer .Spinner {
 }
 body .Logo {
   display: block;
-  width: 50px;
-  height: 50px;
-  margin: 5px 35px;
+  width: 80px;
+  height: 80px;
+  margin: 5px 50px;
 }
 body .Logo:hover {
   border-color: rgba(255, 106, 0, 0.6);
@@ -35,7 +38,7 @@ body .WinnerSelectionFrame .WinnerSelectionFrameTitle {
 body .WinnerSelectionFrame .SelectContainer {
   vertical-align: top;
   display: inline-block;
-  margin: 20px 89px;
+  margin: 33px 89px;
 }
 body .WinnerSelectionFrame .SelectContainer .DropDown {
   width: 200px;
@@ -43,7 +46,7 @@ body .WinnerSelectionFrame .SelectContainer .DropDown {
 body .WinnerSelectionFrame .SelectedItemContainer {
   vertical-align: top;
   display: inline-block;
-  margin: 0px 125px;
+  margin: 0px 99.5px;
 }
 body .BetList {
   list-style: none;
@@ -130,7 +133,7 @@ body .BetList .MatchContainer .ActualResultFrame {
   padding: 10px;
   margin-right: 0px;
   display: inline-block;
-  height: 200px;
+  height: 180px;
   position: relative;
   vertical-align: top;
 }
@@ -149,7 +152,7 @@ body .BetList .MatchContainer .StatisticsFrame {
   padding: 10px;
   margin-right: 0px;
   display: inline-block;
-  height: 200px;
+  height: 180px;
   position: relative;
   vertical-align: top;
 }
@@ -160,8 +163,8 @@ body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer {
   margin-bottom: 5px;
 }
 body .BetList .MatchContainer .MatchFrame {
-  width: 600px;
-  height: 200px;
+  width: 607px;
+  height: 180px;
   background-color: #dedede;
   padding: 10px 25px;
   display: inline-block;
@@ -171,8 +174,8 @@ body .BetList .MatchContainer .MatchFrame {
 body .BetList .MatchContainer .MatchFrame .TeamsContainer {
   margin-right: auto;
   margin-left: auto;
-  width: 370px;
-  height: 100px;
+  width: 570px;
+  height: 120px;
 }
 body .BetList .MatchContainer .MatchFrame .MatchTitle {
   text-align: center;
@@ -188,15 +191,16 @@ body .BetList .MatchContainer .MatchFrame .LogoContainer {
   vertical-align: top;
   height: 80px;
   display: inline-block;
+  width: 180px;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .team-name-container {
   text-align: center;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .team-name-container .title-text {
-  font-size: 25px;
+  font-size: 21px;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .team-name-container .TeamName {
-  font-size: 25px;
+  font-size: 21px;
   font-weight: bold;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .SelectionMarker {

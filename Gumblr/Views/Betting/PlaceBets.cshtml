@@ -49,18 +49,7 @@
 <ul data-bind="foreach: matches" class="BetList">
     <li>
         <div data-bind="css: getMatchContainerClass">
-            @*<div class="ActualResultFrame">
-                <div class="SuccessIndicatorContainer">
-                    <img data-bind="attr:{src: match.SuccessIndicator()}" class="SelectionMarker" />
-                </div>
-            </div>*@
-
             <div class="MatchFrame">
-                @*<div class="MatchTitle">
-                    <span class="TeamName" data-bind="text: match.Host"></span>
-                    vs.
-                    <span class="TeamName" data-bind="text: match.Visitor"></span>
-                </div>*@
                 <div class="TeamsContainer">
                     <div class="LogoContainer">
                         <div class="team-name-container">
@@ -82,7 +71,7 @@
                     </div>
                 </div>
                 <p class="MatchSubtitle">
-                    <span data-bind="text: match.Venue"></span>
+                    <span class="bold" data-bind="text: match.StageString"></span> at <span data-bind="text: match.Venue"></span>
                 </p>
                 <p class="MatchSubtitle">
                     <span data-bind="text: moment(match.StartTime).format('MMMM Do YYYY, h:mm:ss a')"></span>
