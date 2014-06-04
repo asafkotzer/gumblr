@@ -57,9 +57,11 @@ body .BetList .StartedMatchContainer {
 }
 body .BetList .StartedMatchContainer .ActualResultFrame {
   visibility: hidden;
+  height: 0;
 }
 body .BetList .StartedMatchContainer .StatisticsFrame {
   visibility: hidden;
+  height: 0;
 }
 body .BetList .StartedMatchContainer .MatchFrame {
   width: 760px;
