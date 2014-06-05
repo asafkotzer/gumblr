@@ -40,6 +40,9 @@ body .DefaultButton.active {
   position: relative;
   top: 1px;
 }
+body .bold {
+  font-weight: bold;
+}
 body .simpleOverlay {
   display: none;
   z-index: 10000;

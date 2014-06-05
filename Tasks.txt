@@ -1,13 +1,13 @@
-Open:
+Tasks:
 * Champion bet should only be available until first match
 * Disable 'draw' on tournament matches(?)
 * Winner is not calculated in score
 * Final=20, SF=15, QF=12, R16=10, Group=8, Winner=10
-* In ranking view, click on name should expand and include match-level details + final winner
-* Champion container width is a bit too much - wait for shachar's changes on flags
+* action filter for errors
+
+Optional:
 * Welcome email
 * base URL (for emails) should be in configuration (web.config)
-* action filter for errors
 * MixPanel
 	- events
 * Raygun
@@ -21,3 +21,5 @@ Open:
 * Allow hiding done matches
 * New flags
 * Indicate stages in bets view
+* Champion container width is a bit too much - wait for shachar's changes on flags
+* In ranking view, click on name should expand and include match-level details + final winner

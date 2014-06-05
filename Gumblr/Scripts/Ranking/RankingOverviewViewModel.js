@@ -12,6 +12,23 @@
         userScoreItem.isWinner = userScoreItem.userScore.Score == model.MaxScore;
         userScoreItem.isLoser = userScoreItem.userScore.Score == model.MinScore;
 
+        /*
+        Must use ko.calculated because using IDs makes it impossible to distinguish between elements in the list
+        */
+        userScoreItem.detailsInvisible = ko.observable(true);
+        userScoreItem.toggleDetails = function () {
+            console.log(userScoreItem.detailsInvisible());
+            userScoreItem.detailsInvisible(!userScoreItem.detailsInvisible());
+        };
+
+        userScoreItem.getDetailsClass = ko.computed(function () {
+            if (userScoreItem.detailsInvisible()) {
+                return "invisible";
+            } else {
+                return "";
+            }
+        });
+
         users.push(userScoreItem);
     });
 
@@ -23,9 +40,7 @@
         return 0;
     }
 
-    console.log(users);
     var sortedUsers = users.sort(compare);
-    console.log(sortedUsers);
 
     this.users = ko.observableArray(users);
 };

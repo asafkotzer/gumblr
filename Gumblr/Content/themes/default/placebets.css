@@ -1,6 +1,3 @@
-body .bold {
-  font-weight: bold;
-}
 body .LoaderContainer {
   min-height: 130px;
 }
@@ -38,7 +35,7 @@ body .WinnerSelectionFrame .WinnerSelectionFrameTitle {
 body .WinnerSelectionFrame .SelectContainer {
   vertical-align: top;
   display: inline-block;
-  margin: 33px 89px;
+  margin: 33px 88px;
 }
 body .WinnerSelectionFrame .SelectContainer .DropDown {
   width: 200px;
@@ -46,7 +43,7 @@ body .WinnerSelectionFrame .SelectContainer .DropDown {
 body .WinnerSelectionFrame .SelectedItemContainer {
   vertical-align: top;
   display: inline-block;
-  margin: 0px 99.5px;
+  margin: 0px 98px;
 }
 body .BetList {
   list-style: none;

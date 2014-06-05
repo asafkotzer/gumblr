@@ -19,14 +19,25 @@
 }
 
 <div class="table-container">
-    <ul data-bind="foreach: users" class="ranking-list">
+    <ul data-bind="foreach: users" class="ranking-list no-list-style">
         <li class="table-item-container" data-bind="css:{ winner: isWinner, loser: isLoser}">
             <div class="table-item-main">
-                <div class="table-item-container name-container">
-                    <span data-bind="text: user.UserName"></span>
+                <div>
+                    <div class="table-item-container name-container" data-bind="click: toggleDetails">
+                        <span data-bind="text: user.UserName"></span>
+                    </div>
+                    <div class="table-item-container score-container" data-bind="click: toggleDetails">
+                        <span data-bind="text: userScore.Score"></span>
+                    </div>
                 </div>
-                <div class="table-item-container score-container">
-                    <span data-bind="text: userScore.Score"></span>
+                <div id="score-details" data-bind="css: getDetailsClass">
+                    <ul data-bind="foreach: userScore.ScoreElements" class="no-list-style">
+                        <li>
+                            <span class="bold">+</span>
+                            <span class="bold" data-bind="text: Value"></span>
+                            <span class="indented" data-bind="text: Title"></span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </li>

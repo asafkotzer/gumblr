@@ -8,14 +8,26 @@
         width: 760px;
         font-family: Calibri;
 
-        .ranking-list {
+        .no-list-style {
             list-style: none;
+        }
+
+        .ranking-list {
 
             .table-item-container {
                 padding: 2px;// remove this
 
                 .table-item-main {
                     margin: 1px;
+
+                    .invisible {
+                        margin: 0px;
+                        height: 0px;
+                    }
+
+                    .indented {
+                        margin-left: 10px;
+                    }
 
                     .table-item-container {
                         background-color: @BackgroundColor;

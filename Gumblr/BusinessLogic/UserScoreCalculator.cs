@@ -20,7 +20,7 @@ namespace Gumblr.BusinessLogic
 
         public UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsMode aFinalResultsModel, BettingModel aBet)
         {
-            var score = new UserScore() { Score = 0 };
+            var score = new UserScore();
             
             if (aBet == null)
             {
@@ -29,16 +29,34 @@ namespace Gumblr.BusinessLogic
 
             if (aFinalResultsModel != null && aFinalResultsModel.Winner == aBet.Winner)
             {
-                score.Score += CorrectWinner_Value;
+                score.ScoreElements.Add(new ScoreElement 
+                { 
+                    Title = string.Format("the champion is {0}", aFinalResultsModel.Winner),
+                    Value = CorrectWinner_Value 
+                });
             }
 
             var betByMatchId = aBet.Matches.ToDictionary(x => x.MatchId);
-            foreach (var match in aMatchesWithActualResults)
+            foreach (var match in aMatchesWithActualResults.OrderBy(x => x.StartTime))
             {
                 MatchBet matchBet;
                 if (betByMatchId.TryGetValue(match.MatchId, out matchBet) && matchBet.ExpectedResult == match.ActualResult)
                 {
-                    score.Score += GetCorrectMatchValue(match.Stage);
+                    string title;
+                    if (match.ActualResult == MatchResult.Draw)
+                    {
+                        title = string.Format("{0} vs. {1} ended with tie ({2})", match.Host, match.Visitor, match.StageString);
+                    }
+                    else
+                    {
+                        title = string.Format("{0} defeated {1} ({2})", match.GetWinner(), match.GetLoser(), match.StageString);
+                    }
+
+                    score.ScoreElements.Add(new ScoreElement
+                    {
+                        Title = title,
+                        Value = GetCorrectMatchValue(match.Stage),
+                    });
                 }
             }
 
