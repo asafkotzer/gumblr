@@ -65,7 +65,7 @@ namespace Gumblr.Controllers
 
         public async Task<ActionResult> MatchUpload()
         {
-            var filename = @"C:\Temp\Gumblr\Matches-Fake.csv";
+            var filename = @"C:\Temp\Gumblr\Matches.csv";
             var parser = new CsvMatchParser(System.IO.File.ReadAllLines(filename));
             var matches = parser.ParseMatches();
             foreach (var match in matches)

@@ -20,7 +20,7 @@ body .hide-button-container {
 body .WinnerSelectionFrame {
   margin-top: 20px;
   font-family: Calibri;
-  width: 760px;
+  width: 762px;
   margin-right: auto;
   margin-left: auto;
   background-color: #dedede;
@@ -61,7 +61,7 @@ body .BetList .HiddenMatchContainer .MatchFrame {
 }
 body .BetList .StartedMatchContainer {
   margin-top: 3px;
-  width: 760px;
+  width: 762px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
@@ -75,7 +75,7 @@ body .BetList .StartedMatchContainer .StatisticsFrame {
   height: 0;
 }
 body .BetList .StartedMatchContainer .MatchFrame {
-  width: 760px;
+  width: 762px;
   height: 70px;
   background-color: #dedede;
   padding: 5px 25px;
@@ -118,7 +118,7 @@ body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .Draw {
 }
 body .BetList .MatchContainer {
   margin-top: 3px;
-  width: 760px;
+  width: 762px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
