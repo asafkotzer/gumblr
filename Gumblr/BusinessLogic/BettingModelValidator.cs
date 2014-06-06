@@ -8,24 +8,24 @@ namespace Gumblr.BusinessLogic
 {
     public interface IBettingModelValidator 
     {
-        void ValidateModel(BettingModel aModel, BettingModel aCurrentBet);
+        void ValidateModel(BettingModel aNewBet, BettingModel aPreviousBet);
     }
 
     public class BettingModelValidator : IBettingModelValidator
     {
-        public void ValidateModel(BettingModel aModel, BettingModel aCurrentBet)
+        public void ValidateModel(BettingModel aNewBet, BettingModel aPreviousBet)
         {
             Dictionary<string,MatchBet> currentBetByMatchId;
-            if (aCurrentBet != null)
+            if (aPreviousBet != null)
             {
-                currentBetByMatchId = aCurrentBet.Matches.ToDictionary(x => x.MatchId);
+                currentBetByMatchId = aPreviousBet.Matches.ToDictionary(x => x.MatchId);
             }
             else
             {
                 currentBetByMatchId = new Dictionary<string, MatchBet>();
             }
 
-            var changedBets = aModel.Matches.Where(match =>
+            var changedBets = aNewBet.Matches.Where(match =>
             {
                 MatchBet currentBet;
                 if (currentBetByMatchId.TryGetValue(match.MatchId, out currentBet))
@@ -39,6 +39,16 @@ namespace Gumblr.BusinessLogic
             if (changedBets.Any(x => x.StartTime < DateTime.UtcNow))
             {
                 throw new BettingModelValidationExcpetion("A bet was made after the match started");
+            }
+
+            if (changedBets.Any(x => x.Stage != MatchStage.Group && x.ExpectedResult == MatchResult.Draw))
+            {
+                throw new BettingModelValidationExcpetion("Betting on draw is impossible in the playoff stage");
+            }
+
+            if (aPreviousBet.WinnerBetDeadline > DateTime.UtcNow)
+            {
+                aNewBet.Winner = aPreviousBet.Winner;
             }
         }
     }

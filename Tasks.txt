@@ -1,11 +1,9 @@
 Tasks:
-* Champion bet should only be available until first match
-* Disable 'draw' on tournament matches(?)
-* Winner is not calculated in score
-* Final=20, SF=15, QF=12, R16=10, Group=8, Winner=10
 * action filter for errors
+* success indication
 
 Optional:
+* add require.js
 * Welcome email
 * base URL (for emails) should be in configuration (web.config)
 * MixPanel
@@ -23,3 +21,8 @@ Optional:
 * Indicate stages in bets view
 * Champion container width is a bit too much - wait for shachar's changes on flags
 * In ranking view, click on name should expand and include match-level details + final winner
+* Winner is not calculated in score
+
+Disable 'draw' on tournament matches(?)
+Champion bet should only be available until first match
+Final=20, SF=15, QF=12, R16=10, Group=8, Winner=10

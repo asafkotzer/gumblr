@@ -17,6 +17,9 @@ body .Logo:hover {
 body .hide-button-container {
   text-align: right;
 }
+body .hidden {
+  visibility: hidden;
+}
 body .WinnerSelectionFrame {
   margin-top: 20px;
   font-family: Calibri;

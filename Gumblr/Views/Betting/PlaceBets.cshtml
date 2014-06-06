@@ -61,7 +61,7 @@
                         <div class="team-name-container">
                             <span class="title-text">vs.</span>
                         </div>
-                        <input class="Logo Tie" type="image" data-bind="attr:{src: match.drawLogoUrl }, click: selected, css: { 'Selected': match.ExpectedResult() == 1, 'Draw': match.ExpectedResult() != 1}, event: { mouseover: match.onMouseIn, mouseout: match.onMouseOut } " />
+                        <input class="Logo Tie" type="image" data-bind="attr:{src: match.drawLogoUrl }, click: selected, css: { 'Selected': match.ExpectedResult() == 1, 'Draw': match.ExpectedResult() != 1, 'hidden': match.Stage() > 1}, event: { mouseover: match.onMouseIn, mouseout: match.onMouseOut } " />
                     </div>
                     <div class="LogoContainer">
                         <div class="team-name-container">

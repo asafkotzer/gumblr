@@ -15,8 +15,12 @@ namespace Gumblr.BusinessLogic
     public class UserScoreCalculator : IUserScoreCalculator
     {
         static readonly int CorrectWinner_Value = 10;
-        static readonly int CorrectMatchBet_GroupStage_Value = 1;
-        static readonly int CorrectMatchBet_TournamentStage_Value = 2;
+        static readonly int CorrectMatchBet_GroupStage_Value = 8;
+        static readonly int CorrectMatchBet_RoundOfSixteen_Value = 10;
+        static readonly int CorrectMatchBet_QuarterFinal_Value = 12;
+        static readonly int CorrectMatchBet_SemiFinal_Value = 15;
+        static readonly int CorrectMatchBet_ThirdPlace_Value = 10;
+        static readonly int CorrectMatchBet_Final_Value = 20;
 
         public UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsMode aFinalResultsModel, BettingModel aBet)
         {
@@ -70,11 +74,15 @@ namespace Gumblr.BusinessLogic
                 case MatchStage.Group:
                     return CorrectMatchBet_GroupStage_Value;
                 case MatchStage.RoundOfSixteen:
+                    return CorrectMatchBet_RoundOfSixteen_Value;
                 case MatchStage.QuarterFinals:
+                    return CorrectMatchBet_QuarterFinal_Value;
                 case MatchStage.SemiFinals:
+                    return CorrectMatchBet_SemiFinal_Value;
                 case MatchStage.ThirdPlace:
+                    return CorrectMatchBet_ThirdPlace_Value;
                 case MatchStage.Finals:
-                    return CorrectMatchBet_TournamentStage_Value;
+                    return CorrectMatchBet_Final_Value;
                 case MatchStage.Qualifying:
                 default:
                     return 0;

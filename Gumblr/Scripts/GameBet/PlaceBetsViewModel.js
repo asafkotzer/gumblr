@@ -85,6 +85,10 @@
         } else if (target.hasClass('Visitor')) {
             match.ExpectedResult(2);
         } else {
+            if (match.Stage > 1) {
+                console.log("Draw is not a valid result on a playoff match");
+                return;
+            }
             match.ExpectedResult(1);
         }
 
@@ -163,6 +167,7 @@
             }
         }, this);
 
+        matchItem.Stage = ko.observable(matchItem.Stage);
         matchItem.drawLogoUrl = ko.observable("/Images/draw.png");
         matchItem.isHidden = ko.observable(false);
 
@@ -175,7 +180,7 @@
                     return "HiddenMatchContainer";
                 }
                 return matchItem.HasStarted ? "StartedMatchContainer" : "MatchContainer";
-            })
+            }),
         });
     });
     this.matches = ko.observableArray(matches);
