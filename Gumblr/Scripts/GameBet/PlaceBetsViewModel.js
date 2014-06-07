@@ -76,7 +76,7 @@
             mixpanel.track('late bet change', {
                 'matchId': viewModel.match.MatchId,
             });
-            toastr.fail("Too late, the game already started", "That's low");
+            toastr.error("Too late, the game already started", "That's low");
         }
 
         var target = $(event.currentTarget);
@@ -235,10 +235,10 @@
                 toastr.success("Your bets were submitted", "Got it");
             }
             else {
-                toastr.fail("Please try again later", "We can't update your bets right now");
+                toastr.error("Please try again later", "We can't update your bets right now");
             }
         }).fail(function (result) {
-            toastr.fail("Please try again later", "We can't update your bets right now");
+            toastr.error("Please try again later", "We can't update your bets right now");
         });
     }
 

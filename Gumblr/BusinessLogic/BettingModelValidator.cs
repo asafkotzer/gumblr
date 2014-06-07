@@ -46,7 +46,7 @@ namespace Gumblr.BusinessLogic
                 throw new BettingModelValidationExcpetion("Betting on draw is impossible in the playoff stage");
             }
 
-            if (aPreviousBet.WinnerBetDeadline > DateTime.UtcNow)
+            if (aNewBet.WinnerBetDeadline < DateTime.UtcNow)
             {
                 aNewBet.Winner = aPreviousBet.Winner;
             }
