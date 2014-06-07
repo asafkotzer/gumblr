@@ -238,6 +238,7 @@
     <Compile Include="DataAccess\MatchStatisticsRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Filters\AuthorizedAdministratorFilterAttribute.cs" />
+    <Compile Include="Filters\ErrorLoggingAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +247,8 @@
     <Compile Include="Helpers\IConfigurationRetriever.cs" />
     <Compile Include="BusinessLogic\Emails\InviteRequestEmailGenerator.cs" />
     <Compile Include="BusinessLogic\Emails\NewMatchesEmailGenerator.cs" />
+    <Compile Include="Helpers\Logging\LogMessage.cs" />
+    <Compile Include="Helpers\Logging\TableLogger.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BettingModel.cs" />
     <Compile Include="Models\FinalResultsModel.cs" />

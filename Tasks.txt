@@ -1,6 +1,6 @@
 Tasks:
-* action filter for errors
 * success indication
+* Complete validator tests
 
 Optional:
 * add require.js

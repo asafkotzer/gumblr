@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Gumblr.Filters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Gumblr
@@ -8,6 +9,7 @@ namespace Gumblr
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new ErrorLoggingAttribute());
         }
     }
 }

@@ -46,10 +46,22 @@ namespace Gumblr.BusinessLogic
                 throw new BettingModelValidationExcpetion("Betting on draw is impossible in the playoff stage");
             }
 
-            if (aNewBet.WinnerBetDeadline < DateTime.UtcNow)
+            if (!IsValidWinnerBet(aNewBet, aPreviousBet))
             {
-                aNewBet.Winner = aPreviousBet.Winner;
+                aNewBet.Winner = aPreviousBet == null ? string.Empty : aPreviousBet.Winner;
             }
+        }
+
+        private static bool IsValidWinnerBet(BettingModel aNewBet, BettingModel aPreviousBet)
+        {
+            var isTooLate = aNewBet.WinnerBetDeadline < DateTime.UtcNow;
+            var didBetChange = aPreviousBet == null || aPreviousBet.Winner != aNewBet.Winner;
+            if (isTooLate && didBetChange)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

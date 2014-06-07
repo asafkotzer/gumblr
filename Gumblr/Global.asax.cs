@@ -13,6 +13,10 @@ using System.Web.Routing;
 using Gumblr.Account;
 using Gumblr.Storage;
 using Gumblr.Storage.Azure;
+using Gumblr.Filters;
+using Gumblr.Helpers.Logging;
+using log4net;
+using log4net.Appender;
 
 namespace Gumblr
 {
@@ -27,6 +31,7 @@ namespace Gumblr
             builder.RegisterFilterProvider();
             builder.RegisterType<LocalUserManager>();
             builder.RegisterType<TableStorageProvider>();
+            builder.RegisterType<ErrorLoggingAttribute>().As<IExceptionFilter>().InstancePerHttpRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

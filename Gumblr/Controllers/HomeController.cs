@@ -1,4 +1,5 @@
 ﻿using Gumblr.BusinessLogic.Emails;
+using Gumblr.Filters;
 using Gumblr.Helpers;
 using Gumblr.Models;
 using System;
@@ -11,7 +12,6 @@ using System.Web.Mvc;
 
 namespace Gumblr.Controllers
 {
-    [HandleError]
     public class HomeController : Controller
     {
         IEmailProvider mEmailProvider;
