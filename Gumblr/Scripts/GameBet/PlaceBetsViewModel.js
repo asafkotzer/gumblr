@@ -91,12 +91,6 @@
             }
             match.ExpectedResult(1);
         }
-
-        mixpanel.track('bet change', {
-            'matchId': viewModel.match.MatchId,
-            'expectedResult': match.ExpectedResult()
-        });
-
     };
 
     var getFlag = function (country, modifier) {
