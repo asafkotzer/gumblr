@@ -25,6 +25,11 @@ namespace Gumblr.Controllers
 
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("PlaceBets", "Betting");
+            }
+
             return View();
         }
 
