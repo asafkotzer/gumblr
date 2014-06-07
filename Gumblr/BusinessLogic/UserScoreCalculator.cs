@@ -41,7 +41,7 @@ namespace Gumblr.BusinessLogic
             }
 
             var betByMatchId = aBet.Matches.ToDictionary(x => x.MatchId);
-            foreach (var match in aMatchesWithActualResults.OrderBy(x => x.StartTime))
+            foreach (var match in aMatchesWithActualResults.Where(x => x.ActualResult != MatchResult.Unknown).OrderBy(x => x.StartTime))
             {
                 MatchBet matchBet;
                 if (betByMatchId.TryGetValue(match.MatchId, out matchBet) && matchBet.ExpectedResult == match.ActualResult)
