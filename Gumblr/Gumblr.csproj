@@ -247,6 +247,7 @@
     <Compile Include="Helpers\IConfigurationRetriever.cs" />
     <Compile Include="BusinessLogic\Emails\InviteRequestEmailGenerator.cs" />
     <Compile Include="BusinessLogic\Emails\NewMatchesEmailGenerator.cs" />
+    <Compile Include="Helpers\ICurrentTimeProvider.cs" />
     <Compile Include="Helpers\Logging\LogMessage.cs" />
     <Compile Include="Helpers\Logging\TableLogger.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

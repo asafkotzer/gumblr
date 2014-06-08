@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="BettingControllerTests.cs" />
     <Compile Include="BettingModelValidatorTests.cs" />
+    <Compile Include="FakeCurrentTimeProvider.cs" />
     <Compile Include="FakeIdentityManager.cs" />
     <Compile Include="FakeMatchBetRepository.cs" />
     <Compile Include="FakeMatchRepository.cs" />

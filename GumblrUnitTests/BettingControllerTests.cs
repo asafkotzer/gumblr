@@ -37,7 +37,7 @@ namespace GumblrUnitTests
                 new FakeMatchBetRepository(),
                 new FakeUserRepository(), 
                 new FakeIdentityManager(),
-                new BettingModelValidator());
+                new BettingModelValidator(new FakeCurrentTimeProvider(DateTime.UtcNow)));
         }
     }
 }

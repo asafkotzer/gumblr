@@ -1,4 +1,5 @@
-﻿using Gumblr.Models;
+﻿using Gumblr.Helpers;
+using Gumblr.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,13 @@ namespace Gumblr.BusinessLogic
 
     public class BettingModelValidator : IBettingModelValidator
     {
+        ICurrentTimeProvider mCurrentTimeProvider;
+
+        public BettingModelValidator(ICurrentTimeProvider aCurrentTimeProvider)
+        {
+            mCurrentTimeProvider = aCurrentTimeProvider;
+        }
+
         public void ValidateModel(BettingModel aNewBet, BettingModel aPreviousBet)
         {
             Dictionary<string,MatchBet> currentBetByMatchId;
@@ -36,7 +44,7 @@ namespace Gumblr.BusinessLogic
                 return match.ExpectedResult != MatchResult.Unknown;
             });
 
-            if (changedBets.Any(x => x.StartTime < DateTime.UtcNow))
+            if (changedBets.Any(x => x.StartTime < mCurrentTimeProvider.GetCurrentTime()))
             {
                 throw new BettingModelValidationExcpetion("A bet was made after the match started");
             }
@@ -52,9 +60,9 @@ namespace Gumblr.BusinessLogic
             }
         }
 
-        private static bool IsValidWinnerBet(BettingModel aNewBet, BettingModel aPreviousBet)
+        private bool IsValidWinnerBet(BettingModel aNewBet, BettingModel aPreviousBet)
         {
-            var isTooLate = aNewBet.WinnerBetDeadline < DateTime.UtcNow;
+            var isTooLate = aNewBet.WinnerBetDeadline < mCurrentTimeProvider.GetCurrentTime();
             var didBetChange = aPreviousBet == null || aPreviousBet.Winner != aNewBet.Winner;
             if (isTooLate && didBetChange)
             {

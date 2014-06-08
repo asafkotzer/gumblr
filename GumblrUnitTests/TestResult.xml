@@ -1,47 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" total="3" errors="2" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-06-07" time="23:28:07">
+<test-results name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-06-08" time="23:05:17">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.8000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="HOME-PC" user="Asaf" user-domain="HOME-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" executed="True" result="Failure" success="False" time="0.156" asserts="0">
+  <test-suite type="Project" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" executed="True" result="Success" success="True" time="0.131" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" executed="True" result="Failure" success="False" time="0.134" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" executed="True" result="Success" success="True" time="0.107" asserts="0">
         <results>
-          <test-suite type="Namespace" name="GumblrUnitTests" executed="True" result="Failure" success="False" time="0.133" asserts="0">
+          <test-suite type="Namespace" name="GumblrUnitTests" executed="True" result="Success" success="True" time="0.107" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="BettingModelValidatorTests" executed="True" result="Failure" success="False" time="0.130" asserts="0">
+              <test-suite type="TestFixture" name="BettingModelValidatorTests" executed="True" result="Success" success="True" time="0.103" asserts="0">
                 <results>
-                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_ChangedBetSubmittedAfterStartTime_Throws" executed="True" result="Failure" success="False" time="0.079" asserts="1">
-                    <failure>
-                      <message><![CDATA[  Expected: <Gumblr.BusinessLogic.BettingModelValidationExcpetion>
-  But was:  null
-]]></message>
-                      <stack-trace><![CDATA[at GumblrUnitTests.BettingModelValidatorTests.ValidateModel_ChangedBetSubmittedAfterStartTime_Throws() in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\BettingModelValidatorTests.cs:line 44
-]]></stack-trace>
-                    </failure>
-                  </test-case>
-                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_FirstBet_NoException" executed="True" result="Error" success="False" time="0.009" asserts="0">
-                    <failure>
-                      <message><![CDATA[System.InvalidOperationException : Sequence contains no elements]]></message>
-                      <stack-trace><![CDATA[at System.Linq.Enumerable.Min[TSource](IEnumerable`1 source)
-at Gumblr.Models.BettingModel.get_WinnerBetDeadline() in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\Gumblr\Models\BettingModel.cs:line 13
-at Gumblr.BusinessLogic.BettingModelValidator.IsValidWinnerBet(BettingModel aNewBet, BettingModel aPreviousBet) in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\Gumblr\BusinessLogic\BettingModelValidator.cs:line 57
-at Gumblr.BusinessLogic.BettingModelValidator.ValidateModel(BettingModel aNewBet, BettingModel aPreviousBet) in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\Gumblr\BusinessLogic\BettingModelValidator.cs:line 49
-at GumblrUnitTests.BettingModelValidatorTests.ValidateModel_FirstBet_NoException() in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\BettingModelValidatorTests.cs:line 24
-]]></stack-trace>
-                    </failure>
-                  </test-case>
-                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_PreviousBetExists_NoException" executed="True" result="Error" success="False" time="0.004" asserts="0">
-                    <failure>
-                      <message><![CDATA[System.InvalidOperationException : Sequence contains no elements]]></message>
-                      <stack-trace><![CDATA[at System.Linq.Enumerable.Min[TSource](IEnumerable`1 source)
-at Gumblr.Models.BettingModel.get_WinnerBetDeadline() in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\Gumblr\Models\BettingModel.cs:line 13
-at Gumblr.BusinessLogic.BettingModelValidator.IsValidWinnerBet(BettingModel aNewBet, BettingModel aPreviousBet) in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\Gumblr\BusinessLogic\BettingModelValidator.cs:line 57
-at Gumblr.BusinessLogic.BettingModelValidator.ValidateModel(BettingModel aNewBet, BettingModel aPreviousBet) in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\Gumblr\BusinessLogic\BettingModelValidator.cs:line 49
-at GumblrUnitTests.BettingModelValidatorTests.ValidateModel_PreviousBetExists_NoException() in c:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\BettingModelValidatorTests.cs:line 31
-]]></stack-trace>
-                    </failure>
-                  </test-case>
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_ChangedBetSubmittedAfterStartTime_Throws" executed="True" result="Success" success="True" time="0.057" asserts="1" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_DrawBetOnPlayoffMatch_Throws" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_FirstBet_NoException" executed="True" result="Success" success="True" time="0.011" asserts="0" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_PreviousBetExistsNewModelSimilar_NoException" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_WinnerSetInTime_NoException" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_WinnerSetTooLate_Throws" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                 </results>
               </test-suite>
             </results>
