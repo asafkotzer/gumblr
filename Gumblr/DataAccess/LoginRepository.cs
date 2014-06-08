@@ -20,7 +20,7 @@ namespace Gumblr.DataAccess
         public async Task<LoginEntity> GetLogin(string aProvider, string aIdentifier)
         {
             var key = string.Format("{0}_{1}", aProvider, aIdentifier.ToLower());
-            return await mStorageProvider.Read<LoginEntity>("Logins", key);
+            return await mStorageProvider.TryRead<LoginEntity>("Logins", key);
         }
 
         public async Task CreateLogin(LoginEntity aLoginEntity)
