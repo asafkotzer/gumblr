@@ -19,13 +19,13 @@ namespace Gumblr.DataAccess
 
         public async Task<LoginEntity> GetLogin(string aProvider, string aIdentifier)
         {
-            var key = string.Format("{0}_{1}", aProvider, aIdentifier);
+            var key = string.Format("{0}_{1}", aProvider, aIdentifier.ToLower());
             return await mStorageProvider.Read<LoginEntity>("Logins", key);
         }
 
         public async Task CreateLogin(LoginEntity aLoginEntity)
         {
-            var key = string.Format("{0}_{1}", aLoginEntity.Provider, aLoginEntity.Identifier);
+            var key = string.Format("{0}_{1}", aLoginEntity.Provider, aLoginEntity.Identifier.ToLower());
             await mStorageProvider.Create("Logins", key, aLoginEntity);
         }
     }
