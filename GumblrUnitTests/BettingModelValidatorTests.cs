@@ -15,8 +15,9 @@ namespace GumblrUnitTests
     [MsTest.TestClass]
     public class BettingModelValidatorTests
     {
-        static readonly DateTime PresentTime = new DateTime(2001, 1, 1);
-        static readonly DateTime FutureTime = new DateTime(2001, 1, 2);
+        static readonly DateTime PastTime = new DateTime(2001, 1, 1);
+        static readonly DateTime PresentTime = new DateTime(2001, 1, 2);
+        static readonly DateTime FutureTime = new DateTime(2001, 1, 3);
 
         private BettingModel GetModel(DateTime aMatchStartTime, MatchResult? aResult = null, string aWinner = null)
         {
@@ -81,6 +82,61 @@ namespace GumblrUnitTests
 
         }
 
-    }
+        [Test]
+        public void ValidateModel_TwoBets_OneUnchangedAndStarted_OneChangedButNotStarted_NoException()
+        {
+            var validator = new BettingModelValidator(new FakeCurrentTimeProvider(PresentTime));
+            var previousModel = new BettingModel { Matches = new List<MatchBet> 
+            { 
+                new MatchBet { MatchId = "NotStarted", StartTime = FutureTime, ExpectedResult = MatchResult.Draw },
+                new MatchBet { MatchId = "Started", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+            }};
 
+            var newModel = new BettingModel { Matches = new List<MatchBet> 
+            { 
+                new MatchBet { MatchId = "NotStarted", StartTime = FutureTime, ExpectedResult = MatchResult.Host },
+                new MatchBet { MatchId = "Started", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+            }}; 
+
+            validator.ValidateModel(newModel, previousModel);
+        }
+
+        [Test]
+        public void ValidateModel_TwoBets_OneUnchangedAndStarted_OneSetForFirstTimeButNotStarted_NoException()
+        {
+            var validator = new BettingModelValidator(new FakeCurrentTimeProvider(PresentTime));
+            var previousModel = new BettingModel { Matches = new List<MatchBet> 
+            { 
+                new MatchBet { MatchId = "NotStarted", StartTime = FutureTime, ExpectedResult = MatchResult.Unknown },
+                new MatchBet { MatchId = "Started", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+            }};
+
+            var newModel = new BettingModel { Matches = new List<MatchBet> 
+            { 
+                new MatchBet { MatchId = "NotStarted", StartTime = FutureTime, ExpectedResult = MatchResult.Host },
+                new MatchBet { MatchId = "Started", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+            }};
+
+            validator.ValidateModel(newModel, previousModel);
+        }
+
+        [Test]
+        public void ValidateModel_TwoBets_BothStartedButBetDidntChange_NoException()
+        {
+            var validator = new BettingModelValidator(new FakeCurrentTimeProvider(PresentTime));
+            var previousModel = new BettingModel { Matches = new List<MatchBet> 
+            { 
+                new MatchBet { MatchId = "SomeId1", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+                new MatchBet { MatchId = "SomeId2", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+            }};
+
+            var newModel = new BettingModel { Matches = new List<MatchBet> 
+            { 
+                new MatchBet { MatchId = "SomeId1", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+                new MatchBet { MatchId = "SomeId2", StartTime = PastTime, ExpectedResult = MatchResult.Draw },
+            }};
+
+            validator.ValidateModel(newModel, previousModel);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 Tasks:
 * success indication
-* Complete validator tests
+* is date comparison in client UTC?
+* show dates in client localtime
 
 Optional:
 * add require.js
@@ -22,7 +23,7 @@ Optional:
 * Champion container width is a bit too much - wait for shachar's changes on flags
 * In ranking view, click on name should expand and include match-level details + final winner
 * Winner is not calculated in score
-
-Disable 'draw' on tournament matches(?)
-Champion bet should only be available until first match
-Final=20, SF=15, QF=12, R16=10, Group=8, Winner=10
+* Disable 'draw' on tournament matches(?)
+* Champion bet should only be available until first match
+* Final=20, SF=15, QF=12, R16=10, Group=8, Winner=10
+* Complete validator tests
