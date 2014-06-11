@@ -30,6 +30,8 @@
             matchItem.ActualResult = matchItem.enumValueByResult[matchItem.selectedResult()];
         };
 
+        matchItem.shouldUpdate = ko.observable(false);
+
         matches.push({
             match: matchItem,
             possibleResults: ["Unknown", matchItem.Host, "Draw", matchItem.Visitor],
@@ -39,34 +41,20 @@
     this.matches = ko.observableArray(matches);
 
     var prepareModelForUpload = function (model) {
+        var matches = [];
         model.Matches.forEach(function (x) {
-            x.updateActualResult();
-            x.StartTime = moment(x.StartTime).format();
+            if (x.shouldUpdate()) {
+                x.updateActualResult();
+                x.StartTime = moment(x.StartTime).format();
+                matches.push(x);
+            }
         });
+
+        debugger;
+        model.Matches = matches;
+
         return ko.toJSON(model);
     };
-
-//    var getPossibleTeams = function () {
-//        var possibleTeamsUnique = {};
-//        model.Matches.forEach(function (x) {
-//            possibleTeamsUnique[x.Host] = true;
-//            possibleTeamsUnique[x.Visitor] = true;
-//        });
-//
-//        var possibleTeams = [];
-//        for (var key in possibleTeamsUnique) {
-//            possibleTeams.push(key);
-//        }
-//
-//        return possibleTeams;
-//    };
-//
-//    this.possibleTeams = getPossibleTeams();
-//
-//    this.addMatch = function () {
-//        var matchItem = { ActualResult: -1, Group: "A", Host: "NewHost", Stage: 0, StartTime: "/Date(1356991200000)/", Venue: "NewVenue", Visitor: "NewVisitor" };
-//        self.matches.push({ match: matchItem, possibleResults: ["Unknown"] });
-//    };
 
     this.submit = function () {
         request = $.ajax({

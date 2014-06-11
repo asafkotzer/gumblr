@@ -1,8 +1,8 @@
 Tasks:
-* success indication
-* is date comparison in client UTC?
-* show dates in client localtime
+* fix match admin bug
 * sprite for flags
+* how come calculations worked with all 0:0s and no coinflips?
+* uncomment sending email
 
 Optional:
 * add require.js
@@ -28,3 +28,6 @@ Optional:
 * Champion bet should only be available until first match
 * Final=20, SF=15, QF=12, R16=10, Group=8, Winner=10
 * Complete validator tests
+* success indication
+* date comparison in client UTC?
+* show dates in client localtime

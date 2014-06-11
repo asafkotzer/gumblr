@@ -78,7 +78,7 @@ namespace Gumblr.Controllers
 
 		public async Task<ActionResult> Matches()
 		{
-			var matches = (await mMatchRepository.GetMatches());
+			var matches = (await mMatchRepository.GetMatches()).Where(x => x.HasStarted);
 
 			var model = new MatchesAdminModel() { Matches = matches };
 			return View(model);
@@ -87,17 +87,16 @@ namespace Gumblr.Controllers
 		[HttpPost]
 		public async Task<ActionResult> UpdateMatches(MatchesAdminModel aModel)
 		{
-			var userId = mIdentityManager.GetUserId(User);
-
 			await Task.WhenAll(aModel.Matches.Select(x => 
             {
                 x.IsComplete = true;
                 return mMatchRepository.Update(x);
             }));
 
+            /*                       ---------------------Commented out for the first round or so---------------------
             // generate new matches if needed
             await mTournamentGenerator.UpdateNewMatches();
-
+            */
 			return Json(new { status = "success" });
 		}
 

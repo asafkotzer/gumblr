@@ -19,7 +19,8 @@
 
 <ul data-bind="foreach: matches" class="BetList">
     <li style="margin: 10px 0px">
-        <span data-bind="text: moment(match.StartTime).format('MMMM Do YYYY, h:mm:ss a')"></span>
+        <input type="checkbox" data-bind="checked: match.shouldUpdate" />
+        <span data-bind="text: moment(match.StartTime).format('MMMM Do, HH:mm')"></span>
         <span class="team-name" data-bind="text: match.Host"></span>
         <input class="score-textbox" data-bind="value: match.GoalsScoredByHost" />
         <span class="team-name" data-bind="text: match.Visitor"></span>
