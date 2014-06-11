@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-06-08" time="23:05:17">
+<test-results name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" total="9" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-06-10" time="08:37:27">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.8000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="HOME-PC" user="Asaf" user-domain="HOME-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" executed="True" result="Success" success="True" time="0.131" asserts="0">
+  <test-suite type="Project" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" executed="True" result="Success" success="True" time="0.155" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" executed="True" result="Success" success="True" time="0.107" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" executed="True" result="Success" success="True" time="0.132" asserts="0">
         <results>
-          <test-suite type="Namespace" name="GumblrUnitTests" executed="True" result="Success" success="True" time="0.107" asserts="0">
+          <test-suite type="Namespace" name="GumblrUnitTests" executed="True" result="Success" success="True" time="0.132" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="BettingModelValidatorTests" executed="True" result="Success" success="True" time="0.103" asserts="0">
+              <test-suite type="TestFixture" name="BettingModelValidatorTests" executed="True" result="Success" success="True" time="0.129" asserts="0">
                 <results>
-                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_ChangedBetSubmittedAfterStartTime_Throws" executed="True" result="Success" success="True" time="0.057" asserts="1" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_ChangedBetSubmittedAfterStartTime_Throws" executed="True" result="Success" success="True" time="0.056" asserts="1" />
                   <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_DrawBetOnPlayoffMatch_Throws" executed="True" result="Success" success="True" time="0.002" asserts="1" />
                   <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_FirstBet_NoException" executed="True" result="Success" success="True" time="0.011" asserts="0" />
                   <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_PreviousBetExistsNewModelSimilar_NoException" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_TwoBets_BothStartedButBetDidntChange_NoException" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_TwoBets_OneUnchangedAndStarted_OneChangedButNotStarted_NoException" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_TwoBets_OneUnchangedAndStarted_OneSetForFirstTimeButNotStarted_NoException" executed="True" result="Success" success="True" time="0.001" asserts="0" />
                   <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_WinnerSetInTime_NoException" executed="True" result="Success" success="True" time="0.001" asserts="0" />
                   <test-case name="GumblrUnitTests.BettingModelValidatorTests.ValidateModel_WinnerSetTooLate_Throws" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                 </results>

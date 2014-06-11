@@ -51,7 +51,7 @@ namespace Gumblr.Models
             }
         }
 
-        public bool HasStarted { get { return DateTime.UtcNow > StartTime; } }
+        public bool HasStarted { get { return DateTime.UtcNow > StartTime.ToUniversalTime(); } }
 
         public string StageString { get 
             {

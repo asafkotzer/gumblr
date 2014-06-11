@@ -77,10 +77,18 @@ body .BetList .StartedMatchContainer .StatisticsFrame {
   visibility: hidden;
   height: 0;
 }
+body .BetList .StartedMatchContainer .failed-bet {
+  background-color: #ee8888;
+}
+body .BetList .StartedMatchContainer .successful-bet {
+  background-color: #88cc88;
+}
+body .BetList .StartedMatchContainer .unknown-bet-result {
+  background-color: #dedede;
+}
 body .BetList .StartedMatchContainer .MatchFrame {
   width: 762px;
   height: 70px;
-  background-color: #dedede;
   padding: 5px 25px;
   position: relative;
   vertical-align: top;

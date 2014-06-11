@@ -151,13 +151,13 @@
         matchItem.visitorLogoUrl = ko.observable(getFlag(matchItem.Visitor));
 
         matchItem.ExpectedResult = ko.observable(currentExpectedResult);
-        matchItem.SuccessIndicator = ko.computed(function () {
+        matchItem.getSuccessIndicatorClass = ko.computed(function () {
             if (matchItem.ActualResult == -1) {
-                return null;
+                return "MatchFrame unknown-bet-result";
             } else if (matchItem.ExpectedResult() == matchItem.ActualResult) {
-                return "/Images/success.png";
+                return "MatchFrame successful-bet";
             } else {
-                return "/Images/fail.png";
+                return "MatchFrame failed-bet";
             }
         }, this);
 

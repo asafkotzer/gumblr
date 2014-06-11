@@ -2,6 +2,7 @@ Tasks:
 * success indication
 * is date comparison in client UTC?
 * show dates in client localtime
+* sprite for flags
 
 Optional:
 * add require.js

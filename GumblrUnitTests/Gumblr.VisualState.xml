@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
   <TopNode>[0-1000]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit</TopNode>
-  <SelectedNode>[0-1000]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit</SelectedNode>
+  <SelectedNode>[0-1001]GumblrUnitTests.BettingModelValidatorTests</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\Gumblr.nunit" Expanded="true" />
-    <Node UniqueName="[0-1025]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" Expanded="true" />
-    <Node UniqueName="[0-1026]GumblrUnitTests" Expanded="true" />
+    <Node UniqueName="[0-1031]C:\Users\Asaf\Documents\Visual Studio 2013\Projects\Gumblr\GumblrUnitTests\bin\Debug\GumblrUnitTests.dll" Expanded="true" />
+    <Node UniqueName="[0-1032]GumblrUnitTests" Expanded="true" />
     <Node UniqueName="[0-1001]GumblrUnitTests.BettingModelValidatorTests" Expanded="true" />
-    <Node UniqueName="[0-1005]GumblrUnitTests.StandingsCalculatorTests" Expanded="true" />
-    <Node UniqueName="[0-1013]GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_OneMacthTie_CoinFlip_CorrectScore" Expanded="true" />
-    <Node UniqueName="[0-1011]GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_TwoMacthesFourTeams_TwoTeamsWithSameScoreDifferentGoalCount_CorrectScore" Expanded="true" />
-    <Node UniqueName="[0-1015]GumblrUnitTests.TournamentOrganizerTests" Expanded="true" />
+    <Node UniqueName="[0-1011]GumblrUnitTests.StandingsCalculatorTests" Expanded="true" />
+    <Node UniqueName="[0-1019]GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_OneMacthTie_CoinFlip_CorrectScore" Expanded="true" />
+    <Node UniqueName="[0-1017]GumblrUnitTests.StandingsCalculatorTests.GetStandingsByGroup_TwoMacthesFourTeams_TwoTeamsWithSameScoreDifferentGoalCount_CorrectScore" Expanded="true" />
+    <Node UniqueName="[0-1021]GumblrUnitTests.TournamentOrganizerTests" Expanded="true" />
   </Nodes>
 </VisualState>
