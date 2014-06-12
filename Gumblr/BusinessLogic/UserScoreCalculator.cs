@@ -15,11 +15,11 @@ namespace Gumblr.BusinessLogic
     public class UserScoreCalculator : IUserScoreCalculator
     {
         static readonly int CorrectWinner_Value = 10;
-        static readonly int CorrectMatchBet_GroupStage_Value = 8;
-        static readonly int CorrectMatchBet_RoundOfSixteen_Value = 10;
-        static readonly int CorrectMatchBet_QuarterFinal_Value = 12;
-        static readonly int CorrectMatchBet_SemiFinal_Value = 15;
-        static readonly int CorrectMatchBet_ThirdPlace_Value = 10;
+        static readonly int CorrectMatchBet_GroupStage_Value = 10;
+        static readonly int CorrectMatchBet_RoundOfSixteen_Value = 12;
+        static readonly int CorrectMatchBet_QuarterFinal_Value = 15;
+        static readonly int CorrectMatchBet_SemiFinal_Value = 18;
+        static readonly int CorrectMatchBet_ThirdPlace_Value = 18;
         static readonly int CorrectMatchBet_Final_Value = 20;
 
         public UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsMode aFinalResultsModel, BettingModel aBet)
