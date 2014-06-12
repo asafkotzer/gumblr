@@ -21,7 +21,7 @@
             search_contains: true
         });
 
-        if (model.WinnerBetDeadline > Date()) {
+        if (model.WinnerBetDeadline < Date()) {
             $('.DropDown').prop('disabled', true).trigger("liszt:updated");
             $('.DropDown').prop('disabled', true).trigger("chosen:updated");
         }
