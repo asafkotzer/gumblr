@@ -135,7 +135,7 @@
         }, this);
 
         matchItem.showMatchDetails = function () {
-            var url = '/MatchDetails/index/' + matchItem.MatchId;
+            var url = '/MatchDetails/' + matchItem.MatchId;
             window.open(url, '_blank');
         }
 

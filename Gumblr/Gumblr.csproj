@@ -227,6 +227,7 @@
     <Compile Include="Controllers\GroupAdminController.cs" />
     <Compile Include="Controllers\MatchDetailsController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DataAccess\CsvMatchParser.cs" />
     <Compile Include="DataAccess\IFinalResultsRepository.cs" />
     <Compile Include="DataAccess\ILoginRepository.cs" />
@@ -575,6 +576,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Gumblr.Controllers
 {
+    [Authorize]
     public class MatchDetailsController : Controller
     {
         IMatchStatisticsRepository mMatchStatisticsRepository;
