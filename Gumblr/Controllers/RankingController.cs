@@ -2,6 +2,7 @@
 using Gumblr.DataAccess;
 using Gumblr.Models;
 using System;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,7 +43,8 @@ namespace Gumblr.Controllers
             var model = new RankingOverviewModel()
             {
                 ScoreByUserId = scoreByUser,
-                Users = users,
+                Users = users.Select(x => new ClientUser { Id = x.Id, UserName = x.UserName }),
+                CurrentUserId = User.Identity.GetUserId(),
                 MaxScore = maxScore,
                 MinScore = minScore
             };

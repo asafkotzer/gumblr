@@ -31,6 +31,10 @@ body .table-container .ranking-list .table-item-container .table-item-main .tabl
 body .table-container .ranking-list .table-item-container .table-item-main .table-item-container span {
   line-height: 30px;
 }
+body .table-container .ranking-list .table-item-container .table-item-main .current {
+  font-weight: bold;
+  color: blue;
+}
 body .table-container .ranking-list .table-item-container .table-item-main .name-container {
   padding-left: 4px;
 }

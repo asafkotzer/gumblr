@@ -11,6 +11,7 @@
 
         userScoreItem.isWinner = userScoreItem.userScore.Score == model.MaxScore;
         userScoreItem.isLoser = userScoreItem.userScore.Score == model.MinScore;
+        userScoreItem.isCurrentUser = userItem.Id == model.CurrentUserId;
 
         /*
         Must use ko.calculated because using IDs makes it impossible to distinguish between elements in the list

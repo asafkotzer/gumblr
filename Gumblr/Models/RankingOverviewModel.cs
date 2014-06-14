@@ -8,9 +8,16 @@ namespace Gumblr.Models
     public class RankingOverviewModel
     {
         public Dictionary<string, UserScore> ScoreByUserId { get; set; }
-        public IEnumerable<ApplicationUser> Users { get; set; }
+        public IEnumerable<ClientUser> Users { get; set; }
         public int MaxScore { get; set; }
         public int MinScore { get; set; }
+        public string CurrentUserId { get; set; }
+    }
+
+    public class ClientUser
+    {
+        public string UserName { get; set; }
+        public string Id { get; set; }
     }
 
     public class UserScore
