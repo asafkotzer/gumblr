@@ -1,0 +1,38 @@
+body .match-details-root {
+  font-family: Calibri;
+}
+body .bet-group-header {
+  font-weight: bold;
+}
+body .loader-container {
+  height: 300px;
+}
+body .bet-summary-container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+body .bet-summary-container ul {
+  padding: 0px;
+}
+body .bet-summary-container li {
+  list-style: none;
+}
+body .bet-summary-container .bet-group-container {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: auto;
+  margin-right: auto;
+  width: 33%;
+  text-align: center;
+}
+body .bet-summary-container .bet-group-container .host {
+  background-color: #edc240;
+}
+body .bet-summary-container .bet-group-container .draw {
+  background-color: #afd8f8;
+}
+body .bet-summary-container .bet-group-container .visitor {
+  background-color: #cb4b4b;
+}

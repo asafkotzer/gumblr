@@ -165,10 +165,15 @@ body .BetList .MatchContainer .StatisticsFrame {
   vertical-align: top;
 }
 body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer {
-  width: 100px;
+  margin-bottom: 5px;
+  display: inline-block;
+  width: 47%;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 5px;
+}
+body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer .centered {
+  margin: auto;
+  width: 100%;
 }
 body .BetList .MatchContainer .MatchFrame {
   width: 607px;

@@ -1,5 +1,6 @@
 Tasks:
-* fix match admin bug
+* match details/stats should still be by userID, not user name, so it's distinct
+* bold self in ranking
 * sprite for flags
 * how come calculations worked with all 0:0s and no coinflips?
 * uncomment sending email
@@ -31,3 +32,4 @@ Optional:
 * success indication
 * date comparison in client UTC?
 * show dates in client localtime
+* fix match admin bug

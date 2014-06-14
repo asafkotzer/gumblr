@@ -13,35 +13,8 @@
             type: "get",
         }).done(function (result) {
             loader.hide();
-
-            var data = [
-                { label: result.Match.Host, data: 0 },
-                { label: "X", data: 0 },
-                { label: result.Match.Visitor, data: 0 }];
-
-            for (var key in result.ExpectedResultByUserId) {
-                var expectedResult = result.ExpectedResultByUserId[key];
-                if (expectedResult == -1) continue;
-                data[expectedResult].data++;
-            }
-                      
-            $.plot(target, data, 
-                {
-                    series: {
-                        pie: {
-                            show: true,
-                            radius: 1,
-                            label: {
-                                show: true,
-                                formatter: function (label, series) { return label.substr(0, 3).toUpperCase(); },
-                            }
-                        }
-                    },
-                    legend: {
-                        show: false
-                    }
-
-                });
+            var plot = new StatisticsPlot();
+            plot.show(result, target);
 
         }).fail(function (result) {
             loader.hide();
@@ -160,6 +133,11 @@
                 return "MatchFrame failed-bet";
             }
         }, this);
+
+        matchItem.showMatchDetails = function () {
+            var url = '/MatchDetails/index/' + matchItem.MatchId;
+            window.open(url, '_blank');
+        }
 
         matchItem.Stage = ko.observable(matchItem.Stage);
         matchItem.drawLogoUrl = ko.observable("/Images/draw.png");

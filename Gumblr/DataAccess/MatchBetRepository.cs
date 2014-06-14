@@ -19,13 +19,13 @@ namespace Gumblr.DataAccess
             mMatchStatisticsRepository = aMatchStatisticsRepository;
         }
 
-        public async Task SetUserBet(string aUserId, BettingModel aBet)
+        public async Task SetUserBet(string aUserId, string aUsername, BettingModel aBet)
         {
             // update user bets
             await mStorageProvider.CreateOrUpdate("UserBets", aUserId, aBet);
 
             // update statistics
-            await mMatchStatisticsRepository.UpdateUserBets(aUserId, aBet);
+            await mMatchStatisticsRepository.UpdateUserBets(aUserId, aUsername, aBet);
         }
 
         public async Task<BettingModel> GetUserBets(string aUserId)

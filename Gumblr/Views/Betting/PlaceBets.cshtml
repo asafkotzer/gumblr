@@ -14,6 +14,7 @@
     @Scripts.Render("~/Scripts/jquery.flot.pie.min.js")
     @Scripts.Render("~/Scripts/chosen.jquery.min.js")
     @Scripts.Render("~/Scripts/chosen.proto.min.js")
+    @Scripts.Render("~/Scripts/Shared/StatisticsPlot.js")
     @Scripts.Render("~/Scripts/toastr.min.js")
     @Styles.Render("~/Content/themes/base/jquery-ui.css")
     @Styles.Render("~/Content/themes/base/minified/chosen.min.css")
@@ -49,7 +50,7 @@
 <ul data-bind="foreach: matches" class="BetList">
     <li>
         <div data-bind="css: getMatchContainerClass">
-            <div data-bind="css: match.getSuccessIndicatorClass">
+            <div data-bind="css: match.getSuccessIndicatorClass, click: match.showMatchDetails">
                 <div class="TeamsContainer">
                     <div class="LogoContainer">
                         <div class="team-name-container">
@@ -80,13 +81,15 @@
 
             <div class="StatisticsFrame">
                 <div class="ShowStatisticsButtonContainer">
-                    <button class="DefaultButton" data-bind="click: showStatistics">show stats</button>
+                    <button class="DefaultButton centered" data-bind="click: showStatistics">stats</button>
+                </div>
+                <div class="ShowStatisticsButtonContainer">
+                    <button class="DefaultButton centered" data-bind="click: match.showMatchDetails">info</button>
                 </div>
                 <div class="LoaderContainer">
 
                 </div>
             </div>
-        </div>
     </li>
 </ul>
 <div class="BottomLine">

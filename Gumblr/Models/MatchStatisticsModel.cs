@@ -9,11 +9,11 @@ namespace Gumblr.Models
     public class MatchStatisticsModel
     {
         public Match Match { get; set; }
-        public Dictionary<string, MatchResult> ExpectedResultByUserId { get; set; }
+        public Dictionary<string, MatchResult> ExpectedResultByUsername { get; set; }
 
         public MatchStatisticsModel()
         {
-            ExpectedResultByUserId = new Dictionary<string, MatchResult>();
+            ExpectedResultByUsername = new Dictionary<string, MatchResult>();
         }
     }
 }

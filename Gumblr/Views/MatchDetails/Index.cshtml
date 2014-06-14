@@ -1,0 +1,59 @@
+﻿@model Gumblr.Models.MatchDetailsModel
+
+@{
+    ViewBag.Title = "Match Details";
+}
+
+@section ViewHeader {
+@Scripts.Render("~/Scripts/MatchDetails/MatchDetailsViewModel.js")
+@Scripts.Render("~/Scripts/MatchDetails/MatchDetails.js")
+@Scripts.Render("~/Scripts/moment.js")
+@Scripts.Render("~/Scripts/jquery.flot.min.js")
+@Scripts.Render("~/Scripts/jquery.flot.pie.min.js")
+@Scripts.Render("~/Scripts/spin.min.js")
+@Scripts.Render("~/Scripts/moment.js")
+@Scripts.Render("~/Scripts/Shared/loader.js")
+@Scripts.Render("~/Scripts/Shared/StatisticsPlot.js")
+@Styles.Render("~/Content/themes/base/jquery-ui.css")
+@Styles.Render("~/Content/themes/default/matchdetails.css")
+@Styles.Render("~/Content/themes/default/shared.css")
+
+
+    <script>
+        $(document).ready(function () {
+            var model = @Html.Raw(Json.Encode(Model));
+            var matchDetails = new MatchDetails(model);
+            matchDetails.init();
+        });
+    </script>
+}
+
+<div class="match-details-root">
+    @*<div id="loader-container" class="loader-container"></div>*@
+    <div class="bet-summary-container">
+        <div class="bet-group-container">
+            <span class="bet-group-header" data-bind="text: match().Host"></span>
+            <ul data-bind="foreach: hostUsers" class="bet-list">
+                <li class="bet-list-item host">
+                    <span data-bind="text: username"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="bet-group-container">
+            <span class="bet-group-header">Draw</span>
+            <ul data-bind="foreach: drawUsers" class="bet-list">
+                <li class="bet-list-item draw">
+                    <span data-bind="text: username"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="bet-group-container visitor">
+            <span class="bet-group-header" data-bind="text: match().Visitor"></span>
+            <ul data-bind="foreach: visitorUsers" class="bet-list">
+                <li class="bet-list-item visitor">
+                    <span data-bind="text: username"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

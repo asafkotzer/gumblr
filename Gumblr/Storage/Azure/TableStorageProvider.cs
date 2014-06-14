@@ -81,6 +81,7 @@ namespace Gumblr.Storage.Azure
         {
             var table = await GetTableReference();
             var dynamicTableEntity = ConvertEntity(aEntity, aPartitionKey, aRowKey);
+            dynamicTableEntity.ETag = "*";
             var operation = TableOperation.Replace(dynamicTableEntity);
             await table.ExecuteAsync(operation);
         }
@@ -97,6 +98,7 @@ namespace Gumblr.Storage.Azure
         {
             var table = await GetTableReference();
             var dynamicTableEntity = ConvertEntity(new TableEntity(), aPartitionKey, aRowKey);
+            dynamicTableEntity.ETag = "*";
             var operation = TableOperation.Delete(dynamicTableEntity);
             await table.ExecuteAsync(operation);
         }

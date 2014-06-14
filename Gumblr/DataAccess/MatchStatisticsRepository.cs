@@ -12,7 +12,7 @@ namespace Gumblr.DataAccess
 {
     public interface IMatchStatisticsRepository
     {
-        Task UpdateUserBets(string aUserId, BettingModel aBet);
+        Task UpdateUserBets(string aUserId, string aUsername, BettingModel aBet);
         Task<MatchStatisticsModel> GetMatchStatistics(string aMatchId);
     }
 
@@ -35,24 +35,33 @@ namespace Gumblr.DataAccess
 
             var model = new MatchStatisticsModel();
             model.Match = match;
-            model.ExpectedResultByUserId = expectedResults
-                .Select(x => new { Key = x.Properties["UserId"] as string, Value = (MatchResult)x.Properties["ExpectedResult"] })
+            model.ExpectedResultByUsername = expectedResults
+                .Select(x => 
+                {
+                    object username;
+                    if (!x.Properties.TryGetValue("Username", out username))
+                    {
+                        username = Guid.NewGuid().ToString();
+                    }
+                    return new { Key = username as string, Value = (MatchResult)x.Properties["ExpectedResult"] };
+                })
                 .ToDictionary(x => x.Key, x => (MatchResult)x.Value);
 
             return model;
         }
 
-        public async Task UpdateUserBets(string aUserId, BettingModel aBet)
+        public async Task UpdateUserBets(string aUserId, string aUsername, BettingModel aBet)
         {
-            await Task.WhenAll(aBet.Matches.Select(x => UpdateMatchStatistics(aUserId, x)));
+            await Task.WhenAll(aBet.Matches.Select(x => UpdateMatchStatistics(aUserId, aUsername, x)));
         }
 
 
-        private async Task UpdateMatchStatistics(string aUserId, MatchBet aBet)
+        private async Task UpdateMatchStatistics(string aUserId, string aUsername, MatchBet aBet)
         {
             var statisticsEntity = new TableEntity();
             statisticsEntity.Properties["MatchId"] = aBet.MatchId;
             statisticsEntity.Properties["UserId"] = aUserId;
+            statisticsEntity.Properties["Username"] = aUsername;
             statisticsEntity.Properties["ExpectedResult"] = (int)aBet.ExpectedResult;
             await mTableProvider.CreateOrUpdate(aBet.MatchId, aUserId, statisticsEntity);
         }

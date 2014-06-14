@@ -90,6 +90,8 @@ namespace Gumblr.Controllers
         public async Task<ActionResult> PlaceBets(BettingModel aModel)
         {
             var userId = mIdentityManager.GetUserId(User);
+            var username = User.Identity.Name;
+
             var currentBets = await mMatchBetRepository.GetUserBets(userId);
 
             try
@@ -101,7 +103,7 @@ namespace Gumblr.Controllers
                 throw new HttpException(400, ex.Message);
             }
 
-            await mMatchBetRepository.SetUserBet(userId, aModel);
+            await mMatchBetRepository.SetUserBet(userId, username, aModel);
 
             // returning a JSON for the client side to redirect (jQuery ajax requirement)
             return Json(new { status = "success" });
