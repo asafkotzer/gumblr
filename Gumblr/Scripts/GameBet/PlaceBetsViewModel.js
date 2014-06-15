@@ -134,7 +134,15 @@
             }
         }, this);
 
-        matchItem.showMatchDetails = function () {
+        matchItem.showMatchDetailsButtonClick = function () {
+            var url = '/MatchDetails/' + matchItem.MatchId;
+            window.open(url, '_blank');
+        }
+
+        matchItem.showMatchDetailsBackgroundClick = function () {
+            if (!matchItem.HasStarted) {
+                return;
+            }
             var url = '/MatchDetails/' + matchItem.MatchId;
             window.open(url, '_blank');
         }

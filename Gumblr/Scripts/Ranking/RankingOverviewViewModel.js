@@ -18,7 +18,6 @@
         */
         userScoreItem.detailsInvisible = ko.observable(true);
         userScoreItem.toggleDetails = function () {
-            console.log(userScoreItem.detailsInvisible());
             userScoreItem.detailsInvisible(!userScoreItem.detailsInvisible());
         };
 

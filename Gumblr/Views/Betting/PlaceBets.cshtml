@@ -50,7 +50,7 @@
 <ul data-bind="foreach: matches" class="BetList">
     <li>
         <div data-bind="css: getMatchContainerClass">
-            <div data-bind="css: match.getSuccessIndicatorClass, click: match.showMatchDetails">
+            <div data-bind="css: match.getSuccessIndicatorClass, click: match.showMatchDetailsBackgroundClick ">
                 <div class="TeamsContainer">
                     <div class="LogoContainer">
                         <div class="team-name-container">
@@ -84,7 +84,7 @@
                     <button class="DefaultButton centered" data-bind="click: showStatistics">stats</button>
                 </div>
                 <div class="ShowStatisticsButtonContainer">
-                    <button class="DefaultButton centered" data-bind="click: match.showMatchDetails">info</button>
+                    <button class="DefaultButton centered" data-bind="click: match.showMatchDetailsButtonClick">info</button>
                 </div>
                 <div class="LoaderContainer">
 
