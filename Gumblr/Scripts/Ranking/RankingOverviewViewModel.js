@@ -43,4 +43,19 @@
     var sortedUsers = users.sort(compare);
 
     this.users = ko.observableArray(users);
+
+    var countByScore = {};
+    for (var key in model.ScoreByUserId) {
+        var score = model.ScoreByUserId[key].Score;
+
+        if (!countByScore[score]) {
+            countByScore[score] = 0;
+        }
+
+        countByScore[score]++;
+    }
+
+    var graphContainer = $("#score-distribution-container");
+    var plot = new StatisticsPlot();
+    plot.showStatisticsDistribution(countByScore, graphContainer);
 };

@@ -3,10 +3,12 @@
 }
 
 @section ViewHeader {
-    @Scripts.Render("~/Scripts/Ranking/RankingOverviewViewModel.js")
-    @Scripts.Render("~/Scripts/Ranking/RankingOverview.js")
-    @Styles.Render("~/Content/themes/default/ranking.css")
-    @Styles.Render("~/Content/themes/default/shared.css")
+@Scripts.Render("~/Scripts/Ranking/RankingOverviewViewModel.js")
+@Scripts.Render("~/Scripts/Ranking/RankingOverview.js")
+@Scripts.Render("~/Scripts/Shared/StatisticsPlot.js")
+@Scripts.Render("~/Scripts/jquery.flot.min.js")
+@Styles.Render("~/Content/themes/default/ranking.css")
+@Styles.Render("~/Content/themes/default/shared.css")
 
 
     <script>
@@ -18,7 +20,7 @@
     </script>
 }
 
-<div class="table-container">
+<div class="root-container">
     <ul data-bind="foreach: users" class="ranking-list no-list-style">
         <li class="table-item-container" data-bind="css:{ winner: isWinner, loser: isLoser}">
             <div class="table-item-main">
@@ -42,4 +44,6 @@
             </div>
         </li>
     </ul>
+
+    <div id="score-distribution-container" class="score-distribution-container" />
 </div>

@@ -2,14 +2,15 @@
     @BackgroundColor: #dedede;
     @LineHeight: 30px;
 
-    .table-container{
+    .root-container{
         margin-left: auto;
         margin-right: auto;
-        width: 760px;
+        width: 720px;
         font-family: Calibri;
 
         .no-list-style {
             list-style: none;
+            padding:0px;
         }
 
         .ranking-list {
@@ -59,12 +60,16 @@
             }
 
             .winner {
-                background-color: rgba(102, 177, 50, 0.71);
+                background-color: #88cc88;
             }
 
             .loser {
-                background-color: rgba(177, 102, 50, 0.71);
+                background-color: #ee8888;
             }
         }
+    }
+
+    .score-distribution-container {
+        height: 200px;
     }
 }

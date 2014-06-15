@@ -1,26 +1,27 @@
-body .table-container {
+body .root-container {
   margin-left: auto;
   margin-right: auto;
-  width: 760px;
+  width: 720px;
   font-family: Calibri;
 }
-body .table-container .no-list-style {
+body .root-container .no-list-style {
   list-style: none;
+  padding: 0px;
 }
-body .table-container .ranking-list .table-item-container {
+body .root-container .ranking-list .table-item-container {
   padding: 2px;
 }
-body .table-container .ranking-list .table-item-container .table-item-main {
+body .root-container .ranking-list .table-item-container .table-item-main {
   margin: 1px;
 }
-body .table-container .ranking-list .table-item-container .table-item-main .invisible {
+body .root-container .ranking-list .table-item-container .table-item-main .invisible {
   margin: 0px;
   height: 0px;
 }
-body .table-container .ranking-list .table-item-container .table-item-main .indented {
+body .root-container .ranking-list .table-item-container .table-item-main .indented {
   margin-left: 10px;
 }
-body .table-container .ranking-list .table-item-container .table-item-main .table-item-container {
+body .root-container .ranking-list .table-item-container .table-item-main .table-item-container {
   background-color: #dedede;
   width: 355px;
   height: 30px;
@@ -28,22 +29,25 @@ body .table-container .ranking-list .table-item-container .table-item-main .tabl
   display: inline-block;
   vertical-align: middle;
 }
-body .table-container .ranking-list .table-item-container .table-item-main .table-item-container span {
+body .root-container .ranking-list .table-item-container .table-item-main .table-item-container span {
   line-height: 30px;
 }
-body .table-container .ranking-list .table-item-container .table-item-main .current {
+body .root-container .ranking-list .table-item-container .table-item-main .current {
   font-weight: bold;
   color: blue;
 }
-body .table-container .ranking-list .table-item-container .table-item-main .name-container {
+body .root-container .ranking-list .table-item-container .table-item-main .name-container {
   padding-left: 4px;
 }
-body .table-container .ranking-list .table-item-container .table-item-main .score-container {
+body .root-container .ranking-list .table-item-container .table-item-main .score-container {
   text-align: center;
 }
-body .table-container .ranking-list .winner {
-  background-color: rgba(102, 177, 50, 0.71);
+body .root-container .ranking-list .winner {
+  background-color: #88cc88;
 }
-body .table-container .ranking-list .loser {
-  background-color: rgba(177, 102, 50, 0.71);
+body .root-container .ranking-list .loser {
+  background-color: #ee8888;
+}
+body .score-distribution-container {
+  height: 200px;
 }

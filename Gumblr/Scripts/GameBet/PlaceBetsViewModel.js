@@ -14,7 +14,7 @@
         }).done(function (result) {
             loader.hide();
             var plot = new StatisticsPlot();
-            plot.show(result, target);
+            plot.showStatisticsPie(result, target);
 
         }).fail(function (result) {
             loader.hide();
