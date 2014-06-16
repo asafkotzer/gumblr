@@ -31,6 +31,7 @@
         };
 
         matchItem.shouldUpdate = ko.observable(false);
+        matchItem.markedComplete = ko.observable(matchItem.IsComplete);
 
         matches.push({
             match: matchItem,
@@ -46,11 +47,11 @@
             if (x.shouldUpdate()) {
                 x.updateActualResult();
                 x.StartTime = moment(x.StartTime).format();
+                x.IsComplete = x.markedComplete();
                 matches.push(x);
             }
         });
 
-        debugger;
         model.Matches = matches;
 
         return ko.toJSON(model);
@@ -67,6 +68,7 @@
                 //TODO: indicate success/failure better
 
                 alert("Upload results redirect succeeded");
+                location.reload();
             }
             else {
                 console.log("Upload results redirect failed: " + JSON.stringify(result));

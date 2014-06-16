@@ -29,18 +29,16 @@
         });
     };
 
-    this.showStatisticsDistribution = function (data, target) {
+    this.showStatisticsDistribution = function (model, target) {
         var barChartData = [];
-        for (var score in data) {
-            var dataItem = [];
-            dataItem.push(score, data[score]);
+        for (var score in model.countByScore) {
+            var dataPair = [[score, model.countByScore[score]]];
+            var color = model.currentUserScore.Score == score ? "red" : "#4572A7";
+            var dataItem = { data: dataPair, color: color, bars: { show: true, barWidth: 2, align: "center", fill: true, lineWidth: 0 } };
             barChartData.push(dataItem);
         }
-        var dataPoints = [{ 
-            data: barChartData, 
-            bars: { show: true, barWidth: 2, align: "center", fillColor: "#4572A7", fill: true, lineWidth: 0 }
-        }];
-        $.plot(target, dataPoints, {
+
+        $.plot(target, barChartData, {
             xaxis: { tickLength: 0 },
             series: { shadowSize: 1 },
         });

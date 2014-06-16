@@ -2,6 +2,7 @@
     var self = this;
     this.model = model;
 
+    var currentUserScore = -1;
     var users = [];
     model.Users.forEach(function (userItem) {
         var userScoreItem = {
@@ -12,6 +13,9 @@
         userScoreItem.isWinner = userScoreItem.userScore.Score == model.MaxScore;
         userScoreItem.isLoser = userScoreItem.userScore.Score == model.MinScore;
         userScoreItem.isCurrentUser = userItem.Id == model.CurrentUserId;
+        if (userScoreItem.isCurrentUser) {
+            currentUserScore = model.ScoreByUserId[userItem.Id];
+        }
 
         /*
         Must use ko.calculated because using IDs makes it impossible to distinguish between elements in the list
@@ -57,5 +61,5 @@
 
     var graphContainer = $("#score-distribution-container");
     var plot = new StatisticsPlot();
-    plot.showStatisticsDistribution(countByScore, graphContainer);
+    plot.showStatisticsDistribution({countByScore: countByScore, currentUserScore : currentUserScore}, graphContainer);
 };

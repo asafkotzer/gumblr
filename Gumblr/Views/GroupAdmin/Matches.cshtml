@@ -25,6 +25,8 @@
         <input class="score-textbox" data-bind="value: match.GoalsScoredByHost" />
         <span class="team-name" data-bind="text: match.Visitor"></span>
         <input class="score-textbox" data-bind="value: match.GoalsScoredByVisitor" />
+        <span>complete?</span>
+        <input type="checkbox" data-bind="checked: match.markedComplete" />
     </li>
 </ul>
 

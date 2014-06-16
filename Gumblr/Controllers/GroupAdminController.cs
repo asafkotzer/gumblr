@@ -89,7 +89,6 @@ namespace Gumblr.Controllers
 		{
 			await Task.WhenAll(aModel.Matches.Select(x => 
             {
-                x.IsComplete = true;
                 return mMatchRepository.Update(x);
             }));
 
