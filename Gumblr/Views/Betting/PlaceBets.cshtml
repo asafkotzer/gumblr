@@ -75,15 +75,15 @@
                     <span class="bold" data-bind="text: match.StageString"></span> at <span data-bind="text: match.Venue"></span>
                 </p>
                 <p class="MatchSubtitle">
-                    <span data-bind="text: moment(match.StartTime).format('MMMM Do, HH:mm')"></span>
+                    <span data-bind="text: moment(match.StartTime).format('ddd, MMMM Do, HH:mm')"></span>
                 </p>
             </div>
 
             <div class="StatisticsFrame">
-                <div class="ShowStatisticsButtonContainer">
+                <div class="buttons-container" data-bind="css: match.getStatsButtonContainerClass">
                     <button class="DefaultButton centered" data-bind="click: showStatistics">stats</button>
                 </div>
-                <div class="ShowStatisticsButtonContainer">
+                <div class="buttons-container" data-bind="css: match.getDetailsButtonContainerClass">
                     <button class="DefaultButton centered" data-bind="click: match.showMatchDetailsButtonClick">info</button>
                 </div>
                 <div class="LoaderContainer">

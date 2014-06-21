@@ -164,16 +164,21 @@ body .BetList .MatchContainer .StatisticsFrame {
   position: relative;
   vertical-align: top;
 }
-body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer {
+body .BetList .MatchContainer .StatisticsFrame .buttons-container {
   margin-bottom: 5px;
   display: inline-block;
-  width: 47%;
   margin-right: auto;
   margin-left: auto;
 }
-body .BetList .MatchContainer .StatisticsFrame .ShowStatisticsButtonContainer .centered {
+body .BetList .MatchContainer .StatisticsFrame .buttons-container .centered {
   margin: auto;
   width: 100%;
+}
+body .BetList .MatchContainer .StatisticsFrame .narrow {
+  width: 47%;
+}
+body .BetList .MatchContainer .StatisticsFrame .wide {
+  width: 95%;
 }
 body .BetList .MatchContainer .MatchFrame {
   width: 607px;

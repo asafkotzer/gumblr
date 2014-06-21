@@ -134,6 +134,25 @@
             }
         }, this);
 
+        matchItem.getStatsButtonContainerClass = ko.computed(function () {
+            if (matchItem.Stage == 1) {
+                return "narrow";
+            } else {
+                // no details button for playoff matches ==> wider stats button
+                return "wide";
+            }
+        });
+
+        matchItem.getDetailsButtonContainerClass = ko.computed(function () {
+            if (matchItem.Stage == 1) {
+                return "narrow";
+            } else {
+                // hide details button for playoff matches
+                return "hidden";
+            }
+        });
+
+
         matchItem.showMatchDetailsButtonClick = function () {
             var url = '/MatchDetails/' + matchItem.MatchId;
             window.open(url, '_blank');
