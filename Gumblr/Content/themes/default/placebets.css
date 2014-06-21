@@ -246,6 +246,13 @@ body .BottomLine .SubmitContainer {
   margin-left: auto;
   margin-right: auto;
 }
+body .BottomLine .SubmitContainer .submit-loader-container {
+  height: 40px;
+  width: 58px;
+}
+body .BottomLine .SubmitContainer .submit-loader-container .Spinner {
+  position: relative !important;
+}
 body .BottomLine .SubmitContainer .StatusText {
   text-align: center;
 }

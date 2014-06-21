@@ -224,6 +224,10 @@
     this.uploadBets = function () {
         mixpanel.track('upload bets');
 
+        var submitLoaderContainer = $("#submit-loader-container").get(0);
+        var submitLoader = new loader();
+        submitLoader.show(submitLoaderContainer);
+
         request = $.ajax({
             url: "/Betting/PlaceBets",
             type: "post",
@@ -232,6 +236,7 @@
         }).done(function (result) {
             if (result && result.status == "success") {
                 toastr.success("Your bets were submitted", "Got it");
+                submitLoader.hide();
             }
             else {
                 toastr.error("Please try again later", "We can't update your bets right now");
