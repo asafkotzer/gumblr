@@ -11,6 +11,7 @@ using Gumblr.Filters;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Gumblr.BusinessLogic;
+using Gumblr.BusinessLogic.Emails;
 
 namespace Gumblr.Controllers
 {
@@ -22,16 +23,20 @@ namespace Gumblr.Controllers
 		IUserRepository mUserRepository;
 		IIdentityManager mIdentityManager;
 	    LocalUserManager mLocalUserManager;
-        IMatchResultsHandler mTournamentGenerator;
+        IMatchResultsHandler mMatchResultsHandler;
+        INewMatchUpdatesRepository mNewMatchUpdatesRepository;
+        IEmailProvider mEmailProvider;
 
-        public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, ILoginRepository aLoginRepository, LocalUserManager.Factory aLocalUserManagerFactory, IMatchResultsHandler aTournamentGenerator)
+        public GroupAdminController(IMatchRepository aMatchRepository, IUserRepository aUserRepository, IIdentityManager aIdentityManager, ILoginRepository aLoginRepository, LocalUserManager.Factory aLocalUserManagerFactory, IMatchResultsHandler aMatchResultsHandler, INewMatchUpdatesRepository aNewMatchUpdatesRepository, IEmailProvider aEmailProvider)
 		{
 			mMatchRepository = aMatchRepository;
 			mUserRepository = aUserRepository;
 			mIdentityManager = aIdentityManager;
 		    mLocalUserManager = aLocalUserManagerFactory(new UserStore<ApplicationUser>(), aLoginRepository, aUserRepository);
-            mTournamentGenerator = aTournamentGenerator;
-		}
+            mMatchResultsHandler = aMatchResultsHandler;
+            mNewMatchUpdatesRepository = aNewMatchUpdatesRepository;
+            mEmailProvider = aEmailProvider;
+        }
 
         public async Task<ActionResult> Users(string email, string username)
         {
@@ -65,6 +70,8 @@ namespace Gumblr.Controllers
 
         public async Task<ActionResult> MatchUpload()
         {
+            throw new Exception("Are you sure you want to do that?");
+
             var filename = @"C:\Temp\Gumblr\Matches.csv";
             var parser = new CsvMatchParser(System.IO.File.ReadAllLines(filename));
             var matches = parser.ParseMatches();
@@ -87,17 +94,36 @@ namespace Gumblr.Controllers
 		[HttpPost]
 		public async Task<ActionResult> UpdateMatches(MatchesAdminModel aModel)
 		{
-			await Task.WhenAll(aModel.Matches.Select(x => 
+            await Task.WhenAll(aModel.Matches.Select(x =>
             {
                 return mMatchRepository.Update(x);
             }));
 
-            /*                       ---------------------Commented out for the first round or so---------------------
-            // generate new matches if needed
-            await mTournamentGenerator.UpdateNewMatches();
-            */
-			return Json(new { status = "success" });
+            var newMatches = await mMatchResultsHandler.UpdateNewMatches();
+
+            return Json(new { status = "success", shouldRedirect = newMatches.NewMatches.Count() > 0, redirectUrl = string.Format("/GroupAdmin/PendingMatches/{0}", newMatches.Id) });
 		}
+
+        public async Task<ActionResult> PendingMatches(string id)
+        {
+            var newMatches = await mNewMatchUpdatesRepository.Get(id);
+            return View(newMatches);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SendNewMatchUpdate(string id)
+        {
+            var newMatches = (await mNewMatchUpdatesRepository.Get(id)).NewMatches;
+
+            if (newMatches.Count() > 0)
+            {
+                // update repository
+                await Task.WhenAll(newMatches.Select(x => mMatchRepository.Update(x)));
+                await SendNewMatchesEmail(newMatches);
+            }
+
+            return Json(new { status = "success" });
+        }
 
 	    [HttpPost]
 	    public async Task<ActionResult> UpdateUsers(UsersAdminModel aModel)
@@ -116,5 +142,20 @@ namespace Gumblr.Controllers
             }
             return Json(new { status = "success" });
 	    }
+
+        private async Task SendNewMatchesEmail(IEnumerable<Match> aNewMatches)
+        {
+            var users = await mUserRepository.GetAllUsers();
+            var sendEmailTasks = users.Select(u => SendNewMatchesEmail(u, aNewMatches));
+            await Task.WhenAll(sendEmailTasks);
+        }
+
+        private async Task SendNewMatchesEmail(ApplicationUser aUser, IEnumerable<Match> aNewMatches)
+        {
+            var model = new NewMatchesModel { User = aUser, NewMatches = aNewMatches };
+            var generator = new NewMatchesEmailGenerator(model);
+            await mEmailProvider.Send(generator.GetMessage());
+        }
+
 	}
 }

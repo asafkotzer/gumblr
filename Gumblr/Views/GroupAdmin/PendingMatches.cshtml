@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Pending matches administration";
+}
+
+@section ViewHeader {
+    @Scripts.Render("~/Scripts/GroupAdmin/PendingMatchesViewModel.js")
+    @Scripts.Render("~/Scripts/GroupAdmin/PendingMatches.js")
+    @Scripts.Render("~/Scripts/moment.js")
+    @Styles.Render("~/Content/themes/default/matchadmin.css")
+
+    <script>
+        $(document).ready(function () {
+            var model = @Html.Raw(Json.Encode(Model));
+            var matches = new PendingMatches(model);
+            matches.init();
+        });
+    </script>
+}
+
+<ul data-bind="foreach: matches" class="BetList">
+    <li style="margin: 10px 0px">
+        <span class="team-name" data-bind="text: match.Host"></span>
+        <span class="team-name" data-bind="text: match.Visitor"></span>
+    </li>
+</ul>
+
+<button data-bind="click: submit">approve</button>
+

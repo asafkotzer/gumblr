@@ -238,6 +238,7 @@
     <Compile Include="DataAccess\MatchBetRepository.cs" />
     <Compile Include="DataAccess\MatchRepository.cs" />
     <Compile Include="DataAccess\MatchStatisticsRepository.cs" />
+    <Compile Include="DataAccess\NewMatchUpdatesRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Filters\AuthorizedAdministratorFilterAttribute.cs" />
     <Compile Include="Filters\ErrorLoggingAttribute.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Models\MatchStage.cs" />
     <Compile Include="Models\MatchStatisticsModel.cs" />
     <Compile Include="Models\NewMatchesModel.cs" />
+    <Compile Include="Models\NewMatchUpdate.cs" />
     <Compile Include="Models\RankingOverviewModel.cs" />
     <Compile Include="Models\RequestInviteModel.cs" />
     <Compile Include="Models\UserBetsModel.cs" />
@@ -500,6 +502,8 @@
     <Content Include="Scripts\chosen.proto.min.js" />
     <Content Include="Scripts\GameBet\PlaceBets.js" />
     <Content Include="Scripts\GameBet\PlaceBetsViewModel.js" />
+    <Content Include="Scripts\GroupAdmin\PendingMatches.js" />
+    <Content Include="Scripts\GroupAdmin\PendingMatchesViewModel.js" />
     <Content Include="Scripts\GroupAdmin\Users.js" />
     <Content Include="Scripts\GroupAdmin\UsersViewModel.js" />
     <Content Include="Scripts\Home\Home.js" />
@@ -573,6 +577,7 @@
     <Content Include="Views\Home\RequestAnInvite.cshtml" />
     <Content Include="Scripts\toastr.min.js.map" />
     <Content Include="Views\MatchDetails\Index.cshtml" />
+    <Content Include="Views\GroupAdmin\PendingMatches.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

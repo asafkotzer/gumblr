@@ -65,10 +65,10 @@
             contentType: 'application/json',
         }).done(function (result) {
             if (result && result.status == "success") {
-                //TODO: indicate success/failure better
-
-                alert("Upload results redirect succeeded");
-                location.reload();
+                alert("Updated. New matches created? " + result.shouldRedirect);
+                if (result.shouldRedirect) {
+                    document.location.href = result.redirectUrl;
+                }
             }
             else {
                 console.log("Upload results redirect failed: " + JSON.stringify(result));

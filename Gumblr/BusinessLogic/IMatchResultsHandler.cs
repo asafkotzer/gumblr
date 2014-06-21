@@ -12,7 +12,7 @@ namespace Gumblr.BusinessLogic
 {
     public interface IMatchResultsHandler
     {
-        Task UpdateNewMatches();
+        Task<NewMatchUpdate> UpdateNewMatches();
     }
 
     public class MatchResultsHandler : IMatchResultsHandler
@@ -20,41 +20,29 @@ namespace Gumblr.BusinessLogic
         IUserRepository mUserRepository;
         IMatchRepository mMatchRepository;
         ITournamentOrganizer mTournamentOrganizer;
-        IEmailProvider mEmailProvider;
+        INewMatchUpdatesRepository mNewMatchUpdatesRepository;
 
-        public MatchResultsHandler(IUserRepository aUserRepository, IMatchRepository aMatchRepository, ITournamentOrganizer aTournamentOrganizer, IEmailProvider aEmailProvider)
+        public MatchResultsHandler(IUserRepository aUserRepository, IMatchRepository aMatchRepository, ITournamentOrganizer aTournamentOrganizer, INewMatchUpdatesRepository aNewMatchUpdatesRepository)
         {
             mUserRepository = aUserRepository;
             mMatchRepository = aMatchRepository;
             mTournamentOrganizer = aTournamentOrganizer;
-            mEmailProvider = aEmailProvider;
+            mNewMatchUpdatesRepository = aNewMatchUpdatesRepository;
         }
 
-        public async Task UpdateNewMatches()
+        public async Task<NewMatchUpdate> UpdateNewMatches()
         {
             var allMatches = await mMatchRepository.GetAllMatches();
             var newMatches = mTournamentOrganizer.GenerateMatches(
                 allMatches.Where(x => x.IsStub() == false),
                 allMatches.Where(x => x.IsStub() == true)).ToList();
 
-            if (newMatches.Count() > 0)
-            {
-                // update repository
-                await Task.WhenAll(newMatches.Select(x => mMatchRepository.Update(x)));
+            var updateId = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss");
+            var update = new NewMatchUpdate(updateId, newMatches);
+            await mNewMatchUpdatesRepository.Create(update);
 
-                // send emails to all users
-                var users = await mUserRepository.GetAllUsers();
-                var sendEmailTasks = users.Select(u => SendNewMatchesEmail(u, newMatches));
-                await Task.WhenAll(sendEmailTasks);
-
-            }
+            return update;
         }
 
-        private async Task SendNewMatchesEmail(ApplicationUser aUser, IEnumerable<Match> aNewMatches)
-        {
-            var model = new NewMatchesModel { User = aUser, NewMatches = aNewMatches };
-            var generator = new NewMatchesEmailGenerator(model);
-            await mEmailProvider.Send(generator.GetMessage());
-        }
     }
 }
