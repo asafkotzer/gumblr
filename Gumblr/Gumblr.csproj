@@ -75,6 +75,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
+    <Reference Include="Mindscape.Raygun4Net">
+      <HintPath>..\packages\Mindscape.Raygun4Net.3.0.0\lib\net40\Mindscape.Raygun4Net.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -252,6 +255,7 @@
     <Compile Include="BusinessLogic\Emails\NewMatchesEmailGenerator.cs" />
     <Compile Include="Helpers\ICurrentTimeProvider.cs" />
     <Compile Include="Helpers\Logging\LogMessage.cs" />
+    <Compile Include="Helpers\Logging\RaygunLogger.cs" />
     <Compile Include="Helpers\Logging\TableLogger.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BettingModel.cs" />

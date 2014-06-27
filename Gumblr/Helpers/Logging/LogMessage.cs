@@ -11,5 +11,14 @@ namespace Gumblr.Helpers.Logging
         public string Controller { get; set; }
         public string Action { get; set; }
         public string Username { get; set; }
+
+        public Dictionary<string, string> ToDictionary()
+        {
+            var result = new Dictionary<string, string>();
+            result["Action"] = Action;
+            result["Controller"] = Controller;
+
+            return result;
+        }
     }
 }

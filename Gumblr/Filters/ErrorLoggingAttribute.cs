@@ -12,7 +12,7 @@ namespace Gumblr.Filters
     {
         public void OnException(ExceptionContext filterContext)
         {
-            var logger = LogManager.GetLogger("TableLogger");
+            var logger = LogManager.GetLogger(this.GetType());
 
             var message = new LogMessage
             {

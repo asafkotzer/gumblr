@@ -34,7 +34,7 @@ namespace Gumblr.BusinessLogic
         {
             var allMatches = await mMatchRepository.GetAllMatches();
             var newMatches = mTournamentOrganizer.GenerateMatches(
-                allMatches.Where(x => x.IsStub() == false),
+                allMatches.Where(x => x.IsStub() == false && x.IsComplete),
                 allMatches.Where(x => x.IsStub() == true)).ToList();
 
             var updateId = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss");

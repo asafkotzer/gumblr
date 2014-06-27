@@ -1,7 +1,6 @@
 Tasks:
 * match details/stats should still be by userID, not user name, so it's distinct* sprite for flags
 * how come calculations worked with all 0:0s and no coinflips?
-* uncomment sending email
 
 Optional:
 * add require.js
@@ -32,3 +31,5 @@ Optional:
 * show dates in client localtime
 * fix match admin bug
 * bold self in ranking
+* when new match is calculated, save the blob and send me & shachar an email
+* uncomment sending email

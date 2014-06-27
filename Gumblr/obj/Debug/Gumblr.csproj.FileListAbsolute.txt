@@ -241,3 +241,5 @@ C:\Users\asaf\Documents\GitHub\gumblr\Gumblr\obj\Debug\Gumblr.Settings.resources
 C:\Users\asaf\Documents\GitHub\gumblr\Gumblr\obj\Debug\Gumblr.csproj.GenerateResource.Cache
 C:\Users\asaf\Documents\GitHub\gumblr\Gumblr\obj\Debug\Gumblr.dll
 C:\Users\asaf\Documents\GitHub\gumblr\Gumblr\obj\Debug\Gumblr.pdb
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Mindscape.Raygun4Net.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Mindscape.Raygun4Net.pdb
