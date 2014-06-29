@@ -243,3 +243,6 @@ C:\Users\asaf\Documents\GitHub\gumblr\Gumblr\obj\Debug\Gumblr.dll
 C:\Users\asaf\Documents\GitHub\gumblr\Gumblr\obj\Debug\Gumblr.pdb
 C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Mindscape.Raygun4Net.dll
 C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\Mindscape.Raygun4Net.pdb
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\HtmlAgilityPack.dll
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\HtmlAgilityPack.pdb
+C:\Users\Asaf\documents\visual studio 2013\Projects\Gumblr\Gumblr\bin\HtmlAgilityPack.xml

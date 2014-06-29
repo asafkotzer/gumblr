@@ -123,6 +123,11 @@
         matchItem.hostLogoUrl = ko.observable(getFlag(matchItem.Host));
         matchItem.visitorLogoUrl = ko.observable(getFlag(matchItem.Visitor));
 
+        if (matchItem.Ratio) {
+            matchItem.hostValueText = "gain: " + matchItem.Ratio.HostValue;
+            matchItem.visitorValueText = "gain: " + matchItem.Ratio.VisitorValue;
+        }
+
         matchItem.ExpectedResult = ko.observable(currentExpectedResult);
         matchItem.getSuccessIndicatorClass = ko.computed(function () {
             if (matchItem.ActualResult == -1) {

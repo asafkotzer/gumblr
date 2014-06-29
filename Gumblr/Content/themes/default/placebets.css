@@ -5,6 +5,9 @@ body .LoaderContainer .Spinner {
   position: relative !important;
   margin-top: 50px;
 }
+body .centered-text {
+  text-align: center;
+}
 body .Logo {
   display: block;
   width: 80px;

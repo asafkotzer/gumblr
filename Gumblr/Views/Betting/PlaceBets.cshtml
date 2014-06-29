@@ -57,6 +57,9 @@
                             <span class="TeamName" data-bind="text: match.Host"></span>
                         </div>
                         <input class="Logo Host" type="image" data-bind="attr:{src: match.hostLogoUrl }, click: selected, css: { 'Selected': match.ExpectedResult() == 0 }, event: { mouseover: match.onMouseIn, mouseout: match.onMouseOut }" />
+                        <div class="centered-text">
+                            <span data-bind="text: match.hostValueText"></span>
+                        </div>
                     </div>
                     <div class="LogoContainer">
                         <div class="team-name-container">
@@ -69,6 +72,9 @@
                             <span class="TeamName" data-bind="text: match.Visitor"></span>
                         </div>
                         <input class="Logo Visitor" type="image" data-bind="attr:{src: match.visitorLogoUrl}, click: selected, css: { 'Selected': match.ExpectedResult() == 2 }, event: { mouseover: match.onMouseIn, mouseout: match.onMouseOut }" />
+                        <div class="centered-text">
+                            <span data-bind="text: match.visitorValueText"></span>
+                        </div>
                     </div>
                 </div>
                 <p class="MatchSubtitle">

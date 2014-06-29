@@ -14,14 +14,6 @@ namespace Gumblr.BusinessLogic
 
     public class UserScoreCalculator : IUserScoreCalculator
     {
-        static readonly int CorrectWinner_Value = 10;
-        static readonly int CorrectMatchBet_GroupStage_Value = 10;
-        static readonly int CorrectMatchBet_RoundOfSixteen_Value = 12;
-        static readonly int CorrectMatchBet_QuarterFinal_Value = 15;
-        static readonly int CorrectMatchBet_SemiFinal_Value = 18;
-        static readonly int CorrectMatchBet_ThirdPlace_Value = 18;
-        static readonly int CorrectMatchBet_Final_Value = 20;
-
         public UserScore CalculateScore(IEnumerable<Match> aMatchesWithActualResults, FinalResultsMode aFinalResultsModel, BettingModel aBet)
         {
             var score = new UserScore();
@@ -36,7 +28,7 @@ namespace Gumblr.BusinessLogic
                 score.ScoreElements.Add(new ScoreElement 
                 { 
                     Title = string.Format("the champion is {0}", aFinalResultsModel.Winner),
-                    Value = CorrectWinner_Value 
+                    Value = new ScoreValues().CorrectWinner
                 });
             }
 
@@ -56,10 +48,27 @@ namespace Gumblr.BusinessLogic
                         title = string.Format("{0} defeated {1} ({2})", match.GetWinner(), match.GetLoser(), match.StageString);
                     }
 
+                    var value = GetCorrectBetValue(match.Stage);
+                    if (match.Ratio != null)
+                    {
+                        if (match.ActualResult == MatchResult.Host)
+                        {
+                            value = match.Ratio.HostValue;
+                        }
+                        else if (match.ActualResult == MatchResult.Visitor)
+                        {
+                            value = match.Ratio.VisitorValue;
+                        }
+                        else
+                        {
+                            throw new NotImplementedException("Draw on a calculated score");
+                        }
+                    }
+
                     score.ScoreElements.Add(new ScoreElement
                     {
                         Title = title,
-                        Value = GetCorrectMatchValue(match.Stage),
+                        Value = value,
                     });
                 }
             }
@@ -67,22 +76,22 @@ namespace Gumblr.BusinessLogic
             return score;
         }
 
-        private int GetCorrectMatchValue(MatchStage aMatchStage)
+        public static int GetCorrectBetValue(MatchStage aMatchStage)
         {
             switch (aMatchStage)
             {
                 case MatchStage.Group:
-                    return CorrectMatchBet_GroupStage_Value;
+                    return new ScoreValues().CorrectMatchBet_GroupStage;
                 case MatchStage.RoundOfSixteen:
-                    return CorrectMatchBet_RoundOfSixteen_Value;
+                    return new ScoreValues().CorrectMatchBet_RoundOfSixteen;
                 case MatchStage.QuarterFinals:
-                    return CorrectMatchBet_QuarterFinal_Value;
+                    return new ScoreValues().CorrectMatchBet_QuarterFinal;
                 case MatchStage.SemiFinals:
-                    return CorrectMatchBet_SemiFinal_Value;
+                    return new ScoreValues().CorrectMatchBet_SemiFinal;
                 case MatchStage.ThirdPlace:
-                    return CorrectMatchBet_ThirdPlace_Value;
+                    return new ScoreValues().CorrectMatchBet_ThirdPlace;
                 case MatchStage.Finals:
-                    return CorrectMatchBet_Final_Value;
+                    return new ScoreValues().CorrectMatchBet_Final;
                 case MatchStage.Qualifying:
                 default:
                     return 0;

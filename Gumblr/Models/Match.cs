@@ -26,6 +26,8 @@ namespace Gumblr.Models
             this.Stage = aMatch.Stage;
             this.GoalsScoredByHost = aMatch.GoalsScoredByHost;
             this.GoalsScoredByVisitor = aMatch.GoalsScoredByVisitor;
+            this.Index = aMatch.Index;
+            this.Ratio = aMatch.Ratio;
         }
 
         public string Host { get; set; }
@@ -38,6 +40,10 @@ namespace Gumblr.Models
         public int GoalsScoredByHost { get; set; }
         public int GoalsScoredByVisitor { get; set; }
         public MatchDependency Dependency { get; set; }
+
+        public string Index { get; set; }
+        public Ratio Ratio { get; set; }
+        public double CorrectBetValue { get { return UserScoreCalculator.GetCorrectBetValue(Stage); } }
 
         public string MatchId { get; set; }
         public MatchResult ActualResult
@@ -124,4 +130,43 @@ namespace Gumblr.Models
     }
 
     public enum MatchDependencyType { TwoGroups, TwoMatches }
+
+    public class Ratio
+    {
+        private MatchStage mMatchStage;
+
+        public int HostValue { get; set; }
+        public int VisitorValue { get; set; }
+        public int DrawValue { get; set; }
+
+        private double mHostPercent;
+        private double mVisitorPercent;
+
+        public Ratio(MatchStage aMatchStage, double aHostPercent, double aVisitorPercent)
+        {
+            mMatchStage = aMatchStage;
+
+            mHostPercent = aHostPercent;
+            mVisitorPercent = aVisitorPercent;
+
+            var normalizedHostPercent = Normalize(mHostPercent);
+            if (normalizedHostPercent > 0.65) normalizedHostPercent = 0.9 * normalizedHostPercent;
+            if (normalizedHostPercent < 0.35) normalizedHostPercent = 1.1 * normalizedHostPercent;
+
+            HostValue = (int)(2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage) * (1 - normalizedHostPercent));
+            VisitorValue = (2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage)) - HostValue;
+            DrawValue = 0;
+        }
+
+        public Ratio(MatchStage aMatchStage, double aHostPercent, double aDrawPercent, double aVisitorPercent)
+        {
+            throw new NotImplementedException("Including draw in ratio is not implemented");
+        }
+
+        private double Normalize(double aPercent)
+        {
+            return (aPercent / (mHostPercent + mVisitorPercent));
+        }
+    }
+
 }
