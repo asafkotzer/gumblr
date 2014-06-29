@@ -22,6 +22,10 @@ namespace Gumblr.Controllers
         public async Task<ActionResult> Index(string id)
         {
             var statistics = await mMatchStatisticsRepository.GetMatchStatistics(id);
+            if (!statistics.Match.HasStarted)
+            {
+                throw new HttpException(400, "Match didn't start yet");
+            }
 
             var model = new MatchDetailsModel
             {
