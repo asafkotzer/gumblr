@@ -142,6 +142,11 @@ namespace Gumblr.Models
         private double mHostPercent;
         private double mVisitorPercent;
 
+        public Ratio()
+        {
+
+        }
+
         public Ratio(MatchStage aMatchStage, double aHostPercent, double aVisitorPercent)
         {
             mMatchStage = aMatchStage;
