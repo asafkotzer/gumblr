@@ -151,7 +151,7 @@ namespace Gumblr.Models
 
             var normalizedHostPercent = Normalize(mHostPercent);
             if (normalizedHostPercent > 0.65) normalizedHostPercent = 0.9 * normalizedHostPercent;
-            if (normalizedHostPercent < 0.35) normalizedHostPercent = 1.1 * normalizedHostPercent;
+            if (normalizedHostPercent < 0.35) normalizedHostPercent = 1 - (0.9 * Normalize(mVisitorPercent));
 
             HostValue = (int)(2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage) * (1 - normalizedHostPercent));
             VisitorValue = (2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage)) - HostValue;
