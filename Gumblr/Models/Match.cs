@@ -149,11 +149,19 @@ namespace Gumblr.Models
             mHostPercent = aHostPercent;
             mVisitorPercent = aVisitorPercent;
 
-            var normalizedHostPercent = Normalize(mHostPercent);
-            if (normalizedHostPercent > 0.65) normalizedHostPercent = 0.9 * normalizedHostPercent;
-            if (normalizedHostPercent < 0.35) normalizedHostPercent = 1 - (0.9 * Normalize(mVisitorPercent));
+            var normalizedHostProbability = Normalize(mHostPercent);
+            var normalizedVisitorProbability = Normalize(mVisitorPercent);
 
-            HostValue = (int)(2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage) * (1 - normalizedHostPercent));
+            if (normalizedHostProbability > 0.5)
+            {
+                normalizedHostProbability = normalizedHostProbability * Math.Pow(0.8, normalizedHostProbability) + 0.06;
+            }
+            else if (normalizedHostProbability < 0.5)
+            {
+                normalizedHostProbability = 1 - (normalizedVisitorProbability * Math.Pow(0.8, normalizedVisitorProbability) + 0.06);
+            }
+
+            HostValue = (int)(2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage) * (1 - normalizedHostProbability));
             VisitorValue = (2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage)) - HostValue;
             DrawValue = 0;
         }
