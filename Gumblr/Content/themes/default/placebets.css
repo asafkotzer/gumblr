@@ -5,9 +5,6 @@ body .LoaderContainer .Spinner {
   position: relative !important;
   margin-top: 50px;
 }
-body .centered-text {
-  text-align: center;
-}
 body .Logo {
   display: block;
   width: 80px;
@@ -105,6 +102,9 @@ body .BetList .StartedMatchContainer .MatchFrame .MatchSubtitle {
   margin: 0px;
   visibility: hidden;
 }
+body .BetList .StartedMatchContainer .MatchFrame .left-offset {
+  margin-left: 43px;
+}
 body .BetList .StartedMatchContainer .MatchFrame .LogoContainer {
   vertical-align: top;
   display: inline-block;
@@ -114,6 +114,9 @@ body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .Logo {
   width: 30px;
   height: 30px;
   margin: 5px 35px;
+}
+body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .gain-text {
+  visibility: hidden;
 }
 body .BetList .StartedMatchContainer .MatchFrame .LogoContainer .team-name-container {
   text-align: center;
@@ -213,6 +216,9 @@ body .BetList .MatchContainer .MatchFrame .LogoContainer {
   height: 80px;
   display: inline-block;
   width: 180px;
+}
+body .BetList .MatchContainer .MatchFrame .LogoContainer .gain-text {
+  text-align: center;
 }
 body .BetList .MatchContainer .MatchFrame .LogoContainer .team-name-container {
   text-align: center;

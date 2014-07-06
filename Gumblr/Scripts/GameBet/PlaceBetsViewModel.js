@@ -185,6 +185,12 @@
                 }
                 return matchItem.HasStarted ? "StartedMatchContainer" : "MatchContainer";
             }),
+            getLogoContainerClass: ko.computed(function () {
+                if (matchItem.Stage() > 1) {
+                    return "LogoContainer left-offset";
+                }
+                return "LogoContainer";
+            }),
         });
     });
     this.matches = ko.observableArray(matches);
