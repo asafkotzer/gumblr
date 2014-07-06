@@ -166,8 +166,10 @@ namespace Gumblr.Models
                 normalizedHostProbability = 1 - (normalizedVisitorProbability * Math.Pow(0.8, normalizedVisitorProbability) + 0.06);
             }
 
-            HostValue = (int)(2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage) * (1 - normalizedHostProbability));
-            VisitorValue = (2 * UserScoreCalculator.GetCorrectBetValue(mMatchStage)) - HostValue;
+            var correctMatchValue = UserScoreCalculator.GetCorrectBetValue(mMatchStage);
+            var calculatedHostvalue = (int)(2 * correctMatchValue * (1 - normalizedHostProbability));
+            HostValue = Math.Max(correctMatchValue, calculatedHostvalue);
+            VisitorValue = Math.Max(correctMatchValue, (2 * correctMatchValue) - calculatedHostvalue);
             DrawValue = 0;
         }
 
