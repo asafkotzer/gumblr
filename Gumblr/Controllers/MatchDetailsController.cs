@@ -1,4 +1,5 @@
 ﻿using Gumblr.DataAccess;
+using Gumblr.Filters;
 using Gumblr.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Gumblr.Controllers
 {
-    [Authorize]
+    [GumblrAuthorize]
     public class MatchDetailsController : Controller
     {
         IMatchStatisticsRepository mMatchStatisticsRepository;

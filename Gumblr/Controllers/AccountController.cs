@@ -11,10 +11,11 @@ using Microsoft.Owin.Security;
 using Gumblr.Models;
 using Gumblr.Account;
 using Gumblr.DataAccess;
+using Gumblr.Filters;
 
 namespace Gumblr.Controllers
 {
-    [Authorize]
+    [GumblrAuthorize]
     public class AccountController : Controller
     {
         public LocalUserManager UserManager { get; private set; }

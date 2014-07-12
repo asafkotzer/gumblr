@@ -8,10 +8,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Gumblr.Filters;
 
 namespace Gumblr.Controllers
 {
-    [Authorize]
+    [GumblrAuthorize]
     public class RankingController : Controller
     {
         IMatchBetRepository mMatchBetRepository;

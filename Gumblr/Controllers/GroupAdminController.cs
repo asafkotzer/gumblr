@@ -15,7 +15,7 @@ using Gumblr.BusinessLogic.Emails;
 
 namespace Gumblr.Controllers
 {
-	[Authorize]
+    [GumblrAuthorize]
 	[AuthorizedAdministrator]
 	public class GroupAdminController : Controller
 	{

@@ -247,6 +247,7 @@
     <Compile Include="DataAccess\NewMatchUpdatesRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Filters\AuthorizedAdministratorFilterAttribute.cs" />
+    <Compile Include="Filters\GumblrAuthorizeAttribute.cs" />
     <Compile Include="Filters\ErrorLoggingAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

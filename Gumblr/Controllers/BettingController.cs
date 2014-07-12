@@ -9,10 +9,11 @@ using System.Web.Mvc;
 using Gumblr.Storage;
 using Gumblr.Account;
 using Gumblr.BusinessLogic;
+using Gumblr.Filters;
 
 namespace Gumblr.Controllers
 {
-    [Authorize]
+    [GumblrAuthorize]
     public class BettingController : Controller
     {
         IMatchRepository mMatchRepository;
