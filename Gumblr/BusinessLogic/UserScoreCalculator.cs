@@ -27,7 +27,7 @@ namespace Gumblr.BusinessLogic
             {
                 score.ScoreElements.Add(new ScoreElement 
                 { 
-                    Title = string.Format("the champion is {0}", aFinalResultsModel.Winner),
+                    Title = string.Format("The champion is {0}", aFinalResultsModel.Winner),
                     Value = new ScoreValues().CorrectWinner
                 });
             }
