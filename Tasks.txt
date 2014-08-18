@@ -1,5 +1,7 @@
 Tasks:
-* match details/stats should still be by userID, not user name, so it's distinct* sprite for flags
+* Nothing
+* match details/stats should still be by userID, not user name, so it's distinct
+* sprite for flags
 * how come calculations worked with all 0:0s and no coinflips?
 
 Optional:
